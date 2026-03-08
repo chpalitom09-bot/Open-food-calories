@@ -1,6 +1,8 @@
 🥗 Open-Food-Calories
 Open-Food-Calories is a high-performance JSON database of 2,000+ foods, dishes, and ingredients.
 
+Try it on : https://chpalitom09-bot.github.io/Open-food-calories/
+
 Accuracy Rate: 99.2% (validated via cross-referencing).
 
 Coverage: 2,000+ global entries.

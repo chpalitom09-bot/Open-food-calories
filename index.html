@@ -233,7 +233,7 @@
         async function loadData() {
             try {
                 // On va chercher le fichier food.json qui doit être dans le même dossier
-                const response = await fetch('./food.json');
+                const response = await fetch('data/food.json');
                 if (!response.ok) throw new Error("Impossible de charger le fichier JSON");
                 foodDatabase = await response.json();
                 

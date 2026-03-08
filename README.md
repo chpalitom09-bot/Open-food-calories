@@ -30,6 +30,7 @@ JSON
 If you want to create a search bar or a calorie calculator:
 
 JavaScript
+
 // Load the database
 const response = await fetch('./data/food.json');
 const foods = await response.json();
@@ -39,6 +40,7 @@ const item = foods.find(f => f.english_name === "Chicken breast");
 
 if (item) {
     console.log(`The ${item.emoji} ${item.name} has ${item.kcal_per_100g} kcal per 100g.`);
+    
 }
 
 // Example: Calculate calories for a specific weight (e.g., 250g)
@@ -47,10 +49,12 @@ const totalKcal = (item.kcal_per_100g * weight) / 100;
 console.log(`Total: ${totalKcal} kcal for ${weight}g`);
 
 
+
 2. In Python (Data Analysis)
 Perfect for calculating a meal's total or building a nutrition bot:
 
 Python
+
 import json
 
 # Open the file
@@ -67,6 +71,7 @@ for r in results:
         kcal_unit = (r['kcal_per_100g'] * r['weight_per_unit']) / 100
         print(f"{r['emoji']} {r['name']}: {kcal_unit} kcal per unit")
 Understanding weight_per_unit
+
 This field is key for user experience.
 
 If weight_per_unit is 0: The food is usually measured in grams (like rice or flour).

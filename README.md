@@ -13,7 +13,9 @@ Reliability: 98% confidence level on macronutrient estimates.
 Every entry in food.json follows a strict schema to ensure compatibility with your applications:
 
 JSON
+
 {
+
     "name": "Riz blanc (cuit)",           // Nom de l'aliment (Français)
     "english_name": "White rice (cooked)", // Name of the food (English)
     "kcal_per_100g": 130,                 // Calories for 100g / 100ml

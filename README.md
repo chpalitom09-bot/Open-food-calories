@@ -76,11 +76,11 @@ Understanding weight_per_unit
 
 This field is key for user experience.
 
-If weight_per_unit is 0: The food is usually measured in grams (like rice or flour).
+If <pre> weight_per_unit is 0: </pre>  The food is usually measured in grams (like rice or flour).
 
-If weight_per_unit is > 0: You can calculate calories per piece.
+If <pre> weight_per_unit is > 0: </pre>  You can calculate calories per piece.
 
-Example: If an Apple (Pomme) has kcal_per_100g: 52 and weight_per_unit: 150, then one apple = 78 kcal.
+Example: If an Apple (Pomme) has <pre> kcal_per_100g: 52 </pre> and <pre> weight_per_unit: 150 </pre>, then one apple = 78 kcal.
 
 Contributing
 Want to add new foods?
@@ -92,4 +92,4 @@ Add your entries in food.json following the alphabetical order (optional but pre
 Open a Pull Request!
 
 📜 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

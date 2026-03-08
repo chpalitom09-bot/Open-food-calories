@@ -14,7 +14,7 @@ Every entry in food.json follows a strict schema to ensure compatibility with yo
 
 JSON
 
-{
+
 
     "name": "Riz blanc (cuit)",           // Nom de l'aliment (Français)
     "english_name": "White rice (cooked)", // Name of the food (English)
@@ -22,7 +22,7 @@ JSON
     "emoji": "🍚",                        // Visual representation
     "type": "solid",                      // 'solid' or 'liquid'
     "weight_per_unit": 0                  // Average weight of 1 piece (if applicable)
-}
+
 🛠 How to use the data?
 
 
@@ -30,7 +30,7 @@ JSON
 If you want to create a search bar or a calorie calculator:
 
 JavaScript
-
+<pre>
 // Load the database
 const response = await fetch('./data/food.json');
 const foods = await response.json();
@@ -47,6 +47,7 @@ if (item) {
 const weight = 250;
 const totalKcal = (item.kcal_per_100g * weight) / 100;
 console.log(`Total: ${totalKcal} kcal for ${weight}g`);
+    </pre>
 
 
 
@@ -54,7 +55,7 @@ console.log(`Total: ${totalKcal} kcal for ${weight}g`);
 Perfect for calculating a meal's total or building a nutrition bot:
 
 Python
-
+<pre>
 import json
 
 # Open the file
@@ -71,6 +72,7 @@ for r in results:
         kcal_unit = (r['kcal_per_100g'] * r['weight_per_unit']) / 100
         print(f"{r['emoji']} {r['name']}: {kcal_unit} kcal per unit")
 Understanding weight_per_unit
+</pre>
 
 This field is key for user experience.
 

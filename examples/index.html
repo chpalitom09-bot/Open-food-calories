@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoodCal - Moteur de recherche de calories</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f4f6f8;
+            --surface-color: #ffffff;
+            --text-main: #111827;
+            --text-muted: #6b7280;
+            --primary: #3b82f6;
+            --accent-cal: #ff5a5f;
+            --border: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInDown 0.6s ease-out;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 3rem auto;
+            position: relative;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            font-size: 1.1rem;
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            outline: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            background-color: var(--surface-color);
+        }
+
+        .search-container input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: var(--surface-color);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            cursor: default;
+            animation: fadeIn 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .emoji {
+            font-size: 2.5rem;
+            background: var(--bg-color);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .titles h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .titles p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .card-body {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: auto;
+        }
+
+        .tags {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .tag {
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: var(--bg-color);
+            color: var(--text-muted);
+            display: inline-block;
+            width: fit-content;
+        }
+
+        .tag.cal {
+            background: #fff0f0;
+            color: var(--accent-cal);
+            font-size: 1rem;
+            padding: 6px 12px;
+        }
+
+        .unit-info {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-align: right;
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .loading {
+            text-align: center;
+            grid-column: 1 / -1;
+            font-size: 1.2rem;
+            color: var(--primary);
+            padding: 2rem;
+        }
+
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            h1 { font-size: 2rem; }
+            .results-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🥑 FoodCal</h1>
+        <p>Trouvez les calories de vos aliments en un instant</p>
+    </header>
+
+    <main>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Rechercher un aliment (ex: Poulet, Riz, Pizza...)" autocomplete="off">
+        </div>
+
+        <div class="results-grid" id="resultsGrid">
+            <div class="loading">Chargement de la base de données...</div>
+        </div>
+    </main>
+
+    <script>
+        let foodDatabase = [];
+        const searchInput = document.getElementById('searchInput');
+        const resultsGrid = document.getElementById('resultsGrid');
+
+        // Charger le fichier JSON
+        async function loadData() {
+            try {
+                // On va chercher le fichier food.json qui doit être dans le même dossier
+                const response = await fetch('./food.json');
+                if (!response.ok) throw new Error("Impossible de charger le fichier JSON");
+                foodDatabase = await response.json();
+                
+                // Afficher tout au chargement
+                displayResults(foodDatabase);
+            } catch (error) {
+                console.error(error);
+                resultsGrid.innerHTML = `<div class="no-results">❌ Erreur lors du chargement des données. Vérifiez que food.json est bien dans le même dossier.</div>`;
+            }
+        }
+
+        // Fonction pour générer le HTML d'une carte
+        function createCardHTML(food, delay) {
+            const unitHTML = food.weight_per_unit > 0 
+                ? `<div class="unit-info">Poids moyen<br><b>${food.weight_per_unit}g</b> / unité</div>` 
+                : `<div class="unit-info">Type<br><b>${food.type === 'solid' ? 'Solide' : 'Liquide'}</b></div>`;
+
+            return `
+                <div class="card" style="animation-delay: ${delay}s">
+                    <div class="card-header">
+                        <div class="emoji">${food.emoji}</div>
+                        <div class="titles">
+                            <h2>${food.name}</h2>
+                            <p>${food.english_name}</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="tags">
+                            <span class="tag cal">${food.kcal_per_100g} kcal / 100g</span>
+                        </div>
+                        ${unitHTML}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Afficher les résultats
+        function displayResults(data) {
+            resultsGrid.innerHTML = '';
+
+            if (data.length === 0) {
+                resultsGrid.innerHTML = `<div class="no-results">🕵️‍♂️ Aucun aliment trouvé pour cette recherche.</div>`;
+                return;
+            }
+
+            let html = '';
+            // On limite à 100 résultats max pour garder les animations fluides
+            const limit = Math.min(data.length, 100);
+            
+            for (let i = 0; i < limit; i++) {
+                // Créer un léger délai en cascade pour l'animation
+                const delay = (i * 0.03).toFixed(2);
+                html += createCardHTML(data[i], delay);
+            }
+            
+            resultsGrid.innerHTML = html;
+        }
+
+        // Écouter la barre de recherche
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            
+            // Filtrer la base de données
+            const filteredData = foodDatabase.filter(food => {
+                const matchFR = food.name.toLowerCase().includes(searchTerm);
+                const matchEN = food.english_name.toLowerCase().includes(searchTerm);
+                return matchFR || matchEN;
+            });
+
+            // Trier pour mettre les correspondances exactes (qui commencent par) en premier
+            filteredData.sort((a, b) => {
+                const aStarts = a.name.toLowerCase().startsWith(searchTerm);
+                const bStarts = b.name.toLowerCase().startsWith(searchTerm);
+                if (aStarts && !bStarts) return -1;
+                if (!aStarts && bStarts) return 1;
+                return 0;
+            });
+
+            displayResults(filteredData);
+        });
+
+        // Lancer l'application
+        loadData();
+    </script>
+</body>
+</html>

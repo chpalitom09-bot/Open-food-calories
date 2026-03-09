@@ -1,9 +1,22 @@
 🥗 Open-Food-Calories
-Open-Food-Calories is a high-performance JSON database of 2,000+ foods, dishes, and ingredients.
+Open-Food-Calories is a high-performance JSON database of 4,000+ foods, dishes, and ingredients.
 
 Try it on : https://chpalitom09-bot.github.io/Open-food-calories/
 
 Accuracy Rate: 90% (validated via cross-referencing).
+
+| Food (Name) | Calories OPEN FOOD CALORIES JSON (kcal/100g) | Real Calories (CIQUAL/USDA) | Écart estimé (%) |
+| :--- | :--- | :--- | :--- |
+| Riz blanc (cru) | 350 | 350 | 0 % |
+| Riz blanc (cuit) | 130 | 130 | 0 % |
+| Pâtes (crues) | 350 | 353 | ~ 1 % |
+| Pâtes (cuites) | 150 | 158 | ~ 5 % |
+| Blanc de poulet | 110 | 110 - 120 | ~ 4 % |
+| Bœuf haché 5% | 125 | 125 - 129 | ~ 2 % |
+| Huile de noisette | 884 | 900 | ~ 1,7 % |
+| Magnum (bâtonnet) | 300 | 310 | ~ 3 % |
+| Pain au lait | 300 | 320 - 340 | ~ 9 % |
+| Sauté de porc aux légumes | 165 | 150 - 170 | ~ 3 % |
 
 Coverage: 4000 + global entries.
 

@@ -20,11 +20,7 @@
             --radius: 16px;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -34,176 +30,93 @@
             padding: 2rem;
         }
 
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-            animation: fadeInDown 0.6s ease-out;
-        }
+        header { text-align: center; margin-bottom: 3rem; animation: fadeInDown 0.6s ease-out; }
+        h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        header p { color: var(--text-muted); font-size: 1.1rem; }
 
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        header p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-        }
-
-        .search-container {
-            max-width: 600px;
-            margin: 0 auto 3rem auto;
-            position: relative;
-            animation: fadeIn 0.8s ease-out;
-        }
-
+        .search-container { max-width: 600px; margin: 0 auto 1rem auto; position: relative; animation: fadeIn 0.8s ease-out; }
         .search-container input {
-            width: 100%;
-            padding: 1.2rem 1.5rem;
-            font-size: 1.1rem;
-            border: 2px solid var(--border);
-            border-radius: 50px;
-            outline: none;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-sm);
+            width: 100%; padding: 1.2rem 1.5rem; font-size: 1.1rem; border: 2px solid var(--border);
+            border-radius: 50px; outline: none; transition: all 0.3s ease; box-shadow: var(--shadow-sm);
             background-color: var(--surface-color);
         }
+        .search-container input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15); }
 
-        .search-container input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
-        }
+        #resultsCount { text-align: center; color: var(--text-muted); margin-bottom: 2rem; font-weight: 500; animation: fadeIn 0.5s ease-out; }
 
         .results-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem; max-width: 1200px; margin: 0 auto;
         }
 
         .card {
-            background-color: var(--surface-color);
-            border-radius: var(--radius);
-            padding: 1.5rem;
-            box-shadow: var(--shadow-md);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            cursor: default;
-            animation: fadeIn 0.5s ease-out forwards;
-            opacity: 0;
+            background-color: var(--surface-color); border-radius: var(--radius); padding: 1.5rem;
+            box-shadow: var(--shadow-md); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex; flex-direction: column; gap: 1rem; cursor: pointer; /* Modifié pour le clic */
+            animation: fadeIn 0.5s ease-out forwards; opacity: 0; border: 2px solid transparent;
         }
+        .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: var(--primary); }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-            border-color: var(--primary);
-        }
+        .card-header { display: flex; align-items: center; gap: 15px; }
+        .emoji { font-size: 2.5rem; background: var(--bg-color); width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+        .titles h2 { font-size: 1.1rem; font-weight: 600; line-height: 1.2; }
+        .titles p { font-size: 0.85rem; color: var(--text-muted); margin-top: 2px; }
+        .card-body { display: flex; justify-content: space-between; align-items: flex-end; margin-top: auto; }
+        .tags { display: flex; flex-direction: column; gap: 8px; }
+        .tag { font-size: 0.8rem; font-weight: 600; padding: 4px 10px; border-radius: 20px; background: var(--bg-color); color: var(--text-muted); display: inline-block; width: fit-content; }
+        .tag.cal { background: #fff0f0; color: var(--accent-cal); font-size: 1rem; padding: 6px 12px; }
+        .unit-info { font-size: 0.75rem; color: var(--text-muted); text-align: right; }
+        .no-results, .loading { grid-column: 1 / -1; text-align: center; padding: 3rem; color: var(--text-muted); font-size: 1.2rem; }
+        .loading { color: var(--primary); }
 
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        /* --- STYLES DE LA MODALE --- */
+        .modal-overlay {
+            display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px);
+            z-index: 1000; justify-content: center; align-items: center; padding: 1rem;
         }
+        .modal-overlay.active { display: flex; animation: fadeIn 0.2s ease-out; }
+        .modal-content {
+            background: var(--surface-color); border-radius: var(--radius); width: 100%; max-width: 650px;
+            max-height: 90vh; overflow-y: auto; padding: 2rem; position: relative; box-shadow: var(--shadow-hover);
+        }
+        .close-btn {
+            position: absolute; top: 1.5rem; right: 1.5rem; font-size: 1.5rem; color: var(--text-muted);
+            cursor: pointer; background: none; border: none; transition: color 0.2s;
+        }
+        .close-btn:hover { color: var(--text-main); }
+        
+        .modal-header { display: flex; align-items: center; gap: 15px; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border); }
+        .modal-header .emoji { font-size: 3.5rem; width: 80px; height: 80px; }
+        .modal-header h2 { font-size: 2rem; color: var(--text-main); }
+        
+        .db-stats { display: flex; gap: 15px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+        .db-stat-box { background: var(--bg-color); padding: 1rem; border-radius: 12px; flex: 1; min-width: 120px; text-align: center; }
+        .db-stat-box span { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 5px; }
+        .db-stat-box strong { font-size: 1.2rem; color: var(--primary); }
+        .db-stat-box.highlight strong { color: var(--accent-cal); }
 
-        .emoji {
-            font-size: 2.5rem;
-            background: var(--bg-color);
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
+        .ai-description {
+            background: #f8fafc; border-left: 4px solid var(--primary); padding: 1.5rem;
+            border-radius: 0 12px 12px 0; margin-bottom: 2rem; line-height: 1.6; white-space: pre-wrap;
         }
+        .ai-badge { display: inline-flex; align-items: center; gap: 5px; font-size: 0.75rem; font-weight: 700; background: #e0f2fe; color: #0284c7; padding: 4px 8px; border-radius: 12px; margin-bottom: 10px; }
 
-        .titles h2 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            line-height: 1.2;
+        .suggestions-section h3 { font-size: 1.2rem; margin-bottom: 1rem; }
+        .suggestions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+        .suggestion-card {
+            background: var(--bg-color); padding: 1rem; border-radius: 12px; text-align: center; cursor: pointer; transition: transform 0.2s;
         }
+        .suggestion-card:hover { transform: translateY(-3px); background: #e5e7eb; }
+        .suggestion-card .s-emoji { font-size: 2rem; margin-bottom: 5px; }
+        .suggestion-card .s-name { font-weight: 600; font-size: 0.9rem; }
+        .suggestion-card .s-cal { font-size: 0.8rem; color: var(--text-muted); }
 
-        .titles p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 2px;
-        }
-
-        .card-body {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-top: auto;
-        }
-
-        .tags {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .tag {
-            font-size: 0.8rem;
-            font-weight: 600;
-            padding: 4px 10px;
-            border-radius: 20px;
-            background: var(--bg-color);
-            color: var(--text-muted);
-            display: inline-block;
-            width: fit-content;
-        }
-
-        .tag.cal {
-            background: #fff0f0;
-            color: var(--accent-cal);
-            font-size: 1rem;
-            padding: 6px 12px;
-        }
-
-        .unit-info {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            text-align: right;
-        }
-
-        .no-results {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 3rem;
-            color: var(--text-muted);
-            font-size: 1.2rem;
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .loading {
-            text-align: center;
-            grid-column: 1 / -1;
-            font-size: 1.2rem;
-            color: var(--primary);
-            padding: 2rem;
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
 
         @media (max-width: 600px) {
-            body { padding: 1rem; }
-            h1 { font-size: 2rem; }
-            .results-grid { grid-template-columns: 1fr; }
+            body { padding: 1rem; } h1 { font-size: 2rem; } .results-grid { grid-template-columns: 1fr; }
+            .suggestions-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -218,41 +131,53 @@
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="Rechercher un aliment (ex: Poulet, Riz, Pizza...)" autocomplete="off">
         </div>
+        
+        <div id="resultsCount"></div>
 
         <div class="results-grid" id="resultsGrid">
             <div class="loading">Chargement de la base de données...</div>
         </div>
     </main>
 
+    <div class="modal-overlay" id="foodModal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeModal()">✕</button>
+            <div id="modalBody">
+                </div>
+        </div>
+    </div>
+
     <script>
         let foodDatabase = [];
         const searchInput = document.getElementById('searchInput');
         const resultsGrid = document.getElementById('resultsGrid');
+        const resultsCount = document.getElementById('resultsCount');
+        const modal = document.getElementById('foodModal');
+        
+        // TA CLÉ API MISTRAL (Attention à ne pas la partager publiquement)
+        const MISTRAL_API_KEY = 'SIf4f6UfrvZYKRTBcgcwvLq1Xi8888k9';
 
         // Charger le fichier JSON
         async function loadData() {
             try {
-                // On va chercher le fichier food.json qui doit être dans le même dossier
                 const response = await fetch('data/food.json');
                 if (!response.ok) throw new Error("Impossible de charger le fichier JSON");
                 foodDatabase = await response.json();
-                
-                // Afficher tout au chargement
                 displayResults(foodDatabase);
             } catch (error) {
                 console.error(error);
-                resultsGrid.innerHTML = `<div class="no-results">❌ Erreur lors du chargement des données. Vérifiez que food.json est bien dans le même dossier.</div>`;
+                resultsGrid.innerHTML = `<div class="no-results">❌ Erreur de chargement. Vérifiez votre fichier food.json.</div>`;
             }
         }
 
         // Fonction pour générer le HTML d'une carte
-        function createCardHTML(food, delay) {
+        function createCardHTML(food, indexInDB, delay) {
             const unitHTML = food.weight_per_unit > 0 
                 ? `<div class="unit-info">Poids moyen<br><b>${food.weight_per_unit}g</b> / unité</div>` 
                 : `<div class="unit-info">Type<br><b>${food.type === 'solid' ? 'Solide' : 'Liquide'}</b></div>`;
 
             return `
-                <div class="card" style="animation-delay: ${delay}s">
+                <div class="card" style="animation-delay: ${delay}s" onclick="openModal(${indexInDB})">
                     <div class="card-header">
                         <div class="emoji">${food.emoji}</div>
                         <div class="titles">
@@ -273,6 +198,9 @@
         // Afficher les résultats
         function displayResults(data) {
             resultsGrid.innerHTML = '';
+            
+            // Mise à jour du compteur total
+            resultsCount.innerHTML = `📊 <strong>${data.length}</strong> aliment${data.length > 1 ? 's' : ''} trouvé${data.length > 1 ? 's' : ''}`;
 
             if (data.length === 0) {
                 resultsGrid.innerHTML = `<div class="no-results">🕵️‍♂️ Aucun aliment trouvé pour cette recherche.</div>`;
@@ -280,30 +208,26 @@
             }
 
             let html = '';
-            // On limite à 100 résultats max pour garder les animations fluides
             const limit = Math.min(data.length, 100);
             
             for (let i = 0; i < limit; i++) {
-                // Créer un léger délai en cascade pour l'animation
                 const delay = (i * 0.03).toFixed(2);
-                html += createCardHTML(data[i], delay);
+                // On récupère l'index global de l'aliment dans la base principale pour la modale
+                const globalIndex = foodDatabase.indexOf(data[i]);
+                html += createCardHTML(data[i], globalIndex, delay);
             }
-            
             resultsGrid.innerHTML = html;
         }
 
         // Écouter la barre de recherche
         searchInput.addEventListener('input', (e) => {
             const searchTerm = e.target.value.toLowerCase().trim();
-            
-            // Filtrer la base de données
             const filteredData = foodDatabase.filter(food => {
                 const matchFR = food.name.toLowerCase().includes(searchTerm);
-                const matchEN = food.english_name.toLowerCase().includes(searchTerm);
+                const matchEN = (food.english_name || '').toLowerCase().includes(searchTerm);
                 return matchFR || matchEN;
             });
 
-            // Trier pour mettre les correspondances exactes (qui commencent par) en premier
             filteredData.sort((a, b) => {
                 const aStarts = a.name.toLowerCase().startsWith(searchTerm);
                 const bStarts = b.name.toLowerCase().startsWith(searchTerm);
@@ -314,6 +238,113 @@
 
             displayResults(filteredData);
         });
+
+        // Ouvrir la modale et charger les infos + IA
+        async function openModal(dbIndex) {
+            const food = foodDatabase[dbIndex];
+            if (!food) return;
+
+            // 1. Trouver des suggestions (aliments avec des calories similaires)
+            const suggestions = foodDatabase
+                .filter(f => f.name !== food.name) // Exclure l'aliment actuel
+                .sort((a, b) => Math.abs(a.kcal_per_100g - food.kcal_per_100g) - Math.abs(b.kcal_per_100g - food.kcal_per_100g))
+                .slice(0, 3); // Garder les 3 plus proches
+
+            let suggestionsHTML = '';
+            suggestions.forEach(s => {
+                const sIndex = foodDatabase.indexOf(s);
+                suggestionsHTML += `
+                    <div class="suggestion-card" onclick="openModal(${sIndex})">
+                        <div class="s-emoji">${s.emoji}</div>
+                        <div class="s-name">${s.name}</div>
+                        <div class="s-cal">${s.kcal_per_100g} kcal</div>
+                    </div>
+                `;
+            });
+
+            // 2. Préparer le HTML de la modale
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `
+                <div class="modal-header">
+                    <div class="emoji">${food.emoji}</div>
+                    <div>
+                        <h2>${food.name}</h2>
+                        <p style="color: var(--text-muted)">${food.english_name}</p>
+                    </div>
+                </div>
+
+                <div class="db-stats">
+                    <div class="db-stat-box highlight">
+                        <span>Énergie (100g)</span>
+                        <strong>${food.kcal_per_100g} kcal</strong>
+                    </div>
+                    <div class="db-stat-box">
+                        <span>Catégorie</span>
+                        <strong>${food.type === 'solid' ? 'Solide 🍎' : 'Liquide 💧'}</strong>
+                    </div>
+                    <div class="db-stat-box">
+                        <span>Poids unitaire</span>
+                        <strong>${food.weight_per_unit > 0 ? food.weight_per_unit + 'g' : '-'}</strong>
+                    </div>
+                </div>
+
+                <div class="ai-description">
+                    <div class="ai-badge">✨ Généré par Mistral AI</div>
+                    <div id="mistralText"><em>Génération de l'analyse nutritionnelle en cours... ⏳</em></div>
+                </div>
+
+                <div class="suggestions-section">
+                    <h3>Aliments similaires en calories</h3>
+                    <div class="suggestions-grid">
+                        ${suggestionsHTML}
+                    </div>
+                </div>
+            `;
+
+            // Afficher la modale
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Empêcher le scroll du fond
+
+            // 3. Appeler l'API Mistral
+            fetchMistralDescription(food);
+        }
+
+        // Fermer la modale
+        function closeModal(event) {
+            // Si event est défini et qu'on a cliqué sur le contenu, on ne fait rien (géré par stopPropagation)
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Remettre le scroll
+        }
+
+        // Fonction d'appel à Mistral AI
+        async function fetchMistralDescription(food) {
+            const promptContext = `Agis comme un expert en nutrition. Fais une description intéressante et détaillée (environ 3 paragraphes) sur l'aliment "${food.name}". Parle de ses origines, de ses principaux bienfaits pour la santé, et analyse brièvement son apport calorique qui est de ${food.kcal_per_100g} kcal pour 100g. Le ton doit être informatif et accessible.`;
+
+            try {
+                const response = await fetch('https://api.mistral.ai/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${MISTRAL_API_KEY}`
+                    },
+                    body: JSON.stringify({
+                        model: 'open-mistral-7b', // Modèle très rapide
+                        messages: [{ role: 'user', content: promptContext }],
+                        temperature: 0.7
+                    })
+                });
+
+                if (!response.ok) throw new Error("Erreur lors de l'appel à l'API");
+                
+                const data = await response.json();
+                const text = data.choices[0].message.content;
+                document.getElementById('mistralText').innerHTML = text;
+
+            } catch (error) {
+                console.error(error);
+                document.getElementById('mistralText').innerHTML = `<span style="color: #ef4444;">❌ Impossible de générer la description. Vérifiez la clé API ou votre connexion internet.</span>`;
+            }
+        }
 
         // Lancer l'application
         loadData();

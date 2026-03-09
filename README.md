@@ -5,7 +5,7 @@ Try it on : https://chpalitom09-bot.github.io/Open-food-calories/
 
 Accuracy Rate: 90% (validated via cross-referencing).
 
-Coverage: 2000 + global entries.
+Coverage: 4000 + global entries.
 
 Data Integrity: 100% structured (Bilingual FR/EN).
 

@@ -7025,5 +7025,4005 @@
         "emoji": "🍐",
         "type": "solid",
         "weight_per_unit": 0
-    }
+    },
+  {
+    "name": "Abats de volaille",
+    "english_name": "Poultry giblets",
+    "kcal_per_100g": 119,
+    "emoji": "🍗",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Agneau braisé aux épices",
+    "english_name": "Spiced braised lamb",
+    "kcal_per_100g": 198,
+    "emoji": "🍖",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Aigo boulido (soupe à l'ail provençale)",
+    "english_name": "Aigo boulido (Provençal garlic soup)",
+    "kcal_per_100g": 38,
+    "emoji": "🧄",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Almond croissant (croissant amande)",
+    "english_name": "Almond croissant",
+    "kcal_per_100g": 448,
+    "emoji": "🥐",
+    "type": "unit",
+    "weight_per_unit": 90
+  },
+  {
+    "name": "Alpinia (galanga en poudre)",
+    "english_name": "Galangal powder",
+    "kcal_per_100g": 338,
+    "emoji": "🌿",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Amandes laquées au miel et sel",
+    "english_name": "Honey salt glazed almonds",
+    "kcal_per_100g": 620,
+    "emoji": "🌰",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Ananas confit",
+    "english_name": "Candied pineapple",
+    "kcal_per_100g": 340,
+    "emoji": "🍍",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Anchois en sauce (pissaladière)",
+    "english_name": "Anchovy tart filling (pissaladière)",
+    "kcal_per_100g": 188,
+    "emoji": "🐟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Andouillette 5A grillée",
+    "english_name": "Grilled 5A andouillette",
+    "kcal_per_100g": 295,
+    "emoji": "🌭",
+    "type": "unit",
+    "weight_per_unit": 150
+  },
+  {
+    "name": "Anémone de mer (ortie de mer)",
+    "english_name": "Sea anemone",
+    "kcal_per_100g": 55,
+    "emoji": "🌊",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Angus burger (steak 180g)",
+    "english_name": "Angus beef burger patty",
+    "kcal_per_100g": 305,
+    "emoji": "🍔",
+    "type": "unit",
+    "weight_per_unit": 180
+  },
+  {
+    "name": "Antelope (viande)",
+    "english_name": "Antelope meat",
+    "kcal_per_100g": 114,
+    "emoji": "🦌",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Apfelwein (cidre allemand)",
+    "english_name": "German apple wine (Apfelwein)",
+    "kcal_per_100g": 45,
+    "emoji": "🍺",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Araignée de mer",
+    "english_name": "Spider crab",
+    "kcal_per_100g": 90,
+    "emoji": "🦀",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Arancini au fromage",
+    "english_name": "Cheese arancini",
+    "kcal_per_100g": 228,
+    "emoji": "🧀",
+    "type": "unit",
+    "weight_per_unit": 80
+  },
+  {
+    "name": "Asado de tira (plat argentin)",
+    "english_name": "Argentine short ribs (asado)",
+    "kcal_per_100g": 268,
+    "emoji": "🍖",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Attiéké (semoule de manioc fermentée)",
+    "english_name": "Attiéké (fermented cassava couscous)",
+    "kcal_per_100g": 155,
+    "emoji": "🍲",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Aubergine rôtie",
+    "english_name": "Roasted eggplant",
+    "kcal_per_100g": 40,
+    "emoji": "🍆",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Avocado toast",
+    "english_name": "Avocado toast",
+    "kcal_per_100g": 188,
+    "emoji": "🥑",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Azyme (pain sans levain)",
+    "english_name": "Unleavened azyme bread",
+    "kcal_per_100g": 390,
+    "emoji": "🍞",
+    "type": "unit",
+    "weight_per_unit": 6
+  },
+  {
+    "name": "Baba ganoush fumé (au charbon)",
+    "english_name": "Charcoal smoked baba ganoush",
+    "kcal_per_100g": 95,
+    "emoji": "🍆",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Bamia (gombo en sauce tomate)",
+    "english_name": "Bamia (okra in tomato sauce)",
+    "kcal_per_100g": 75,
+    "emoji": "🫛",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Banoffee pie (part)",
+    "english_name": "Banoffee pie (slice)",
+    "kcal_per_100g": 368,
+    "emoji": "🍰",
+    "type": "unit",
+    "weight_per_unit": 130
+  },
+  {
+    "name": "Batbout (pain marocain)",
+    "english_name": "Batbout (Moroccan semolina bread)",
+    "kcal_per_100g": 265,
+    "emoji": "🫓",
+    "type": "unit",
+    "weight_per_unit": 60
+  },
+  {
+    "name": "Beignet de banane",
+    "english_name": "Banana fritter",
+    "kcal_per_100g": 248,
+    "emoji": "🍌",
+    "type": "unit",
+    "weight_per_unit": 60
+  },
+  {
+    "name": "Beignet de crevettes",
+    "english_name": "Shrimp fritter",
+    "kcal_per_100g": 225,
+    "emoji": "🦐",
+    "type": "unit",
+    "weight_per_unit": 50
+  },
+  {
+    "name": "Beluga (lentilles noires cuites)",
+    "english_name": "Black beluga lentils (cooked)",
+    "kcal_per_100g": 116,
+    "emoji": "🫘",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Benkalage (pain d'épice nordique)",
+    "english_name": "Nordic rye crispbread",
+    "kcal_per_100g": 343,
+    "emoji": "🍞",
+    "type": "unit",
+    "weight_per_unit": 8
+  },
+  {
+    "name": "Beurre de graines de tournesol",
+    "english_name": "Sunflower seed butter",
+    "kcal_per_100g": 562,
+    "emoji": "🌻",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Beurre noisette (cuisiné)",
+    "english_name": "Brown butter (beurre noisette)",
+    "kcal_per_100g": 740,
+    "emoji": "🧈",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Bikkies au gingembre (biscuits australiens)",
+    "english_name": "Australian ginger biscuits",
+    "kcal_per_100g": 425,
+    "emoji": "🍪",
+    "type": "unit",
+    "weight_per_unit": 15
+  },
+  {
+    "name": "Birria (ragoût bœuf mexicain)",
+    "english_name": "Birria (Mexican beef stew)",
+    "kcal_per_100g": 178,
+    "emoji": "🍲",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Biscuit Oreo",
+    "english_name": "Oreo cookie",
+    "kcal_per_100g": 471,
+    "emoji": "🍪",
+    "type": "unit",
+    "weight_per_unit": 11
+  },
+  {
+    "name": "Biscuit Petit Beurre",
+    "english_name": "Petit Beurre cookie",
+    "kcal_per_100g": 430,
+    "emoji": "🍪",
+    "type": "unit",
+    "weight_per_unit": 6
+  },
+  {
+    "name": "Blanc-manger",
+    "english_name": "Blancmange",
+    "kcal_per_100g": 148,
+    "emoji": "🍮",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Blette au gratin",
+    "english_name": "Swiss chard gratin",
+    "kcal_per_100g": 105,
+    "emoji": "🥬",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Bœuf haché 10%",
+    "english_name": "Ground beef 10%",
+    "kcal_per_100g": 176,
+    "emoji": "🥩",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Bœuf haché 15%",
+    "english_name": "Ground beef 15%",
+    "kcal_per_100g": 215,
+    "emoji": "🥩",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Bœuf haché 20%",
+    "english_name": "Ground beef 20%",
+    "kcal_per_100g": 268,
+    "emoji": "🥩",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Borek à la viande",
+    "english_name": "Meat börek",
+    "kcal_per_100g": 285,
+    "emoji": "🥟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Borek au fromage (peynirli börek)",
+    "english_name": "Cheese börek",
+    "kcal_per_100g": 318,
+    "emoji": "🧀",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Borek aux épinards",
+    "english_name": "Spinach börek",
+    "kcal_per_100g": 262,
+    "emoji": "🥬",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Boudin blanc de Rethel",
+    "english_name": "Rethel white pudding",
+    "kcal_per_100g": 272,
+    "emoji": "🌭",
+    "type": "unit",
+    "weight_per_unit": 120
+  },
+  {
+    "name": "Bouillabaise marseillaise",
+    "english_name": "Marseille-style bouillabaisse",
+    "kcal_per_100g": 80,
+    "emoji": "🍲",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Brains (cervelle de bœuf)",
+    "english_name": "Beef brain",
+    "kcal_per_100g": 143,
+    "emoji": "🥩",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Brandade de morue",
+    "english_name": "Brandade de morue (salt cod cream)",
+    "kcal_per_100g": 175,
+    "emoji": "🐟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Brasserie (bière artisanale IPA)",
+    "english_name": "Craft IPA beer",
+    "kcal_per_100g": 58,
+    "emoji": "🍺",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Brick à la harissa",
+    "english_name": "Harissa brick pastry",
+    "kcal_per_100g": 270,
+    "emoji": "🌶️",
+    "type": "unit",
+    "weight_per_unit": 45
+  },
+  {
+    "name": "Brochet (poisson d'eau douce)",
+    "english_name": "Pike (freshwater fish)",
+    "kcal_per_100g": 88,
+    "emoji": "🐟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Brochette de légumes grillés",
+    "english_name": "Grilled vegetable skewer",
+    "kcal_per_100g": 55,
+    "emoji": "🍢",
+    "type": "unit",
+    "weight_per_unit": 120
+  },
+  {
+    "name": "Brochette de poulet yakitori",
+    "english_name": "Yakitori chicken skewer",
+    "kcal_per_100g": 175,
+    "emoji": "🍢",
+    "type": "unit",
+    "weight_per_unit": 50
+  },
+  {
+    "name": "Brocoli gratiné",
+    "english_name": "Broccoli au gratin",
+    "kcal_per_100g": 118,
+    "emoji": "🥦",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Brûlé de chocolat (sauce caramel)",
+    "english_name": "Chocolate brulee sauce",
+    "kcal_per_100g": 405,
+    "emoji": "🍫",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Bun (pain vapeur chinois nature)",
+    "english_name": "Chinese steamed plain bun",
+    "kcal_per_100g": 225,
+    "emoji": "🍞",
+    "type": "unit",
+    "weight_per_unit": 45
+  },
+  {
+    "name": "Burrata au pesto",
+    "english_name": "Burrata with pesto",
+    "kcal_per_100g": 330,
+    "emoji": "🧀",
+    "type": "unit",
+    "weight_per_unit": 125
+  },
+  {
+    "name": "Café dalgona (mousse café)",
+    "english_name": "Dalgona coffee",
+    "kcal_per_100g": 152,
+    "emoji": "☕",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Café frappé",
+    "english_name": "Frappé coffee",
+    "kcal_per_100g": 42,
+    "emoji": "☕",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Cake aux olives (salé)",
+    "english_name": "Savory olive cake",
+    "kcal_per_100g": 310,
+    "emoji": "🫒",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Cake marbré au café",
+    "english_name": "Coffee marble cake",
+    "kcal_per_100g": 375,
+    "emoji": "🍰",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Caponata aux câpres",
+    "english_name": "Caponata with capers",
+    "kcal_per_100g": 112,
+    "emoji": "🍆",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Caprese (salade)",
+    "english_name": "Caprese salad",
+    "kcal_per_100g": 152,
+    "emoji": "🍅",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Caramel beurre salé (sauce)",
+    "english_name": "Salted butter caramel sauce",
+    "kcal_per_100g": 448,
+    "emoji": "🍯",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Caramel mou",
+    "english_name": "Soft caramel",
+    "kcal_per_100g": 382,
+    "emoji": "🍬",
+    "type": "unit",
+    "weight_per_unit": 8
+  },
+  {
+    "name": "Carbonade flamande",
+    "english_name": "Flemish beef and beer stew",
+    "kcal_per_100g": 162,
+    "emoji": "🍺",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Cardamome en gousses",
+    "english_name": "Cardamom pods",
+    "kcal_per_100g": 311,
+    "emoji": "🌿",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Cardamome moulue",
+    "english_name": "Ground cardamom",
+    "kcal_per_100g": 311,
+    "emoji": "🌿",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Carpe en gelée",
+    "english_name": "Carp in aspic",
+    "kcal_per_100g": 98,
+    "emoji": "🐟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Carré frais (fromage frais à tartiner)",
+    "english_name": "Carré Frais fresh cheese spread",
+    "kcal_per_100g": 213,
+    "emoji": "🧀",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Céleri-rave en rémoulade",
+    "english_name": "Celeriac rémoulade",
+    "kcal_per_100g": 148,
+    "emoji": "🥬",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Cervelas (saucisse alsacienne)",
+    "english_name": "Cervelas sausage (Alsatian)",
+    "kcal_per_100g": 285,
+    "emoji": "🌭",
+    "type": "unit",
+    "weight_per_unit": 100
+  },
+  {
+    "name": "Champignons de Paris sautés",
+    "english_name": "Sautéed white mushrooms",
+    "kcal_per_100g": 55,
+    "emoji": "🍄",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Champignons oyster (pleurotes sautés)",
+    "english_name": "Sautéed oyster mushrooms",
+    "kcal_per_100g": 45,
+    "emoji": "🍄",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Chapati (pain indien)",
+    "english_name": "Chapati (Indian flatbread)",
+    "kcal_per_100g": 297,
+    "emoji": "🫓",
+    "type": "unit",
+    "weight_per_unit": 40
+  },
+  {
+    "name": "Charlotte royale",
+    "english_name": "Charlotte royale (rolled sponge cake)",
+    "kcal_per_100g": 258,
+    "emoji": "🍰",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Chèque (kebab maison)",
+    "english_name": "Homemade döner kebab",
+    "kcal_per_100g": 232,
+    "emoji": "🥙",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Chili sin carne (végétarien)",
+    "english_name": "Chili sin carne (vegetarian)",
+    "kcal_per_100g": 118,
+    "emoji": "🫘",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Chips de manioc",
+    "english_name": "Cassava chips",
+    "kcal_per_100g": 493,
+    "emoji": "🍠",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Chocolat chaud (préparé)",
+    "english_name": "Hot chocolate (prepared)",
+    "kcal_per_100g": 77,
+    "emoji": "🍫",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Chorba (soupe nord-africaine)",
+    "english_name": "Chorba soup (North African)",
+    "kcal_per_100g": 68,
+    "emoji": "🍲",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Chorizo doux (cru)",
+    "english_name": "Mild chorizo (raw)",
+    "kcal_per_100g": 350,
+    "emoji": "🌭",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Chorizo ibérique sec",
+    "english_name": "Dried Iberian chorizo",
+    "kcal_per_100g": 466,
+    "emoji": "🥓",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Chou chinois (napa)",
+    "english_name": "Napa cabbage (Chinese)",
+    "kcal_per_100g": 16,
+    "emoji": "🥬",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Chou farci (feuilles de chou)",
+    "english_name": "Stuffed cabbage rolls",
+    "kcal_per_100g": 135,
+    "emoji": "🥬",
+    "type": "unit",
+    "weight_per_unit": 150
+  },
+  {
+    "name": "Choux de Bruxelles rôtis",
+    "english_name": "Roasted Brussels sprouts",
+    "kcal_per_100g": 75,
+    "emoji": "🥬",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Cichis (beignets siciliens)",
+    "english_name": "Sicilian cichis fritters",
+    "kcal_per_100g": 278,
+    "emoji": "🍩",
+    "type": "unit",
+    "weight_per_unit": 40
+  },
+  {
+    "name": "Civet de lièvre",
+    "english_name": "Hare civet stew",
+    "kcal_per_100g": 168,
+    "emoji": "🐰",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Clafoutis aux abricots",
+    "english_name": "Apricot clafoutis",
+    "kcal_per_100g": 175,
+    "emoji": "🍑",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Clam chowder (soupe américaine)",
+    "english_name": "New England clam chowder",
+    "kcal_per_100g": 110,
+    "emoji": "🦪",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Club sandwich",
+    "english_name": "Club sandwich",
+    "kcal_per_100g": 265,
+    "emoji": "🥪",
+    "type": "unit",
+    "weight_per_unit": 250
+  },
+  {
+    "name": "Cobbler aux pêches",
+    "english_name": "Peach cobbler",
+    "kcal_per_100g": 228,
+    "emoji": "🍑",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Cocktail Aperol Spritz",
+    "english_name": "Aperol Spritz cocktail",
+    "kcal_per_100g": 79,
+    "emoji": "🍸",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Cocktail Cosmopolitan",
+    "english_name": "Cosmopolitan cocktail",
+    "kcal_per_100g": 165,
+    "emoji": "🍸",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Cocktail Gin Tonic",
+    "english_name": "Gin and tonic cocktail",
+    "kcal_per_100g": 82,
+    "emoji": "🍸",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Cocktail Negroni",
+    "english_name": "Negroni cocktail",
+    "kcal_per_100g": 196,
+    "emoji": "🍸",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Cocktail Old Fashioned",
+    "english_name": "Old Fashioned cocktail",
+    "kcal_per_100g": 215,
+    "emoji": "🥃",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Cocktail Piña Colada",
+    "english_name": "Piña Colada cocktail",
+    "kcal_per_100g": 236,
+    "emoji": "🍹",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Coeur de palmier en conserve",
+    "english_name": "Canned palm hearts",
+    "kcal_per_100g": 36,
+    "emoji": "🌴",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Colin (lieu noir)",
+    "english_name": "Coley / Saithe",
+    "kcal_per_100g": 82,
+    "emoji": "🐟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Compote de mirabelles",
+    "english_name": "Mirabelle compote",
+    "kcal_per_100g": 68,
+    "emoji": "🍈",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Compote de prunes",
+    "english_name": "Plum compote",
+    "kcal_per_100g": 72,
+    "emoji": "🍇",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Compote de quetsches",
+    "english_name": "Damson plum compote",
+    "kcal_per_100g": 74,
+    "emoji": "🫐",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Comptoir (bière pression)",
+    "english_name": "Draft beer (pub glass)",
+    "kcal_per_100g": 43,
+    "emoji": "🍺",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Concorde (gâteau chocolat meringue)",
+    "english_name": "Concorde cake (chocolate meringue)",
+    "kcal_per_100g": 395,
+    "emoji": "🍫",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Congee (bouillie de riz asiatique)",
+    "english_name": "Congee (Asian rice porridge)",
+    "kcal_per_100g": 47,
+    "emoji": "🍚",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Confit de canard aux cerises",
+    "english_name": "Duck confit with cherries",
+    "kcal_per_100g": 295,
+    "emoji": "🦆",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Coquelet rôti",
+    "english_name": "Roasted poussin (coquelet)",
+    "kcal_per_100g": 195,
+    "emoji": "🍗",
+    "type": "unit",
+    "weight_per_unit": 400
+  },
+  {
+    "name": "Coquille de beurre (beurre moulé)",
+    "english_name": "Butter shell (molded butter)",
+    "kcal_per_100g": 717,
+    "emoji": "🧈",
+    "type": "unit",
+    "weight_per_unit": 10
+  },
+  {
+    "name": "Coquilles farcies à la chair de crabe",
+    "english_name": "Crab-stuffed shells",
+    "kcal_per_100g": 148,
+    "emoji": "🦀",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Cornichon suédois (pressgurka)",
+    "english_name": "Swedish pressed cucumber pickle",
+    "kcal_per_100g": 14,
+    "emoji": "🥒",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Côte à l'os (bœuf, cuite)",
+    "english_name": "Bone-in beef rib steak (cooked)",
+    "kcal_per_100g": 298,
+    "emoji": "🥩",
+    "type": "unit",
+    "weight_per_unit": 500
+  },
+  {
+    "name": "Côte de bœuf grillée",
+    "english_name": "Grilled beef rib chop",
+    "kcal_per_100g": 285,
+    "emoji": "🥩",
+    "type": "unit",
+    "weight_per_unit": 350
+  },
+  {
+    "name": "Côte de veau grillée",
+    "english_name": "Grilled veal chop",
+    "kcal_per_100g": 130,
+    "emoji": "🥩",
+    "type": "unit",
+    "weight_per_unit": 180
+  },
+  {
+    "name": "Crabe farci antillais",
+    "english_name": "Caribbean stuffed crab",
+    "kcal_per_100g": 165,
+    "emoji": "🦀",
+    "type": "unit",
+    "weight_per_unit": 150
+  },
+  {
+    "name": "Crème de coco légère",
+    "english_name": "Light coconut cream",
+    "kcal_per_100g": 138,
+    "emoji": "🥥",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Crème dessert chocolat",
+    "english_name": "Chocolate dessert cream",
+    "kcal_per_100g": 128,
+    "emoji": "🍫",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Crème dessert vanille",
+    "english_name": "Vanilla dessert cream",
+    "kcal_per_100g": 118,
+    "emoji": "🍮",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Crème fraîche allégée 15%",
+    "english_name": "Light crème fraîche 15%",
+    "kcal_per_100g": 168,
+    "emoji": "🥄",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Crème glacée au miel lavande",
+    "english_name": "Lavender honey ice cream",
+    "kcal_per_100g": 218,
+    "emoji": "🍨",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Crêpe dentelle (feuilletine)",
+    "english_name": "Crêpe dentelle (feuilletine)",
+    "kcal_per_100g": 510,
+    "emoji": "🥞",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Croquettes de fromage",
+    "english_name": "Cheese croquettes",
+    "kcal_per_100g": 295,
+    "emoji": "🧀",
+    "type": "unit",
+    "weight_per_unit": 40
+  },
+  {
+    "name": "Croquettes de poulet",
+    "english_name": "Chicken croquettes",
+    "kcal_per_100g": 242,
+    "emoji": "🍗",
+    "type": "unit",
+    "weight_per_unit": 50
+  },
+  {
+    "name": "Cumin en graines",
+    "english_name": "Cumin seeds",
+    "kcal_per_100g": 375,
+    "emoji": "🌿",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Cumin moulu",
+    "english_name": "Ground cumin",
+    "kcal_per_100g": 375,
+    "emoji": "🌿",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Curry de patate douce",
+    "english_name": "Sweet potato curry",
+    "kcal_per_100g": 120,
+    "emoji": "🍠",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Curry de pois chiches (chana masala)",
+    "english_name": "Chickpea curry (chana masala)",
+    "kcal_per_100g": 148,
+    "emoji": "🧆",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Daifuku (mochi fourré)",
+    "english_name": "Daifuku (filled mochi)",
+    "kcal_per_100g": 242,
+    "emoji": "🍡",
+    "type": "unit",
+    "weight_per_unit": 45
+  },
+  {
+    "name": "Daube de bœuf provençale",
+    "english_name": "Provençal beef daube",
+    "kcal_per_100g": 170,
+    "emoji": "🍲",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Dauphine (pommes dauphine)",
+    "english_name": "Dauphine potatoes",
+    "kcal_per_100g": 205,
+    "emoji": "🥔",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Dim sum (assortiment vapeur)",
+    "english_name": "Dim sum assortment (steamed)",
+    "kcal_per_100g": 165,
+    "emoji": "🥟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Dîner de Noël (plat complet)",
+    "english_name": "Christmas dinner plate",
+    "kcal_per_100g": 235,
+    "emoji": "🎄",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Dobos torte (gâteau hongrois)",
+    "english_name": "Dobos torte (Hungarian layered cake)",
+    "kcal_per_100g": 365,
+    "emoji": "🍰",
+    "type": "unit",
+    "weight_per_unit": 90
+  },
+  {
+    "name": "Dragon roll (sushi)",
+    "english_name": "Dragon roll sushi",
+    "kcal_per_100g": 175,
+    "emoji": "🍣",
+    "type": "unit",
+    "weight_per_unit": 40
+  },
+  {
+    "name": "Dressing Caesar",
+    "english_name": "Caesar dressing",
+    "kcal_per_100g": 388,
+    "emoji": "🥗",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Dressing Ranch",
+    "english_name": "Ranch dressing",
+    "kcal_per_100g": 318,
+    "emoji": "🥗",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Dried mango (mangue séchée)",
+    "english_name": "Dried mango",
+    "kcal_per_100g": 319,
+    "emoji": "🥭",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Dumplings porc chou (jiaozi)",
+    "english_name": "Pork and cabbage jiaozi dumplings",
+    "kcal_per_100g": 185,
+    "emoji": "🥟",
+    "type": "unit",
+    "weight_per_unit": 20
+  },
+  {
+    "name": "Dürüm kebab",
+    "english_name": "Dürüm wrap kebab",
+    "kcal_per_100g": 228,
+    "emoji": "🌯",
+    "type": "unit",
+    "weight_per_unit": 280
+  },
+  {
+    "name": "Eau florale de rose",
+    "english_name": "Rose floral water",
+    "kcal_per_100g": 0,
+    "emoji": "🌹",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Ebi furai (crevette frite japonaise)",
+    "english_name": "Ebi furai (Japanese fried shrimp)",
+    "kcal_per_100g": 215,
+    "emoji": "🦐",
+    "type": "unit",
+    "weight_per_unit": 30
+  },
+  {
+    "name": "Empanadilla thon (petit chausson espagnol)",
+    "english_name": "Tuna empanadilla (small Spanish pasty)",
+    "kcal_per_100g": 265,
+    "emoji": "🥟",
+    "type": "unit",
+    "weight_per_unit": 60
+  },
+  {
+    "name": "Empanada bœuf",
+    "english_name": "Beef empanada",
+    "kcal_per_100g": 285,
+    "emoji": "🥟",
+    "type": "unit",
+    "weight_per_unit": 90
+  },
+  {
+    "name": "Encornet à l'armoricaine",
+    "english_name": "Squid in Armoricaine sauce",
+    "kcal_per_100g": 145,
+    "emoji": "🦑",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Escalope viennoise (Wiener Schnitzel)",
+    "english_name": "Wiener Schnitzel",
+    "kcal_per_100g": 252,
+    "emoji": "🥩",
+    "type": "unit",
+    "weight_per_unit": 150
+  },
+  {
+    "name": "Espresso (café)",
+    "english_name": "Espresso coffee",
+    "kcal_per_100g": 8,
+    "emoji": "☕",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Faisan rôti",
+    "english_name": "Roasted pheasant",
+    "kcal_per_100g": 133,
+    "emoji": "🦜",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Farfalles (papillons, crues)",
+    "english_name": "Farfalle pasta (raw)",
+    "kcal_per_100g": 357,
+    "emoji": "🍝",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Fécule de maïs (Maïzena)",
+    "english_name": "Cornstarch (Maïzena)",
+    "kcal_per_100g": 381,
+    "emoji": "🌽",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Fécule de pomme de terre",
+    "english_name": "Potato starch",
+    "kcal_per_100g": 357,
+    "emoji": "🥔",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Filet de bar grillé",
+    "english_name": "Grilled sea bass fillet",
+    "kcal_per_100g": 100,
+    "emoji": "🐟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Filet de bœuf Wellington",
+    "english_name": "Beef Wellington",
+    "kcal_per_100g": 325,
+    "emoji": "🥩",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Filet de maquereau au naturel",
+    "english_name": "Mackerel fillet in brine",
+    "kcal_per_100g": 198,
+    "emoji": "🐟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Fish and chips (portion)",
+    "english_name": "Fish and chips (portion)",
+    "kcal_per_100g": 235,
+    "emoji": "🐟",
+    "type": "unit",
+    "weight_per_unit": 350
+  },
+  {
+    "name": "Flan de courgette",
+    "english_name": "Zucchini flan",
+    "kcal_per_100g": 92,
+    "emoji": "🥒",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Flan de poivron rouge",
+    "english_name": "Red pepper flan",
+    "kcal_per_100g": 88,
+    "emoji": "🫑",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Fleur de courgette beignet",
+    "english_name": "Fried zucchini blossom",
+    "kcal_per_100g": 165,
+    "emoji": "🌸",
+    "type": "unit",
+    "weight_per_unit": 25
+  },
+  {
+    "name": "Florentins (biscuit fruits secs chocolat)",
+    "english_name": "Florentine biscuits (nuts & chocolate)",
+    "kcal_per_100g": 510,
+    "emoji": "🍪",
+    "type": "unit",
+    "weight_per_unit": 12
+  },
+  {
+    "name": "Focaccia aux tomates cerises",
+    "english_name": "Cherry tomato focaccia",
+    "kcal_per_100g": 278,
+    "emoji": "🍞",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Focaccia au romarin",
+    "english_name": "Rosemary focaccia",
+    "kcal_per_100g": 272,
+    "emoji": "🍞",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Fondue bourguignonne",
+    "english_name": "Beef oil fondue (bourguignonne)",
+    "kcal_per_100g": 320,
+    "emoji": "🥩",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Fontina (fromage valdôtain)",
+    "english_name": "Fontina cheese (Valle d'Aosta)",
+    "kcal_per_100g": 343,
+    "emoji": "🧀",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Fricassée de poulet",
+    "english_name": "Chicken fricassee",
+    "kcal_per_100g": 158,
+    "emoji": "🍗",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Fromage blanc en faisselle",
+    "english_name": "Faisselle fresh cheese",
+    "kcal_per_100g": 55,
+    "emoji": "🧀",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Fromage fondu (type La Vache qui rit)",
+    "english_name": "Processed cheese wedge",
+    "kcal_per_100g": 265,
+    "emoji": "🧀",
+    "type": "unit",
+    "weight_per_unit": 18
+  },
+  {
+    "name": "Fruit de l'arbre à pain (breadfruit cuit)",
+    "english_name": "Cooked breadfruit",
+    "kcal_per_100g": 103,
+    "emoji": "🌴",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Fruits confits (mélange)",
+    "english_name": "Candied mixed fruits",
+    "kcal_per_100g": 315,
+    "emoji": "🍬",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Fudge (confiserie anglaise)",
+    "english_name": "Fudge (British confection)",
+    "kcal_per_100g": 425,
+    "emoji": "🍬",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Funnel cake (beignet américain)",
+    "english_name": "Funnel cake (American fair food)",
+    "kcal_per_100g": 365,
+    "emoji": "🍩",
+    "type": "unit",
+    "weight_per_unit": 100
+  },
+  {
+    "name": "Galette au sarrasin (complète)",
+    "english_name": "Complete buckwheat galette (egg+ham+cheese)",
+    "kcal_per_100g": 198,
+    "emoji": "🥞",
+    "type": "unit",
+    "weight_per_unit": 180
+  },
+  {
+    "name": "Galette de quinoa",
+    "english_name": "Quinoa patty",
+    "kcal_per_100g": 178,
+    "emoji": "🥣",
+    "type": "unit",
+    "weight_per_unit": 80
+  },
+  {
+    "name": "Gambas en sauce américaine",
+    "english_name": "Prawns in American sauce",
+    "kcal_per_100g": 142,
+    "emoji": "🦐",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Gaspacho andalou",
+    "english_name": "Andalusian gazpacho",
+    "kcal_per_100g": 38,
+    "emoji": "🍅",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Gateau des rois (couronne briochée)",
+    "english_name": "King cake (brioche crown)",
+    "kcal_per_100g": 365,
+    "emoji": "👑",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Gâteau au fromage blanc (käsekuchen)",
+    "english_name": "German cheesecake (Käsekuchen)",
+    "kcal_per_100g": 285,
+    "emoji": "🍰",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Gâteau d'anniversaire (part)",
+    "english_name": "Birthday cake (slice)",
+    "kcal_per_100g": 395,
+    "emoji": "🎂",
+    "type": "unit",
+    "weight_per_unit": 100
+  },
+  {
+    "name": "Gâteau millionnaire (caramel chocolat)",
+    "english_name": "Millionaire's shortbread",
+    "kcal_per_100g": 478,
+    "emoji": "🍫",
+    "type": "unit",
+    "weight_per_unit": 50
+  },
+  {
+    "name": "Gâteau pistache framboise",
+    "english_name": "Pistachio and raspberry cake",
+    "kcal_per_100g": 352,
+    "emoji": "🍰",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Gâteau roulé à la confiture",
+    "english_name": "Swiss roll with jam",
+    "kcal_per_100g": 318,
+    "emoji": "🍰",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Gazpacho de pastèque",
+    "english_name": "Watermelon gazpacho",
+    "kcal_per_100g": 32,
+    "emoji": "🍉",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Gianduja (chocolat noisette pâte)",
+    "english_name": "Gianduja (hazelnut chocolate paste)",
+    "kcal_per_100g": 545,
+    "emoji": "🍫",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Gigot d'agneau rôti",
+    "english_name": "Roasted leg of lamb",
+    "kcal_per_100g": 215,
+    "emoji": "🍖",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Gomashio (sel de sésame japonais)",
+    "english_name": "Gomashio (Japanese sesame salt)",
+    "kcal_per_100g": 485,
+    "emoji": "🧂",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Gougère (choux fromage)",
+    "english_name": "Gougère (cheese choux puff)",
+    "kcal_per_100g": 310,
+    "emoji": "🧀",
+    "type": "unit",
+    "weight_per_unit": 20
+  },
+  {
+    "name": "Graines de moutarde",
+    "english_name": "Mustard seeds",
+    "kcal_per_100g": 508,
+    "emoji": "🌿",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Graines de sésame dorées",
+    "english_name": "Golden sesame seeds",
+    "kcal_per_100g": 573,
+    "emoji": "🫙",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Graines de sésame noires",
+    "english_name": "Black sesame seeds",
+    "kcal_per_100g": 562,
+    "emoji": "🫙",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Grains de café (entiers, torréfiés)",
+    "english_name": "Roasted whole coffee beans",
+    "kcal_per_100g": 331,
+    "emoji": "☕",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Grappa",
+    "english_name": "Grappa",
+    "kcal_per_100g": 254,
+    "emoji": "🥃",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Gratinée de poireaux",
+    "english_name": "Leek gratin",
+    "kcal_per_100g": 128,
+    "emoji": "🥬",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Grillades de légumes (mélange)",
+    "english_name": "Grilled vegetables (mixed)",
+    "kcal_per_100g": 58,
+    "emoji": "🥦",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Gulab jamun (dessert indien)",
+    "english_name": "Gulab jamun (Indian dessert)",
+    "kcal_per_100g": 385,
+    "emoji": "🍮",
+    "type": "unit",
+    "weight_per_unit": 30
+  },
+  {
+    "name": "Gulasch (ragoût hongrois)",
+    "english_name": "Hungarian goulash",
+    "kcal_per_100g": 148,
+    "emoji": "🍲",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Halva de sésame",
+    "english_name": "Sesame halva",
+    "kcal_per_100g": 510,
+    "emoji": "🫙",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Halva grec",
+    "english_name": "Greek semolina halva",
+    "kcal_per_100g": 395,
+    "emoji": "🍮",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Haricots borlotti (cuits)",
+    "english_name": "Borlotti beans (cooked)",
+    "kcal_per_100g": 128,
+    "emoji": "🫘",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Haricots edamame séchés salés",
+    "english_name": "Salted dried edamame",
+    "kcal_per_100g": 388,
+    "emoji": "🫛",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Haricots mange-tout (cuits)",
+    "english_name": "Cooked snow peas",
+    "kcal_per_100g": 42,
+    "emoji": "🫛",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Haricots princesse (extra-fins, cuits)",
+    "english_name": "Extra-fine green beans (cooked)",
+    "kcal_per_100g": 30,
+    "emoji": "🫛",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Hashi (baguettes japonaises en bois)",
+    "english_name": "Washoku set (side dishes assortment)",
+    "kcal_per_100g": 130,
+    "emoji": "🥢",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Hawayej (épice yéménite)",
+    "english_name": "Hawayej (Yemeni spice blend)",
+    "kcal_per_100g": 348,
+    "emoji": "🌶️",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Herbes de Provence (mélange)",
+    "english_name": "Herbes de Provence (spice blend)",
+    "kcal_per_100g": 259,
+    "emoji": "🌿",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Hochepot (pot-au-feu flamand)",
+    "english_name": "Hochepot (Flemish pot-au-feu)",
+    "kcal_per_100g": 132,
+    "emoji": "🍲",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Hot dog classique",
+    "english_name": "Classic hot dog",
+    "kcal_per_100g": 285,
+    "emoji": "🌭",
+    "type": "unit",
+    "weight_per_unit": 180
+  },
+  {
+    "name": "Houmous au piment",
+    "english_name": "Spicy hummus",
+    "kcal_per_100g": 172,
+    "emoji": "🧆",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Huile d'argan",
+    "english_name": "Argan oil",
+    "kcal_per_100g": 884,
+    "emoji": "🫙",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Huile de colza vierge",
+    "english_name": "Virgin rapeseed oil",
+    "kcal_per_100g": 900,
+    "emoji": "🌿",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Huile de macadamia",
+    "english_name": "Macadamia oil",
+    "kcal_per_100g": 884,
+    "emoji": "🌰",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Huile de moutarde",
+    "english_name": "Mustard oil",
+    "kcal_per_100g": 884,
+    "emoji": "🌿",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Huile de riz (son de riz)",
+    "english_name": "Rice bran oil",
+    "kcal_per_100g": 884,
+    "emoji": "🍚",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Icebox cake (gâteau frigo sans cuisson)",
+    "english_name": "No-bake icebox cake",
+    "kcal_per_100g": 328,
+    "emoji": "🍰",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Injera (pain éthiopien au teff)",
+    "english_name": "Injera (Ethiopian teff flatbread)",
+    "kcal_per_100g": 189,
+    "emoji": "🫓",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Jaggery (sucre de canne brut indien)",
+    "english_name": "Jaggery (raw cane sugar)",
+    "kcal_per_100g": 383,
+    "emoji": "🍯",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Jalapeño frais",
+    "english_name": "Fresh jalapeño pepper",
+    "kcal_per_100g": 29,
+    "emoji": "🌶️",
+    "type": "unit",
+    "weight_per_unit": 15
+  },
+  {
+    "name": "Jambalaya aux crevettes",
+    "english_name": "Shrimp jambalaya",
+    "kcal_per_100g": 168,
+    "emoji": "🦐",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Jardinière de légumes (conserve)",
+    "english_name": "Canned mixed vegetables (jardinière)",
+    "kcal_per_100g": 45,
+    "emoji": "🥕",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Jiaozi (raviolis chinois cuits vapeur)",
+    "english_name": "Steamed jiaozi dumplings",
+    "kcal_per_100g": 155,
+    "emoji": "🥟",
+    "type": "unit",
+    "weight_per_unit": 20
+  },
+  {
+    "name": "Joue de bœuf braisée",
+    "english_name": "Braised beef cheek",
+    "kcal_per_100g": 208,
+    "emoji": "🥩",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Joue de porc confite",
+    "english_name": "Pork cheek confit",
+    "kcal_per_100g": 295,
+    "emoji": "🐷",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Kabocha (courge japonaise)",
+    "english_name": "Kabocha squash (Japanese pumpkin)",
+    "kcal_per_100g": 49,
+    "emoji": "🎃",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Kafta (brochette moyen-orientale)",
+    "english_name": "Kofta skewer (Middle Eastern)",
+    "kcal_per_100g": 248,
+    "emoji": "🍢",
+    "type": "unit",
+    "weight_per_unit": 80
+  },
+  {
+    "name": "Kakiage (tempura légumes mélangés)",
+    "english_name": "Kakiage (mixed vegetable tempura)",
+    "kcal_per_100g": 210,
+    "emoji": "🍤",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Kalbi (côtelettes bœuf coréennes)",
+    "english_name": "Kalbi (Korean beef short ribs)",
+    "kcal_per_100g": 265,
+    "emoji": "🍖",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Kanelbullar (brioche suédoise cannelle)",
+    "english_name": "Swedish cinnamon roll (Kanelbulle)",
+    "kcal_per_100g": 380,
+    "emoji": "🥐",
+    "type": "unit",
+    "weight_per_unit": 80
+  },
+  {
+    "name": "Karaage (poulet frit japonais au gingembre)",
+    "english_name": "Japanese ginger karaage chicken",
+    "kcal_per_100g": 238,
+    "emoji": "🍗",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Khachapuri (pain géorgien au fromage)",
+    "english_name": "Khachapuri (Georgian cheese bread)",
+    "kcal_per_100g": 298,
+    "emoji": "🧀",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Khoresh (ragoût persan aux herbes)",
+    "english_name": "Ghormeh sabzi (Persian herb stew)",
+    "kcal_per_100g": 145,
+    "emoji": "🌿",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Kimchi fried rice",
+    "english_name": "Kimchi fried rice",
+    "kcal_per_100g": 168,
+    "emoji": "🍚",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Knödel (boulette de pain autrichienne)",
+    "english_name": "Knödel (Austrian bread dumpling)",
+    "kcal_per_100g": 195,
+    "emoji": "🍞",
+    "type": "unit",
+    "weight_per_unit": 100
+  },
+  {
+    "name": "Kofte végétarienne",
+    "english_name": "Vegetarian kofta",
+    "kcal_per_100g": 188,
+    "emoji": "🧆",
+    "type": "unit",
+    "weight_per_unit": 70
+  },
+  {
+    "name": "Koji (riz fermenté japonais)",
+    "english_name": "Koji (Japanese fermented rice)",
+    "kcal_per_100g": 285,
+    "emoji": "🍚",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Kolach (brioche tchèque ronde)",
+    "english_name": "Kolach (Czech sweet bun)",
+    "kcal_per_100g": 368,
+    "emoji": "🥐",
+    "type": "unit",
+    "weight_per_unit": 70
+  },
+  {
+    "name": "Korma d'agneau",
+    "english_name": "Lamb korma",
+    "kcal_per_100g": 175,
+    "emoji": "🍛",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Kulfi (glace indienne)",
+    "english_name": "Kulfi (Indian frozen dessert)",
+    "kcal_per_100g": 218,
+    "emoji": "🍦",
+    "type": "unit",
+    "weight_per_unit": 60
+  },
+  {
+    "name": "Kupus (chou mariné balkanique)",
+    "english_name": "Kupus (Balkan marinated cabbage)",
+    "kcal_per_100g": 18,
+    "emoji": "🥬",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Laban (yogourt liquide libanais)",
+    "english_name": "Laban (Lebanese liquid yogurt)",
+    "kcal_per_100g": 55,
+    "emoji": "🥛",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Lait d'orge",
+    "english_name": "Barley milk",
+    "kcal_per_100g": 38,
+    "emoji": "🥛",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Lait de vache cru (non pasteurisé)",
+    "english_name": "Raw (unpasteurized) cow's milk",
+    "kcal_per_100g": 62,
+    "emoji": "🐄",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Lait fermenté (Viili finlandais)",
+    "english_name": "Viili (Finnish fermented milk)",
+    "kcal_per_100g": 60,
+    "emoji": "🥛",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Lait glacé au chocolat",
+    "english_name": "Chocolate milk (cold)",
+    "kcal_per_100g": 72,
+    "emoji": "🥛",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Lait glacé à la fraise",
+    "english_name": "Strawberry milk (cold)",
+    "kcal_per_100g": 65,
+    "emoji": "🍓",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Lamelle de poulet sauté au gingembre",
+    "english_name": "Stir-fried chicken with ginger",
+    "kcal_per_100g": 158,
+    "emoji": "🍗",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Langoustines grillées",
+    "english_name": "Grilled langoustines",
+    "kcal_per_100g": 92,
+    "emoji": "🦞",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Lapin chasseur",
+    "english_name": "Hunter-style rabbit (lapin chasseur)",
+    "kcal_per_100g": 148,
+    "emoji": "🐰",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Lapin à la moutarde",
+    "english_name": "Rabbit in mustard sauce",
+    "kcal_per_100g": 162,
+    "emoji": "🐰",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Lasagnes aux légumes",
+    "english_name": "Vegetable lasagna",
+    "kcal_per_100g": 148,
+    "emoji": "🍝",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Lattes glacés (café froid)",
+    "english_name": "Iced latte coffee",
+    "kcal_per_100g": 52,
+    "emoji": "☕",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Laugen (pain bretzel)",
+    "english_name": "Laugen pretzel bread roll",
+    "kcal_per_100g": 298,
+    "emoji": "🥨",
+    "type": "unit",
+    "weight_per_unit": 80
+  },
+  {
+    "name": "Lemon pie (tarte meringuée)",
+    "english_name": "Lemon meringue pie",
+    "kcal_per_100g": 308,
+    "emoji": "🍋",
+    "type": "unit",
+    "weight_per_unit": 120
+  },
+  {
+    "name": "Lentilles puy (vertes du Puy, crues)",
+    "english_name": "Puy lentils (raw)",
+    "kcal_per_100g": 325,
+    "emoji": "🫘",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Lentilles puy (vertes du Puy, cuites)",
+    "english_name": "Puy lentils (cooked)",
+    "kcal_per_100g": 116,
+    "emoji": "🫘",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Liégeois au chocolat",
+    "english_name": "Chocolate liégeois (coffee dessert)",
+    "kcal_per_100g": 152,
+    "emoji": "☕",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Limonata (limonade italienne)",
+    "english_name": "Italian limonata",
+    "kcal_per_100g": 38,
+    "emoji": "🍋",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Lotte à l'armoricaine",
+    "english_name": "Monkfish Armoricaine",
+    "kcal_per_100g": 118,
+    "emoji": "🐟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Loubia (haricots blancs sauce tomate)",
+    "english_name": "Loubia (white beans in tomato sauce)",
+    "kcal_per_100g": 105,
+    "emoji": "🫘",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Luténica (condiment bulgare poivron)",
+    "english_name": "Lyutenitsa (Bulgarian pepper condiment)",
+    "kcal_per_100g": 72,
+    "emoji": "🫑",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Macaron glacé (glace entre macarons)",
+    "english_name": "Macaron ice cream sandwich",
+    "kcal_per_100g": 348,
+    "emoji": "🍨",
+    "type": "unit",
+    "weight_per_unit": 50
+  },
+  {
+    "name": "Madeleine de Commercy",
+    "english_name": "Commercy madeleine",
+    "kcal_per_100g": 415,
+    "emoji": "🍪",
+    "type": "unit",
+    "weight_per_unit": 20
+  },
+  {
+    "name": "Makloubeh (plat palestinien)",
+    "english_name": "Makloubeh (Palestinian upside-down rice dish)",
+    "kcal_per_100g": 188,
+    "emoji": "🍚",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Malfatti (gnocchis épinard ricotta)",
+    "english_name": "Malfatti (spinach ricotta dumplings)",
+    "kcal_per_100g": 145,
+    "emoji": "🍝",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Malt d'orge (extract)",
+    "english_name": "Barley malt extract",
+    "kcal_per_100g": 318,
+    "emoji": "🌾",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Mango lassi",
+    "english_name": "Mango lassi (Indian yogurt drink)",
+    "kcal_per_100g": 75,
+    "emoji": "🥭",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Mantu (raviolis afghans)",
+    "english_name": "Mantu (Afghan dumplings)",
+    "kcal_per_100g": 178,
+    "emoji": "🥟",
+    "type": "unit",
+    "weight_per_unit": 30
+  },
+  {
+    "name": "Mapo tofu (plat sichuan)",
+    "english_name": "Mapo tofu (Sichuan dish)",
+    "kcal_per_100g": 115,
+    "emoji": "🌶️",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Margarita cocktail",
+    "english_name": "Margarita cocktail",
+    "kcal_per_100g": 198,
+    "emoji": "🍸",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Marmelade de citron",
+    "english_name": "Lemon marmalade",
+    "kcal_per_100g": 255,
+    "emoji": "🍋",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Masgouf (poisson irakien grillé)",
+    "english_name": "Masgouf (Iraqi grilled fish)",
+    "kcal_per_100g": 162,
+    "emoji": "🐟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Mastic (résine gomme)",
+    "english_name": "Mastic gum resin",
+    "kcal_per_100g": 362,
+    "emoji": "🌿",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Matlouh (pain de semoule algérien)",
+    "english_name": "Matlouh (Algerian semolina bread)",
+    "kcal_per_100g": 272,
+    "emoji": "🫓",
+    "type": "unit",
+    "weight_per_unit": 70
+  },
+  {
+    "name": "Meringue française",
+    "english_name": "French meringue",
+    "kcal_per_100g": 392,
+    "emoji": "🍬",
+    "type": "unit",
+    "weight_per_unit": 15
+  },
+  {
+    "name": "Meringue suisse",
+    "english_name": "Swiss meringue",
+    "kcal_per_100g": 340,
+    "emoji": "🍬",
+    "type": "unit",
+    "weight_per_unit": 20
+  },
+  {
+    "name": "Merlu pané",
+    "english_name": "Breaded hake",
+    "kcal_per_100g": 215,
+    "emoji": "🐟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Mesfouf (couscous sucré aux raisins)",
+    "english_name": "Mesfouf (sweet couscous with raisins)",
+    "kcal_per_100g": 218,
+    "emoji": "🍲",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Mesost (fromage petit-lait norvégien)",
+    "english_name": "Mesost / brunost (Norwegian whey cheese)",
+    "kcal_per_100g": 468,
+    "emoji": "🧀",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Methi (fenugrec feuilles fraîches)",
+    "english_name": "Fresh fenugreek leaves (methi)",
+    "kcal_per_100g": 49,
+    "emoji": "🌿",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Mets de Noël (bûche glacée)",
+    "english_name": "Christmas ice cream log",
+    "kcal_per_100g": 235,
+    "emoji": "🎄",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Milanaise (escalope milanaise)",
+    "english_name": "Milanese breaded escalope",
+    "kcal_per_100g": 238,
+    "emoji": "🥩",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Mimolette (jeune)",
+    "english_name": "Mimolette (young)",
+    "kcal_per_100g": 372,
+    "emoji": "🧀",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Miso dengaku (tofu glacé miso)",
+    "english_name": "Miso dengaku (tofu grilled with miso)",
+    "kcal_per_100g": 148,
+    "emoji": "🍡",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Moghrabieh (gros couscous libanais)",
+    "english_name": "Moghrabieh (large Lebanese couscous)",
+    "kcal_per_100g": 368,
+    "emoji": "🍲",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Mollet (œuf mollet)",
+    "english_name": "Soft-cooked egg (œuf mollet)",
+    "kcal_per_100g": 143,
+    "emoji": "🥚",
+    "type": "unit",
+    "weight_per_unit": 50
+  },
+  {
+    "name": "Morceau de roi (pâtisserie Réunion)",
+    "english_name": "Morceau de roi (Réunion pastry)",
+    "kcal_per_100g": 385,
+    "emoji": "🍰",
+    "type": "unit",
+    "weight_per_unit": 80
+  },
+  {
+    "name": "Moretum (condiment romain aux herbes)",
+    "english_name": "Moretum (Roman herb cheese spread)",
+    "kcal_per_100g": 285,
+    "emoji": "🌿",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Mortadelle de Bologne truffée",
+    "english_name": "Truffle mortadella from Bologna",
+    "kcal_per_100g": 345,
+    "emoji": "🥓",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Moules à la marinière",
+    "english_name": "Moules marinières",
+    "kcal_per_100g": 115,
+    "emoji": "🦪",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Moutarde de Dijon",
+    "english_name": "Dijon mustard",
+    "kcal_per_100g": 68,
+    "emoji": "🌭",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Moutarde forte (anglaise)",
+    "english_name": "English hot mustard",
+    "kcal_per_100g": 185,
+    "emoji": "🌭",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Murgh makhani (butter chicken)",
+    "english_name": "Murgh makhani (butter chicken)",
+    "kcal_per_100g": 155,
+    "emoji": "🍛",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Mäso (agneau rôti slovaque)",
+    "english_name": "Slovak roasted lamb (mäso)",
+    "kcal_per_100g": 225,
+    "emoji": "🍖",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Naengmyeon (nouilles froides coréennes)",
+    "english_name": "Naengmyeon (Korean cold noodles)",
+    "kcal_per_100g": 95,
+    "emoji": "🍜",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Navet glacé au beurre",
+    "english_name": "Butter-glazed turnip",
+    "kcal_per_100g": 58,
+    "emoji": "🧅",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Nems cuits au four",
+    "english_name": "Oven-baked spring rolls",
+    "kcal_per_100g": 178,
+    "emoji": "🥟",
+    "type": "unit",
+    "weight_per_unit": 40
+  },
+  {
+    "name": "Nettoyer (bouillon os bœuf)",
+    "english_name": "Beef bone broth",
+    "kcal_per_100g": 10,
+    "emoji": "🍖",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Nigella (graines de cumin noir)",
+    "english_name": "Nigella seeds (black cumin)",
+    "kcal_per_100g": 345,
+    "emoji": "🌿",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Noodle bowl thaï au lait de coco",
+    "english_name": "Thai coconut noodle bowl",
+    "kcal_per_100g": 148,
+    "emoji": "🍜",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Nori maki aux légumes",
+    "english_name": "Vegetable nori maki roll",
+    "kcal_per_100g": 135,
+    "emoji": "🍣",
+    "type": "unit",
+    "weight_per_unit": 25
+  },
+  {
+    "name": "Octopus balls (takoyaki)",
+    "english_name": "Takoyaki (octopus balls)",
+    "kcal_per_100g": 188,
+    "emoji": "🐙",
+    "type": "unit",
+    "weight_per_unit": 20
+  },
+  {
+    "name": "Oie rôtie (farcie pommes)",
+    "english_name": "Roasted goose stuffed with apples",
+    "kcal_per_100g": 320,
+    "emoji": "🦢",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Oignons confits au vinaigre balsamique",
+    "english_name": "Onions confit in balsamic vinegar",
+    "kcal_per_100g": 122,
+    "emoji": "🧅",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Okara (pulpe de soja)",
+    "english_name": "Okara (soy pulp)",
+    "kcal_per_100g": 76,
+    "emoji": "🫘",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Okoho (soupe aux herbes africaine)",
+    "english_name": "African herb soup",
+    "kcal_per_100g": 38,
+    "emoji": "🌿",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Olive taggiasche à l'huile",
+    "english_name": "Taggiasca olives in oil",
+    "kcal_per_100g": 185,
+    "emoji": "🫒",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Omelette aux truffes",
+    "english_name": "Truffle omelette",
+    "kcal_per_100g": 188,
+    "emoji": "🍳",
+    "type": "unit",
+    "weight_per_unit": 150
+  },
+  {
+    "name": "Omelette fromagère",
+    "english_name": "Cheese omelette",
+    "kcal_per_100g": 195,
+    "emoji": "🍳",
+    "type": "unit",
+    "weight_per_unit": 150
+  },
+  {
+    "name": "Onglet de bœuf au beurre d'escargot",
+    "english_name": "Beef onglet with snail butter",
+    "kcal_per_100g": 265,
+    "emoji": "🥩",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Orangeade maison",
+    "english_name": "Homemade orangeade",
+    "kcal_per_100g": 35,
+    "emoji": "🍊",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Orzo (petites pâtes ovales)",
+    "english_name": "Orzo pasta (raw)",
+    "kcal_per_100g": 357,
+    "emoji": "🍝",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Ossobuco alla milanese",
+    "english_name": "Ossobuco alla milanese",
+    "kcal_per_100g": 172,
+    "emoji": "🍖",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Palourde (crue)",
+    "english_name": "Fresh clam",
+    "kcal_per_100g": 65,
+    "emoji": "🦪",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Pambazos (pain mexicain trempé sauce)",
+    "english_name": "Pambazo (Mexican dipped bread roll)",
+    "kcal_per_100g": 248,
+    "emoji": "🫓",
+    "type": "unit",
+    "weight_per_unit": 200
+  },
+  {
+    "name": "Panna cotta au caramel",
+    "english_name": "Caramel panna cotta",
+    "kcal_per_100g": 225,
+    "emoji": "🍮",
+    "type": "unit",
+    "weight_per_unit": 100
+  },
+  {
+    "name": "Panna cotta aux fruits rouges",
+    "english_name": "Red berry panna cotta",
+    "kcal_per_100g": 215,
+    "emoji": "🍮",
+    "type": "unit",
+    "weight_per_unit": 100
+  },
+  {
+    "name": "Paris-Brest (pâtisserie)",
+    "english_name": "Paris-Brest pastry",
+    "kcal_per_100g": 445,
+    "emoji": "🍩",
+    "type": "unit",
+    "weight_per_unit": 85
+  },
+  {
+    "name": "Parmigiana di melanzane",
+    "english_name": "Eggplant parmesan (parmigiana)",
+    "kcal_per_100g": 148,
+    "emoji": "🍆",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Paté de chevreuil",
+    "english_name": "Venison pâté",
+    "kcal_per_100g": 295,
+    "emoji": "🦌",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Pavlova (dessert meringue fruits)",
+    "english_name": "Pavlova (meringue fruit dessert)",
+    "kcal_per_100g": 275,
+    "emoji": "🍓",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Pâte sucrée (fond de tarte)",
+    "english_name": "Sweet shortcrust pastry (tart base)",
+    "kcal_per_100g": 455,
+    "emoji": "🥧",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Pâtes complètes (crues)",
+    "english_name": "Wholemeal pasta (raw)",
+    "kcal_per_100g": 348,
+    "emoji": "🍝",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Pâtes complètes (cuites)",
+    "english_name": "Wholemeal pasta (cooked)",
+    "kcal_per_100g": 132,
+    "emoji": "🍝",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Pâtes de riz (sen lek thaï, cuites)",
+    "english_name": "Thai rice noodles sen lek (cooked)",
+    "kcal_per_100g": 109,
+    "emoji": "🍜",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Pelmeni (raviolis russes)",
+    "english_name": "Pelmeni (Russian dumplings)",
+    "kcal_per_100g": 215,
+    "emoji": "🥟",
+    "type": "unit",
+    "weight_per_unit": 15
+  },
+  {
+    "name": "Pepino (melon doux péruvien)",
+    "english_name": "Pepino melon (Peruvian)",
+    "kcal_per_100g": 28,
+    "emoji": "🍈",
+    "type": "unit",
+    "weight_per_unit": 200
+  },
+  {
+    "name": "Perchette frite (poisson lac)",
+    "english_name": "Fried lake perch fillet",
+    "kcal_per_100g": 185,
+    "emoji": "🐟",
+    "type": "unit",
+    "weight_per_unit": 60
+  },
+  {
+    "name": "Petit salé aux lentilles",
+    "english_name": "Salt pork with lentils",
+    "kcal_per_100g": 172,
+    "emoji": "🥩",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Picada catalana (sauce aux amandes)",
+    "english_name": "Catalan picada sauce (almonds)",
+    "kcal_per_100g": 485,
+    "emoji": "🌰",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Picaña (faux-filet brésilien)",
+    "english_name": "Picanha (Brazilian rump cap)",
+    "kcal_per_100g": 255,
+    "emoji": "🥩",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Piccalilli (condiment britannique)",
+    "english_name": "Piccalilli (British pickled relish)",
+    "kcal_per_100g": 58,
+    "emoji": "🌿",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Piment de Cayenne moulu",
+    "english_name": "Ground cayenne pepper",
+    "kcal_per_100g": 318,
+    "emoji": "🌶️",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Piment de la Jamaïque (allspice)",
+    "english_name": "Allspice (Jamaican pepper)",
+    "kcal_per_100g": 263,
+    "emoji": "🌶️",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Piment habanero frais",
+    "english_name": "Fresh habanero pepper",
+    "kcal_per_100g": 40,
+    "emoji": "🌶️",
+    "type": "unit",
+    "weight_per_unit": 8
+  },
+  {
+    "name": "Piment rocoto (piment péruvien)",
+    "english_name": "Rocoto pepper (Peruvian)",
+    "kcal_per_100g": 43,
+    "emoji": "🌶️",
+    "type": "unit",
+    "weight_per_unit": 80
+  },
+  {
+    "name": "Piononos (biscuit roulé espagnol)",
+    "english_name": "Piononos (Spanish rolled sponge)",
+    "kcal_per_100g": 358,
+    "emoji": "🍰",
+    "type": "unit",
+    "weight_per_unit": 30
+  },
+  {
+    "name": "Piperade basquaise",
+    "english_name": "Basque piperade (pepper-tomato-egg)",
+    "kcal_per_100g": 72,
+    "emoji": "🫑",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Pissaladière",
+    "english_name": "Pissaladière (Niçoise onion tart)",
+    "kcal_per_100g": 248,
+    "emoji": "🍕",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Pizza bianca (fromage sans sauce)",
+    "english_name": "White pizza (pizza bianca)",
+    "kcal_per_100g": 265,
+    "emoji": "🍕",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Pizza napolitaine (margherita)",
+    "english_name": "Neapolitan margherita pizza",
+    "kcal_per_100g": 225,
+    "emoji": "🍕",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Plantain au four",
+    "english_name": "Oven-baked plantain",
+    "kcal_per_100g": 108,
+    "emoji": "🍌",
+    "type": "unit",
+    "weight_per_unit": 200
+  },
+  {
+    "name": "Pleurotes à la crème",
+    "english_name": "Oyster mushrooms in cream",
+    "kcal_per_100g": 95,
+    "emoji": "🍄",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Poché entier (saumon poché)",
+    "english_name": "Whole poached salmon",
+    "kcal_per_100g": 172,
+    "emoji": "🐟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Poke bowl thon avocat",
+    "english_name": "Tuna avocado poke bowl",
+    "kcal_per_100g": 168,
+    "emoji": "🍣",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Polpette (boulettes de viande italiennes)",
+    "english_name": "Polpette (Italian meatballs)",
+    "kcal_per_100g": 255,
+    "emoji": "🍝",
+    "type": "unit",
+    "weight_per_unit": 40
+  },
+  {
+    "name": "Porc haché (viande hachée de porc)",
+    "english_name": "Ground pork",
+    "kcal_per_100g": 268,
+    "emoji": "🐷",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Porchetta rôtie (sandwichée)",
+    "english_name": "Porchetta (Italian roast pork roll)",
+    "kcal_per_100g": 340,
+    "emoji": "🥪",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Potage Saint-Germain (pois cassés)",
+    "english_name": "Saint-Germain soup (split pea)",
+    "kcal_per_100g": 78,
+    "emoji": "🫛",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Potée auvergnate",
+    "english_name": "Auvergne-style pork and cabbage pot",
+    "kcal_per_100g": 148,
+    "emoji": "🥬",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Pouding chômeur (sirop d'érable)",
+    "english_name": "Pouding chômeur (maple syrup pudding)",
+    "kcal_per_100g": 335,
+    "emoji": "🍁",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Poulet à la Kiev",
+    "english_name": "Chicken Kiev",
+    "kcal_per_100g": 235,
+    "emoji": "🍗",
+    "type": "unit",
+    "weight_per_unit": 180
+  },
+  {
+    "name": "Poulet chasseur",
+    "english_name": "Chicken chasseur (hunter-style)",
+    "kcal_per_100g": 155,
+    "emoji": "🍗",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Poulet mafé (sauce arachide africaine)",
+    "english_name": "Mafé chicken (West African peanut stew)",
+    "kcal_per_100g": 185,
+    "emoji": "🥜",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Poulet rôti au citron confit",
+    "english_name": "Chicken roasted with preserved lemon",
+    "kcal_per_100g": 198,
+    "emoji": "🍗",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Poulet shawarma",
+    "english_name": "Chicken shawarma",
+    "kcal_per_100g": 198,
+    "emoji": "🥙",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Poulet suprême à la crème",
+    "english_name": "Chicken supreme in cream sauce",
+    "kcal_per_100g": 195,
+    "emoji": "🍗",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Pousses de bambou fraîches",
+    "english_name": "Fresh bamboo shoots",
+    "kcal_per_100g": 27,
+    "emoji": "🌿",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Pralines aux noix de pécan",
+    "english_name": "Pecan pralines (Southern US style)",
+    "kcal_per_100g": 480,
+    "emoji": "🌰",
+    "type": "unit",
+    "weight_per_unit": 25
+  },
+  {
+    "name": "Provolone piccante",
+    "english_name": "Provolone piccante (aged sharp)",
+    "kcal_per_100g": 388,
+    "emoji": "🧀",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Prune mirabelle confite",
+    "english_name": "Candied mirabelle plum",
+    "kcal_per_100g": 285,
+    "emoji": "🍈",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Pruneau farci au foie gras",
+    "english_name": "Foie gras stuffed prune",
+    "kcal_per_100g": 348,
+    "emoji": "🍯",
+    "type": "unit",
+    "weight_per_unit": 15
+  },
+  {
+    "name": "Pulpo a la gallega (poulpe galicien)",
+    "english_name": "Pulpo a la gallega (Galician octopus)",
+    "kcal_per_100g": 112,
+    "emoji": "🐙",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Pupusa (pain farci salvadorien)",
+    "english_name": "Pupusa (Salvadoran stuffed corn cake)",
+    "kcal_per_100g": 215,
+    "emoji": "🫓",
+    "type": "unit",
+    "weight_per_unit": 100
+  },
+  {
+    "name": "Purée de céleri-rave",
+    "english_name": "Celeriac purée",
+    "kcal_per_100g": 78,
+    "emoji": "🥬",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Quatre épices (mélange)",
+    "english_name": "Quatre épices (four spice blend)",
+    "kcal_per_100g": 325,
+    "emoji": "🌿",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Queijo de coalho (fromage brésilien)",
+    "english_name": "Queijo de coalho (Brazilian grilling cheese)",
+    "kcal_per_100g": 335,
+    "emoji": "🧀",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Ragoût de veau printanier",
+    "english_name": "Spring veal ragout",
+    "kcal_per_100g": 145,
+    "emoji": "🥩",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Raita à la menthe",
+    "english_name": "Mint raita",
+    "kcal_per_100g": 58,
+    "emoji": "🌿",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Ramen au miso (soupe)",
+    "english_name": "Miso ramen soup",
+    "kcal_per_100g": 102,
+    "emoji": "🍜",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Ras el hanout à la rose",
+    "english_name": "Rose ras el hanout (rose petal spice blend)",
+    "kcal_per_100g": 338,
+    "emoji": "🌹",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Ratatouille provençale",
+    "english_name": "Provençal ratatouille",
+    "kcal_per_100g": 62,
+    "emoji": "🍅",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Red bean paste (pâte haricots rouges)",
+    "english_name": "Sweet red bean paste (anko)",
+    "kcal_per_100g": 248,
+    "emoji": "🫘",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Reggiano (parmesan reggiano 36 mois)",
+    "english_name": "Parmigiano Reggiano 36 months",
+    "kcal_per_100g": 431,
+    "emoji": "🧀",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Ribs de porc laqués (BBQ)",
+    "english_name": "BBQ glazed pork ribs",
+    "kcal_per_100g": 298,
+    "emoji": "🍖",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Ricotta cuite au four",
+    "english_name": "Baked ricotta",
+    "kcal_per_100g": 198,
+    "emoji": "🧀",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Rillettes de sardines",
+    "english_name": "Sardine rillettes",
+    "kcal_per_100g": 245,
+    "emoji": "🐟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Riz au jasmin (thaïlandais, cru)",
+    "english_name": "Thai jasmine rice (raw)",
+    "kcal_per_100g": 358,
+    "emoji": "🍚",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Riz au jasmin (thaïlandais, cuit)",
+    "english_name": "Thai jasmine rice (cooked)",
+    "kcal_per_100g": 135,
+    "emoji": "🍚",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Riz de Camargue (rouge, cru)",
+    "english_name": "Camargue red rice (raw)",
+    "kcal_per_100g": 355,
+    "emoji": "🍚",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Riz gluant (cru)",
+    "english_name": "Sticky rice (raw)",
+    "kcal_per_100g": 361,
+    "emoji": "🍚",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Riz gluant (cuit)",
+    "english_name": "Sticky rice (cooked)",
+    "kcal_per_100g": 168,
+    "emoji": "🍚",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Riz noir (vénéré, cru)",
+    "english_name": "Black rice (Venere, raw)",
+    "kcal_per_100g": 358,
+    "emoji": "🍚",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Riz noir (vénéré, cuit)",
+    "english_name": "Black rice (Venere, cooked)",
+    "kcal_per_100g": 142,
+    "emoji": "🍚",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Riz sauvage (cru)",
+    "english_name": "Wild rice (raw)",
+    "kcal_per_100g": 357,
+    "emoji": "🌾",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Riz sauvage (cuit)",
+    "english_name": "Wild rice (cooked)",
+    "kcal_per_100g": 101,
+    "emoji": "🌾",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Robiola (fromage piémontais)",
+    "english_name": "Robiola (Piedmontese soft cheese)",
+    "kcal_per_100g": 285,
+    "emoji": "🧀",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Rollmops au cornichon",
+    "english_name": "Rollmop herring with gherkin",
+    "kcal_per_100g": 155,
+    "emoji": "🐟",
+    "type": "unit",
+    "weight_per_unit": 60
+  },
+  {
+    "name": "Romesco de peix (ragoût poisson catalan)",
+    "english_name": "Romesco de peix (Catalan fish stew)",
+    "kcal_per_100g": 128,
+    "emoji": "🐟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Rose hip (cynorrhodon, confiture)",
+    "english_name": "Rose hip jam",
+    "kcal_per_100g": 290,
+    "emoji": "🌹",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Rosette de Lyon (saucisson sec)",
+    "english_name": "Rosette de Lyon (dry sausage)",
+    "kcal_per_100g": 430,
+    "emoji": "🥓",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Rouleau de printemps frais (rice paper)",
+    "english_name": "Fresh rice paper spring roll",
+    "kcal_per_100g": 118,
+    "emoji": "🥟",
+    "type": "unit",
+    "weight_per_unit": 80
+  },
+  {
+    "name": "Roux blanc (beurre farine cuit)",
+    "english_name": "White roux (cooked butter-flour)",
+    "kcal_per_100g": 462,
+    "emoji": "🧈",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Saag (épinards indiens mijotés)",
+    "english_name": "Saag (Indian stewed greens)",
+    "kcal_per_100g": 75,
+    "emoji": "🥬",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Salade de crevettes asiatique",
+    "english_name": "Asian shrimp salad",
+    "kcal_per_100g": 98,
+    "emoji": "🦐",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Salade de farro (blé épeautre)",
+    "english_name": "Farro wheat salad",
+    "kcal_per_100g": 132,
+    "emoji": "🌾",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Salade de haricots blancs",
+    "english_name": "White bean salad",
+    "kcal_per_100g": 148,
+    "emoji": "🫘",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Salade de maïs",
+    "english_name": "Corn salad (dish)",
+    "kcal_per_100g": 108,
+    "emoji": "🌽",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Salade de poulpe",
+    "english_name": "Octopus salad",
+    "kcal_per_100g": 112,
+    "emoji": "🐙",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Salade Waldorf",
+    "english_name": "Waldorf salad",
+    "kcal_per_100g": 152,
+    "emoji": "🥗",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Salade fattoush (libanaise)",
+    "english_name": "Fattoush salad (Lebanese)",
+    "kcal_per_100g": 75,
+    "emoji": "🥗",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Sambuca (liqueur italienne à l'anis)",
+    "english_name": "Sambuca (Italian anise liqueur)",
+    "kcal_per_100g": 310,
+    "emoji": "🍸",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Sauce amatriciana",
+    "english_name": "Amatriciana sauce",
+    "kcal_per_100g": 115,
+    "emoji": "🍅",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Sauce aux câpres et citron",
+    "english_name": "Caper and lemon sauce",
+    "kcal_per_100g": 85,
+    "emoji": "🍋",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Sauce aux noix (toscane)",
+    "english_name": "Tuscan walnut sauce",
+    "kcal_per_100g": 438,
+    "emoji": "🌰",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Sauce bolognaise maison",
+    "english_name": "Homemade bolognese sauce",
+    "kcal_per_100g": 138,
+    "emoji": "🍅",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Sauce chimichurri vert",
+    "english_name": "Green chimichurri sauce",
+    "kcal_per_100g": 365,
+    "emoji": "🌿",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Sauce créole",
+    "english_name": "Creole sauce",
+    "kcal_per_100g": 72,
+    "emoji": "🌶️",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Sauce demi-glace",
+    "english_name": "Demi-glace sauce",
+    "kcal_per_100g": 115,
+    "emoji": "🍖",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Sauce enchilada rouge",
+    "english_name": "Red enchilada sauce",
+    "kcal_per_100g": 52,
+    "emoji": "🌶️",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Sauce gremolata (zeste citron ail persil)",
+    "english_name": "Gremolata sauce (lemon zest garlic parsley)",
+    "kcal_per_100g": 85,
+    "emoji": "🌿",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Sauce mole mexicaine",
+    "english_name": "Mexican mole sauce",
+    "kcal_per_100g": 185,
+    "emoji": "🌶️",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Sauce persillade",
+    "english_name": "Persillade sauce (garlic parsley)",
+    "kcal_per_100g": 165,
+    "emoji": "🌿",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Sauce piri-piri",
+    "english_name": "Piri-piri sauce",
+    "kcal_per_100g": 88,
+    "emoji": "🌶️",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Sauce poivrade",
+    "english_name": "Poivrade sauce (game pepper sauce)",
+    "kcal_per_100g": 78,
+    "emoji": "🌿",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Sauce tahini au citron",
+    "english_name": "Lemon tahini sauce",
+    "kcal_per_100g": 420,
+    "emoji": "🍋",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Saucisse Andouille (cajun)",
+    "english_name": "Andouille sausage (Cajun)",
+    "kcal_per_100g": 315,
+    "emoji": "🌭",
+    "type": "unit",
+    "weight_per_unit": 100
+  },
+  {
+    "name": "Saucisson brioché lyonnais",
+    "english_name": "Lyonnaise saucisson en brioche",
+    "kcal_per_100g": 375,
+    "emoji": "🌭",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Saumon gravlax (gravad lax)",
+    "english_name": "Gravlax cured salmon",
+    "kcal_per_100g": 165,
+    "emoji": "🐟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Seitan poêlé au tamari",
+    "english_name": "Pan-fried seitan with tamari",
+    "kcal_per_100g": 145,
+    "emoji": "🌱",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Shabu-shabu (fondue japonaise)",
+    "english_name": "Shabu-shabu (Japanese hot pot)",
+    "kcal_per_100g": 135,
+    "emoji": "🍲",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Shortbread écossais",
+    "english_name": "Scottish shortbread",
+    "kcal_per_100g": 498,
+    "emoji": "🍪",
+    "type": "unit",
+    "weight_per_unit": 18
+  },
+  {
+    "name": "Sirop de datte",
+    "english_name": "Date syrup",
+    "kcal_per_100g": 295,
+    "emoji": "🌴",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Sirop de framboise (pur)",
+    "english_name": "Pure raspberry syrup",
+    "kcal_per_100g": 285,
+    "emoji": "🫐",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Sirop de gingembre",
+    "english_name": "Ginger syrup",
+    "kcal_per_100g": 280,
+    "emoji": "🌿",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Sirop de hibiscus",
+    "english_name": "Hibiscus syrup",
+    "kcal_per_100g": 265,
+    "emoji": "🌺",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Sirop de lavande",
+    "english_name": "Lavender syrup",
+    "kcal_per_100g": 270,
+    "emoji": "🌿",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Sirop de rose",
+    "english_name": "Rose syrup",
+    "kcal_per_100g": 275,
+    "emoji": "🌹",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Sirop de sureau",
+    "english_name": "Elderflower syrup",
+    "kcal_per_100g": 262,
+    "emoji": "🌸",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Skrei (morue arctique fraîche)",
+    "english_name": "Skrei (Norwegian Arctic cod)",
+    "kcal_per_100g": 85,
+    "emoji": "🐟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Smoothie bowl açaï",
+    "english_name": "Açaí smoothie bowl",
+    "kcal_per_100g": 142,
+    "emoji": "🫐",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Snails en coquille (escargots de Bourgogne)",
+    "english_name": "Burgundy snails (in shell)",
+    "kcal_per_100g": 118,
+    "emoji": "🐌",
+    "type": "unit",
+    "weight_per_unit": 12
+  },
+  {
+    "name": "Soupe Harira (marocaine)",
+    "english_name": "Harira soup (Moroccan)",
+    "kcal_per_100g": 82,
+    "emoji": "🍲",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Soupe Mulligatawny (indienne-britannique)",
+    "english_name": "Mulligatawny soup (Indian-British)",
+    "kcal_per_100g": 88,
+    "emoji": "🍲",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Soupe aux haricots blancs et lard",
+    "english_name": "White bean and bacon soup",
+    "kcal_per_100g": 95,
+    "emoji": "🫘",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Soupe aux orties",
+    "english_name": "Nettle soup",
+    "kcal_per_100g": 42,
+    "emoji": "🌿",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Soupe d'épeautre",
+    "english_name": "Spelt soup",
+    "kcal_per_100g": 65,
+    "emoji": "🌾",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Soupe de farro (orge-épeautre)",
+    "english_name": "Farro barley-spelt soup",
+    "kcal_per_100g": 72,
+    "emoji": "🌾",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Soupe de patate douce au gingembre",
+    "english_name": "Sweet potato ginger soup",
+    "kcal_per_100g": 62,
+    "emoji": "🍠",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Soupe de poulet à la citronnelle",
+    "english_name": "Lemongrass chicken soup",
+    "kcal_per_100g": 55,
+    "emoji": "🍗",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Speculoos (biscuit belge aux épices)",
+    "english_name": "Speculoos (Belgian spice cookie)",
+    "kcal_per_100g": 484,
+    "emoji": "🍪",
+    "type": "unit",
+    "weight_per_unit": 9
+  },
+  {
+    "name": "Spendrups (bière suédoise légère)",
+    "english_name": "Light Swedish lager",
+    "kcal_per_100g": 35,
+    "emoji": "🍺",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Steak de chou-fleur grillé",
+    "english_name": "Grilled cauliflower steak",
+    "kcal_per_100g": 48,
+    "emoji": "🥦",
+    "type": "unit",
+    "weight_per_unit": 200
+  },
+  {
+    "name": "Steak de portobello grillé",
+    "english_name": "Grilled portobello mushroom steak",
+    "kcal_per_100g": 38,
+    "emoji": "🍄",
+    "type": "unit",
+    "weight_per_unit": 150
+  },
+  {
+    "name": "Steak tataki de thon",
+    "english_name": "Tuna tataki steak",
+    "kcal_per_100g": 148,
+    "emoji": "🐟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Sucre d'érable granulé",
+    "english_name": "Granulated maple sugar",
+    "kcal_per_100g": 372,
+    "emoji": "🍁",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Sumomomo (prune japonaise douce)",
+    "english_name": "Sumomomo (Japanese sweet plum)",
+    "kcal_per_100g": 46,
+    "emoji": "🍑",
+    "type": "unit",
+    "weight_per_unit": 40
+  },
+  {
+    "name": "Sunchoke chips (chips topinambour)",
+    "english_name": "Jerusalem artichoke chips",
+    "kcal_per_100g": 425,
+    "emoji": "🥔",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Suprême de pintade",
+    "english_name": "Guinea fowl supreme",
+    "kcal_per_100g": 118,
+    "emoji": "🍗",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Sushis futomaki",
+    "english_name": "Futomaki sushi roll",
+    "kcal_per_100g": 155,
+    "emoji": "🍣",
+    "type": "unit",
+    "weight_per_unit": 50
+  },
+  {
+    "name": "Sushis temaki (cône)",
+    "english_name": "Temaki hand roll sushi",
+    "kcal_per_100g": 162,
+    "emoji": "🍣",
+    "type": "unit",
+    "weight_per_unit": 80
+  },
+  {
+    "name": "Sushis uramaki (california roll)",
+    "english_name": "Uramaki California roll",
+    "kcal_per_100g": 172,
+    "emoji": "🍣",
+    "type": "unit",
+    "weight_per_unit": 35
+  },
+  {
+    "name": "Tajine de merguez aux légumes",
+    "english_name": "Merguez and vegetable tagine",
+    "kcal_per_100g": 155,
+    "emoji": "🌭",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Tapenade aux anchois",
+    "english_name": "Anchovy tapenade",
+    "kcal_per_100g": 328,
+    "emoji": "🐟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Tarte à la praline rose",
+    "english_name": "Pink praline tart",
+    "kcal_per_100g": 375,
+    "emoji": "🍰",
+    "type": "unit",
+    "weight_per_unit": 100
+  },
+  {
+    "name": "Tarte flambée (flammekueche)",
+    "english_name": "Flammekueche (Alsatian tarte flambée)",
+    "kcal_per_100g": 252,
+    "emoji": "🍕",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Tarte meringuée au citron vert",
+    "english_name": "Lime meringue tart",
+    "kcal_per_100g": 295,
+    "emoji": "🍋",
+    "type": "unit",
+    "weight_per_unit": 120
+  },
+  {
+    "name": "Tartare de saumon",
+    "english_name": "Salmon tartare",
+    "kcal_per_100g": 148,
+    "emoji": "🐟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Tartare de thon",
+    "english_name": "Tuna tartare",
+    "kcal_per_100g": 135,
+    "emoji": "🐟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Tartine au fromage de chèvre et miel",
+    "english_name": "Goat cheese and honey toast",
+    "kcal_per_100g": 295,
+    "emoji": "🍯",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Tartine nordique (pain seigle saumon)",
+    "english_name": "Nordic open sandwich (rye bread salmon)",
+    "kcal_per_100g": 195,
+    "emoji": "🐟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Tauge (pousses de haricot mungo)",
+    "english_name": "Mung bean sprouts (taugé)",
+    "kcal_per_100g": 30,
+    "emoji": "🌱",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Teff (cuit)",
+    "english_name": "Teff grain (cooked)",
+    "kcal_per_100g": 101,
+    "emoji": "🌾",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Terrine de poisson",
+    "english_name": "Fish terrine",
+    "kcal_per_100g": 138,
+    "emoji": "🐟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Tibs (bœuf sauté éthiopien)",
+    "english_name": "Tibs (Ethiopian stir-fried beef)",
+    "kcal_per_100g": 215,
+    "emoji": "🥩",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Tisane de camomille",
+    "english_name": "Chamomile herbal tea",
+    "kcal_per_100g": 1,
+    "emoji": "🌼",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Tisane de citronnelle",
+    "english_name": "Lemongrass herbal tea",
+    "kcal_per_100g": 1,
+    "emoji": "🌿",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Tisane de gingembre citron",
+    "english_name": "Ginger lemon herbal tea",
+    "kcal_per_100g": 5,
+    "emoji": "🌿",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Tisane de menthe poivrée",
+    "english_name": "Peppermint herbal tea",
+    "kcal_per_100g": 1,
+    "emoji": "🌿",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Tisane de tilleul",
+    "english_name": "Linden (lime flower) herbal tea",
+    "kcal_per_100g": 1,
+    "emoji": "🌸",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Tisane d'hibiscus",
+    "english_name": "Hibiscus herbal tea",
+    "kcal_per_100g": 2,
+    "emoji": "🌺",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Tofu à la citronnelle",
+    "english_name": "Lemongrass tofu",
+    "kcal_per_100g": 132,
+    "emoji": "🫘",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Tomate farcies (bœuf herbes)",
+    "english_name": "Stuffed tomatoes (beef and herbs)",
+    "kcal_per_100g": 115,
+    "emoji": "🍅",
+    "type": "unit",
+    "weight_per_unit": 160
+  },
+  {
+    "name": "Tomate noire de Crimée (variété)",
+    "english_name": "Black Crimea tomato variety",
+    "kcal_per_100g": 22,
+    "emoji": "🍅",
+    "type": "unit",
+    "weight_per_unit": 150
+  },
+  {
+    "name": "Torréfaction (café grain expresso)",
+    "english_name": "Espresso roast coffee bean",
+    "kcal_per_100g": 331,
+    "emoji": "☕",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Tortellini au bouillon",
+    "english_name": "Tortellini in brodo",
+    "kcal_per_100g": 88,
+    "emoji": "🍝",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Tourte savoyarde (jambon fromage)",
+    "english_name": "Savoyard pie (ham and cheese)",
+    "kcal_per_100g": 295,
+    "emoji": "🥧",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Tranches d'agneau froid (rôti refroidi)",
+    "english_name": "Cold sliced lamb roast",
+    "kcal_per_100g": 172,
+    "emoji": "🍖",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Truite arc-en-ciel fumée",
+    "english_name": "Smoked rainbow trout",
+    "kcal_per_100g": 182,
+    "emoji": "🐟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Vacherin glacé fruits exotiques",
+    "english_name": "Tropical fruit glacé vacherin",
+    "kcal_per_100g": 228,
+    "emoji": "🍈",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Veau Marengo",
+    "english_name": "Veau Marengo (veal stew)",
+    "kcal_per_100g": 152,
+    "emoji": "🥩",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Velouté d'oseille",
+    "english_name": "Sorrel velouté soup",
+    "kcal_per_100g": 58,
+    "emoji": "🌿",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Velouté de brocoli",
+    "english_name": "Broccoli cream soup",
+    "kcal_per_100g": 55,
+    "emoji": "🥦",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Velouté de céleri",
+    "english_name": "Celery cream soup",
+    "kcal_per_100g": 48,
+    "emoji": "🥬",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Velouté de chou-fleur",
+    "english_name": "Cauliflower cream soup",
+    "kcal_per_100g": 52,
+    "emoji": "🥦",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Velouté de topinambour",
+    "english_name": "Jerusalem artichoke cream soup",
+    "kcal_per_100g": 65,
+    "emoji": "🥔",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Ventrèche (lard cru de porc)",
+    "english_name": "Ventrèche (French raw pork belly bacon)",
+    "kcal_per_100g": 498,
+    "emoji": "🥓",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Verjus (jus raisin vert)",
+    "english_name": "Verjuice (unripe grape juice)",
+    "kcal_per_100g": 42,
+    "emoji": "🍇",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Vinaigrette au miso",
+    "english_name": "Miso vinaigrette",
+    "kcal_per_100g": 175,
+    "emoji": "🫙",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Vinaigrette au sésame",
+    "english_name": "Sesame vinaigrette",
+    "kcal_per_100g": 285,
+    "emoji": "🫙",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Vinaigrette framboise",
+    "english_name": "Raspberry vinaigrette",
+    "kcal_per_100g": 155,
+    "emoji": "🫐",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Vitello tonnato",
+    "english_name": "Vitello tonnato (veal with tuna sauce)",
+    "kcal_per_100g": 215,
+    "emoji": "🥩",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Volaille au vin jaune",
+    "english_name": "Poultry with vin jaune sauce",
+    "kcal_per_100g": 195,
+    "emoji": "🍗",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Waterzooi (ragoût flamand)",
+    "english_name": "Waterzooi (Flemish cream stew)",
+    "kcal_per_100g": 118,
+    "emoji": "🍲",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Welsh rarebit (toast fromage fondu)",
+    "english_name": "Welsh rarebit (melted cheese toast)",
+    "kcal_per_100g": 285,
+    "emoji": "🧀",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Xo sauce (condiment fruits de mer)",
+    "english_name": "XO sauce (dried seafood condiment)",
+    "kcal_per_100g": 320,
+    "emoji": "🦐",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Yerba maté glacé",
+    "english_name": "Iced yerba maté",
+    "kcal_per_100g": 5,
+    "emoji": "🍵",
+    "type": "liquid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Ymer (fromage danois fermenté)",
+    "english_name": "Ymer (Danish fermented dairy)",
+    "kcal_per_100g": 72,
+    "emoji": "🥛",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Yuzu kosho (condiment japonais)",
+    "english_name": "Yuzu kosho (Japanese citrus pepper paste)",
+    "kcal_per_100g": 88,
+    "emoji": "🍋",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Za'atar frais (origan levant)",
+    "english_name": "Fresh za'atar (Levant thyme/oregano)",
+    "kcal_per_100g": 42,
+    "emoji": "🌿",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Zander (sandre poêlé)",
+    "english_name": "Zander / Pike-perch (pan-fried)",
+    "kcal_per_100g": 95,
+    "emoji": "🐟",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Zeppole di San Giuseppe (friture italienne)",
+    "english_name": "Zeppole di San Giuseppe (Italian pastry)",
+    "kcal_per_100g": 345,
+    "emoji": "🍩",
+    "type": "unit",
+    "weight_per_unit": 60
+  },
+  {
+    "name": "Zucchini bread (cake courgette sucré)",
+    "english_name": "Zucchini bread (sweet)",
+    "kcal_per_100g": 322,
+    "emoji": "🥒",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Épaule d'agneau confite",
+    "english_name": "Slow-cooked lamb shoulder confit",
+    "kcal_per_100g": 248,
+    "emoji": "🍖",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Étuvée de poireaux au beurre",
+    "english_name": "Braised leeks in butter",
+    "kcal_per_100g": 65,
+    "emoji": "🥬",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Agneau au miel et cumin",
+    "english_name": "Honey and cumin lamb",
+    "kcal_per_100g": 215,
+    "emoji": "🍖",
+    "type": "solid",
+    "weight_per_unit": 0
+  },
+  {
+    "name": "Beurre de coco (concentré)",
+    "english_name": "Coconut butter (concentrated)",
+    "kcal_per_100g": 720,
+    "emoji": "🥥",
+    "type": "solid",
+    "weight_per_unit": 0
+  }
 ]

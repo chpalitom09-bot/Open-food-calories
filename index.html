@@ -391,7 +391,7 @@
         // Charger le fichier JSON
         async function loadData() {
             try {
-                const response = await fetch('data/food.json');
+                const response = await fetch('data/Open-food-calories.json');
                 if (!response.ok) throw new Error("Fichier introuvable");
                 foodDatabase = await response.json();
                 displayResults(foodDatabase);

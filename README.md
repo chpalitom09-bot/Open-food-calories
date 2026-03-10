@@ -1,5 +1,5 @@
 🥗 Open-Food-Calories
-Open-Food-Calories is a high-performance JSON database of 4,000+ foods, dishes, and ingredients.
+Open-Food-Calories is a high-performance JSON database of 5,000+ foods, dishes, and ingredients.
 
 Try it on : https://chpalitom09-bot.github.io/Open-food-calories/
 
@@ -18,7 +18,7 @@ Accuracy Rate: 96.9% (validated via cross-referencing).
 | Pain au lait | 300 | 320 - 340 | ~ 9 % |
 | Sauté de porc aux légumes | 165 | 150 - 170 | ~ 3 % |
 
-Coverage: 4000 + global entries.
+Coverage: 5000 + global entries.
 
 Data Integrity: 100% structured (Bilingual FR/EN).
 

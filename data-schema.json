@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/chpalitom09-bot/Open-food-calories/schema.json",
+  "title": "Open-Food-Calories entry (v2)",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "name", "category", "type", "kcal_per_100g", "confidence"],
+    "additionalProperties": false,
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+        "description": "Identifiant stable. Ne doit jamais changer une fois publie."
+      },
+      "name": {
+        "type": "object",
+        "required": ["fr", "en"],
+        "properties": {
+          "fr": { "type": "string", "minLength": 1 },
+          "en": { "type": "string", "minLength": 1 }
+        },
+        "additionalProperties": { "type": "string" }
+      },
+      "category": {
+        "type": "string",
+        "enum": ["beverages", "dairy_eggs", "meat", "seafood", "fruits",
+                 "vegetables", "grains", "legumes", "nuts_seeds", "fats_oils",
+                 "sweets", "condiments", "prepared", "uncategorized"]
+      },
+      "state": {
+        "type": ["string", "null"],
+        "enum": ["raw", "cooked", "fried", "dried", "canned", null]
+      },
+      "type": { "type": "string", "enum": ["solid", "liquid", "unit"] },
+
+      "kcal_per_100g":   { "type": "number", "minimum": 0, "maximum": 900 },
+      "protein_g":       { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+      "fat_g":           { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+      "carbs_g":         { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+      "fiber_g":         { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+      "sugars_g":        { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+      "saturated_fat_g": { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+      "salt_g":          { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+      "alcohol_g":       { "type": ["number", "null"], "minimum": 0, "maximum": 100 },
+
+      "weight_per_unit": {
+        "type": ["number", "null"],
+        "exclusiveMinimum": 0,
+        "description": "Poids moyen d'une piece en grammes. null si l'aliment se mesure au poids."
+      },
+      "emoji": { "type": "string" },
+      "source": {
+        "type": ["string", "null"],
+        "description": "CIQUAL, USDA, OFF:<barcode>, estimated, legacy."
+      },
+      "confidence": { "type": "string", "enum": ["high", "medium", "low", "unknown"] }
+    }
+  }
+}

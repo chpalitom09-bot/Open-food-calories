@@ -315,6 +315,115 @@
         .no-results h3 { font-size: 1.5rem; color: var(--text-main); margin-bottom: 0.5rem; }
         .no-results p { color: var(--text-muted); }
 
+
+        /* --- Ajouts : badges, macros, filtres --- */
+        .filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.6rem;
+            max-width: 900px;
+            margin: 0 auto 2.5rem auto;
+        }
+
+        .chip {
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .chip:hover { color: var(--primary); border-color: rgba(99,102,241,0.4); }
+        .chip.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+            box-shadow: 0 6px 14px var(--primary-glow);
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 6px;
+        }
+        .badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            padding: 3px 8px;
+            border-radius: 8px;
+            background: #eef2ff;
+            color: #4f46e5;
+        }
+        .badge.state { background: #ecfdf5; color: #047857; }
+        .badge.low { background: #fef2f2; color: #b91c1c; }
+
+        .macros {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.6rem;
+        }
+        .macro {
+            background: var(--bg-color);
+            border-radius: 12px;
+            padding: 0.6rem;
+            text-align: center;
+        }
+        .macro .val {
+            display: block;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--text-main);
+            line-height: 1.2;
+        }
+        .macro .lbl {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+        }
+
+        .extra {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 1rem;
+        }
+
+        .load-more {
+            grid-column: 1 / -1;
+            justify-self: center;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: var(--surface-solid);
+            border: 2px solid var(--border);
+            border-radius: 100px;
+            padding: 0.9rem 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .load-more:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .macros { grid-template-columns: repeat(3, 1fr); }
+        }
+
         /* --- Animations --- */
         @keyframes slideDownPop {
             0% { opacity: 0; transform: translateY(-40px) scale(0.9); }
@@ -372,6 +481,8 @@
             </div>
         </div>
 
+        <div class="filters" id="filters"></div>
+
         <div class="results-info" id="resultsCount"></div>
 
         <div class="results-grid" id="resultsGrid">
@@ -380,161 +491,274 @@
     </main>
 
     <script>
-        let foodDatabase = [];
+        // ---------------------------------------------------------------
+        // Nouveau format Open-food-calories.json :
+        // { id, name: {fr, en}, category, state, type, kcal_per_100g,
+        //   protein_g, fat_g, carbs_g, fiber_g, sugars_g, saturated_fat_g,
+        //   salt_g, alcohol_g, weight_per_unit, emoji, source, confidence }
+        // ---------------------------------------------------------------
+
+        let foodDatabase = [];   // données normalisées
+        let currentData = [];    // résultat courant (filtré)
+        let visibleCount = 0;    // pagination progressive
+        const PAGE_SIZE = 60;
+
+        let activeCategory = 'all';
+        let searchTerm = '';
+
         const searchInput = document.getElementById('searchInput');
         const resultsGrid = document.getElementById('resultsGrid');
         const resultsCount = document.getElementById('resultsCount');
+        const filtersBox = document.getElementById('filters');
 
-        // Référence max de calories pour la barre de visualisation (Huile ~ 900kcal/100g)
         const MAX_KCAL_REF = 900;
 
-        // Charger le fichier JSON
+        const CATEGORY_LABELS = {
+            all: '🍽️ Tout',
+            fruits: '🍎 Fruits',
+            vegetables: '🥦 Légumes',
+            grains: '🌾 Céréales',
+            meat: '🥩 Viandes',
+            seafood: '🐟 Poissons',
+            dairy_eggs: '🥚 Produits laitiers & œufs',
+            legumes: '🫘 Légumineuses',
+            nuts_seeds: '🥜 Fruits à coque',
+            fats_oils: '🫒 Matières grasses',
+            sweets: '🍫 Sucreries',
+            beverages: '🥤 Boissons',
+            condiments: '🧂 Condiments',
+            prepared: '🍱 Plats préparés',
+            uncategorized: '❓ Autres'
+        };
+
+        const STATE_LABELS = { raw: 'Cru', cooked: 'Cuit', dried: 'Séché', frozen: 'Surgelé', canned: 'Conserve' };
+        const TYPE_LABELS  = { solid: 'Aliment solide', liquid: 'Liquide', unit: 'À l\'unité' };
+
+        // Normalisation : accepte le nouveau format ET l'ancien (name / english_name)
+        function normalize(item) {
+            const nameFr = (item.name && typeof item.name === 'object')
+                ? (item.name.fr || item.name.en || item.id || '')
+                : (item.name || '');
+            const nameEn = (item.name && typeof item.name === 'object')
+                ? (item.name.en || '')
+                : (item.english_name || '');
+
+            const num = v => (v === null || v === undefined || v === '' || isNaN(v)) ? null : Number(v);
+
+            return {
+                id: item.id || nameFr,
+                nameFr,
+                nameEn,
+                category: item.category || 'uncategorized',
+                state: item.state || null,
+                type: item.type || 'solid',
+                kcal: num(item.kcal_per_100g) ?? 0,
+                protein: num(item.protein_g),
+                fat: num(item.fat_g),
+                carbs: num(item.carbs_g),
+                fiber: num(item.fiber_g),
+                sugars: num(item.sugars_g),
+                satFat: num(item.saturated_fat_g),
+                salt: num(item.salt_g),
+                alcohol: num(item.alcohol_g),
+                weightPerUnit: num(item.weight_per_unit),
+                emoji: item.emoji || '🍽️',
+                source: item.source || null,
+                confidence: item.confidence || null,
+                search: stripAccents((nameFr + ' ' + nameEn + ' ' + (item.id || '')).toLowerCase())
+            };
+        }
+
+        function stripAccents(str) {
+            return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        }
+
+        function fmt(v, unit) {
+            if (v === null) return null;
+            const rounded = Math.round(v * 10) / 10;
+            return rounded + (unit || '');
+        }
+
         async function loadData() {
             try {
                 const response = await fetch('data/Open-food-calories.json');
                 if (!response.ok) throw new Error("Fichier introuvable");
-                foodDatabase = await response.json();
-                displayResults(foodDatabase);
+                const raw = await response.json();
+                // Tolère soit un tableau, soit { foods: [...] } / { data: [...] }
+                const list = Array.isArray(raw) ? raw : (raw.foods || raw.data || raw.items || []);
+                foodDatabase = list.map(normalize);
+                buildFilters();
+                applyFilters();
             } catch (error) {
                 console.error(error);
                 resultsGrid.innerHTML = `
                     <div class="no-results">
                         <div class="big-emoji">🔌</div>
-                        <h3>Erreur de connexion</h3>
-                        <p>Impossible de charger la base de données (data/food.json).</p>
+                        <h3>Erreur de chargement</h3>
+                        <p>Impossible de charger la base (data/Open-food-calories.json).</p>
                     </div>`;
                 resultsCount.innerText = "";
             }
         }
 
-        // Déterminer la couleur de la barre calorique
-        function getCalColor(kcal) {
-            if (kcal < 100) return 'var(--cal-low)';     // Vert
-            if (kcal < 300) return 'var(--cal-med)';     // Orange
-            return 'var(--cal-high)';                    // Rouge
+        // Construit les puces de catégories présentes dans le fichier
+        function buildFilters() {
+            const counts = {};
+            foodDatabase.forEach(f => { counts[f.category] = (counts[f.category] || 0) + 1; });
+
+            const order = Object.keys(CATEGORY_LABELS).filter(c => c === 'all' || counts[c]);
+            Object.keys(counts).forEach(c => { if (!order.includes(c)) order.push(c); });
+
+            filtersBox.innerHTML = order.map(cat => {
+                const label = CATEGORY_LABELS[cat] || cat;
+                const n = cat === 'all' ? foodDatabase.length : counts[cat];
+                return `<button class="chip ${cat === activeCategory ? 'active' : ''}" data-cat="${cat}">${label} <span style="opacity:.6">${n}</span></button>`;
+            }).join('');
+
+            filtersBox.querySelectorAll('.chip').forEach(chip => {
+                chip.addEventListener('click', () => {
+                    activeCategory = chip.dataset.cat;
+                    filtersBox.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c === chip));
+                    applyFilters();
+                });
+            });
         }
 
-        // Fonction pour générer le HTML d'une carte
-        function createCardHTML(food, index) {
-            // Calcul pour la visualisation
-            const percentage = Math.min((food.kcal_per_100g / MAX_KCAL_REF) * 100, 100);
-            const color = getCalColor(food.kcal_per_100g);
-            
-            // Délai d'animation en cascade (stagger effect)
-            const delay = (index * 0.04).toFixed(2);
+        function getCalColor(kcal) {
+            if (kcal < 100) return 'var(--cal-low)';
+            if (kcal < 300) return 'var(--cal-med)';
+            return 'var(--cal-high)';
+        }
 
-            const metaHTML = food.weight_per_unit > 0 
-                ? `~ ${food.weight_per_unit}g / unité` 
-                : `${food.type === 'solid' ? 'Aliment Solide' : 'Liquide'}`;
+        function createCardHTML(food, index) {
+            const percentage = Math.min((food.kcal / MAX_KCAL_REF) * 100, 100);
+            const color = getCalColor(food.kcal);
+            const delay = Math.min(index * 0.03, 0.6).toFixed(2);
+
+            const metaHTML = (food.weightPerUnit && food.weightPerUnit > 0)
+                ? `~ ${food.weightPerUnit} g / unité`
+                : (TYPE_LABELS[food.type] || food.type);
+
+            const badges = [];
+            badges.push(`<span class="badge">${(CATEGORY_LABELS[food.category] || food.category).replace(/^\S+\s/, '')}</span>`);
+            if (food.state) badges.push(`<span class="badge state">${STATE_LABELS[food.state] || food.state}</span>`);
+            if (food.confidence === 'low') badges.push(`<span class="badge low">Estimation</span>`);
+
+            const macro = (val, lbl) => `
+                <div class="macro">
+                    <span class="val">${val === null ? '–' : fmt(val, '')}<span style="font-size:.75rem;font-weight:600">${val === null ? '' : ' g'}</span></span>
+                    <span class="lbl">${lbl}</span>
+                </div>`;
+
+            const extras = [
+                food.fiber !== null ? `Fibres ${fmt(food.fiber, ' g')}` : null,
+                food.sugars !== null ? `Sucres ${fmt(food.sugars, ' g')}` : null,
+                food.satFat !== null ? `AG saturés ${fmt(food.satFat, ' g')}` : null,
+                food.salt !== null ? `Sel ${fmt(food.salt, ' g')}` : null,
+                food.alcohol ? `Alcool ${fmt(food.alcohol, ' g')}` : null
+            ].filter(Boolean);
 
             return `
                 <div class="card animate-in" style="animation-delay: ${delay}s">
                     <div class="card-header">
                         <div class="emoji-wrapper">${food.emoji}</div>
                         <div class="titles">
-                            <h2>${food.name}</h2>
-                            <p>${food.english_name}</p>
+                            <h2>${food.nameFr}</h2>
+                            ${food.nameEn ? `<p>${food.nameEn}</p>` : ''}
+                            <div class="badges">${badges.join('')}</div>
                         </div>
                     </div>
-                    
+
                     <div class="card-data">
                         <div class="kcal-display">
-                            <span class="kcal-number" style="color: ${color}">${food.kcal_per_100g}</span>
-                            <span class="kcal-unit">kcal pour 100g</span>
+                            <span class="kcal-number" style="color: ${color}">${food.kcal}</span>
+                            <span class="kcal-unit">kcal pour 100 g</span>
                         </div>
                         <div class="meta-info">${metaHTML}</div>
                     </div>
 
-                    <!-- Visualisation de densité -->
                     <div class="cal-viz">
-                        <div class="cal-bar" style="width: 0%; background-color: ${color}; animation: fillBar 1s ease-out forwards ${parseFloat(delay) + 0.3}s;"></div>
+                        <div class="cal-bar" data-target="${percentage}" style="background-color: ${color};"></div>
                     </div>
+
+                    <div class="macros">
+                        ${macro(food.protein, 'Protéines')}
+                        ${macro(food.carbs, 'Glucides')}
+                        ${macro(food.fat, 'Lipides')}
+                    </div>
+
+                    ${extras.length ? `<div class="extra">${extras.map(e => `<span>${e}</span>`).join('')}</div>` : ''}
                 </div>
             `;
         }
 
-        // Ajouter dynamiquement la keyframe pour la barre de progression (pour éviter l'inline limitant)
-        const styleSheet = document.createElement("style");
-        document.head.appendChild(styleSheet);
+        function applyFilters() {
+            const q = stripAccents(searchTerm.toLowerCase().trim());
 
-        // Afficher les résultats
-        function displayResults(data) {
+            currentData = foodDatabase.filter(f => {
+                if (activeCategory !== 'all' && f.category !== activeCategory) return false;
+                return q === '' || f.search.includes(q);
+            });
+
+            if (q) {
+                currentData.sort((a, b) => {
+                    const aStarts = a.search.startsWith(q) ? 0 : 1;
+                    const bStarts = b.search.startsWith(q) ? 0 : 1;
+                    if (aStarts !== bStarts) return aStarts - bStarts;
+                    return a.nameFr.length - b.nameFr.length;
+                });
+            }
+
+            visibleCount = 0;
             resultsGrid.innerHTML = '';
+            renderMore(true);
+        }
 
-            if (data.length === 0) {
+        function renderMore(reset) {
+            if (currentData.length === 0) {
                 resultsGrid.innerHTML = `
                     <div class="no-results">
                         <div class="big-emoji">👻</div>
                         <h3>Aucun résultat</h3>
-                        <p>Essayez avec un autre terme de recherche.</p>
+                        <p>Essayez avec un autre terme ou une autre catégorie.</p>
                     </div>`;
                 resultsCount.innerText = "0 aliment trouvé";
                 return;
             }
 
-            // Met à jour le compteur
-            resultsCount.innerText = `${data.length} aliment${data.length > 1 ? 's' : ''} trouvé${data.length > 1 ? 's' : ''}`;
+            const oldBtn = resultsGrid.querySelector('.load-more');
+            if (oldBtn) oldBtn.remove();
 
-            let html = '';
-            // Limiter à 100 pour garder des perfs optimales sur les grosses DB
-            const limit = Math.min(data.length, 100);
-            
-            // On injecte les animations spécifiques de remplissage de barre dans le DOM pour cette session
-            let keyframesHTML = "";
+            const slice = currentData.slice(visibleCount, visibleCount + PAGE_SIZE);
+            const startIndex = reset ? 0 : 0;
+            resultsGrid.insertAdjacentHTML('beforeend', slice.map((f, i) => createCardHTML(f, startIndex + i)).join(''));
+            visibleCount += slice.length;
 
-            for (let i = 0; i < limit; i++) {
-                const percentage = Math.min((data[i].kcal_per_100g / MAX_KCAL_REF) * 100, 100);
-                html += createCardHTML(data[i], i);
-                
-                // On triche un peu avec CSS inline custom variables si on voulait, 
-                // mais remplacer dynamiquement inline dans la carte est plus simple. 
-                // Pour animer la width depuis 0 vers X%, on l'a géré en remplaçant l'animation par une classe.
-                // Correction plus propre : on utilise une variable CSS inline.
+            resultsCount.innerText = `${visibleCount} / ${currentData.length} aliment${currentData.length > 1 ? 's' : ''}`;
+
+            if (visibleCount < currentData.length) {
+                const btn = document.createElement('button');
+                btn.className = 'load-more';
+                btn.textContent = `Afficher ${Math.min(PAGE_SIZE, currentData.length - visibleCount)} de plus`;
+                btn.addEventListener('click', () => renderMore(false));
+                resultsGrid.appendChild(btn);
             }
-            
-            // Modification du générateur HTML pour utiliser les variables CSS inline au lieu d'une keyframe générée
-            html = html.replace(/animation: fillBar[^;]+;/g, ""); // Nettoyage de l'ancienne tentative
-            
-            // Injection
-            resultsGrid.innerHTML = html;
 
-            // Déclencher l'animation des barres après un court délai pour laisser le DOM se créer
-            setTimeout(() => {
-                const bars = document.querySelectorAll('.cal-bar');
-                bars.forEach((bar, index) => {
-                    const dataIndex = index;
-                    if(data[dataIndex]) {
-                         const percentage = Math.min((data[dataIndex].kcal_per_100g / MAX_KCAL_REF) * 100, 100);
-                         bar.style.width = `${percentage}%`;
-                    }
+            // Animation des barres après insertion dans le DOM
+            requestAnimationFrame(() => {
+                resultsGrid.querySelectorAll('.cal-bar').forEach(bar => {
+                    bar.style.width = bar.dataset.target + '%';
                 });
-            }, 50);
+            });
         }
 
-        // Écouter la barre de recherche
+        let debounce;
         searchInput.addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase().trim();
-            
-            // Filtrer la base de données
-            const filteredData = foodDatabase.filter(food => {
-                const matchFR = food.name.toLowerCase().includes(searchTerm);
-                const matchEN = food.english_name.toLowerCase().includes(searchTerm);
-                return matchFR || matchEN;
-            });
-
-            // Trier pour mettre les correspondances exactes en premier
-            filteredData.sort((a, b) => {
-                const aStarts = a.name.toLowerCase().startsWith(searchTerm);
-                const bStarts = b.name.toLowerCase().startsWith(searchTerm);
-                if (aStarts && !bStarts) return -1;
-                if (!aStarts && bStarts) return 1;
-                return 0;
-            });
-
-            displayResults(filteredData);
+            searchTerm = e.target.value;
+            clearTimeout(debounce);
+            debounce = setTimeout(applyFilters, 120);
         });
 
-        // Lancer l'application
         loadData();
     </script>
 </body>

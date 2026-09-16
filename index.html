@@ -1,765 +1,706 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FoodCal - Database Visuelle</title>
-    <!-- Utilisation d'une police très moderne et géométrique -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-color: #f8fafc;
-            --surface: rgba(255, 255, 255, 0.85);
-            --surface-solid: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --primary: #6366f1;
-            --primary-glow: rgba(99, 102, 241, 0.4);
-            --border: rgba(226, 232, 240, 0.8);
-            
-            /* Couleurs de visualisation des calories */
-            --cal-low: #10b981;
-            --cal-med: #f59e0b;
-            --cal-high: #ef4444;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open Food Calories</title>
+<meta name="description" content="Recherchez la valeur nutritionnelle de plus de 5 000 aliments.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#151d1a;
+  --ink-soft:#5b6a64;
+  --paper:#eef1ea;
+  --surface:#ffffff;
+  --line:#dde3da;
+  --line-strong:#c3ccc0;
+  --accent:#0e5c55;
+  --accent-soft:#e2f0ec;
 
-            --shadow-sm: 0 2px 4px rgba(0,0,0,0.02);
-            --shadow-md: 0 10px 20px rgba(0,0,0,0.04), 0 2px 6px rgba(0,0,0,0.04);
-            --shadow-hover: 0 20px 40px rgba(99, 102, 241, 0.1), 0 8px 16px rgba(0,0,0,0.04);
-            --radius: 20px;
-        }
+  --e-low:#2f8f5b;
+  --e-mid:#c98a12;
+  --e-high:#c2452f;
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  --p-prot:#2f6fae;
+  --p-carb:#c98a12;
+  --p-fat:#a8558f;
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            min-height: 100vh;
-            padding: 3rem 2rem;
-            position: relative;
-            overflow-x: hidden;
-        }
+  --r-md:16px;
+  --r-lg:24px;
+  --shadow:0 1px 2px rgba(21,29,26,.04), 0 8px 24px -12px rgba(21,29,26,.18);
+}
 
-        /* --- Fond animé (Mesh Gradient CSS) --- */
-        .ambient-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -1;
-            overflow: hidden;
-            background: #f8fafc;
-        }
-        .blob {
-            position: absolute;
-            filter: blur(80px);
-            opacity: 0.6;
-            animation: float 20s infinite ease-in-out alternate;
-        }
-        .blob-1 { top: -10%; left: -10%; width: 50vw; height: 50vw; background: #e0e7ff; animation-delay: 0s; }
-        .blob-2 { bottom: -10%; right: -10%; width: 60vw; height: 60vw; background: #fce7f3; animation-delay: -5s; }
-        .blob-3 { top: 40%; left: 60%; width: 40vw; height: 40vw; background: #dcfce7; animation-delay: -10s; }
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  font-size:16px;
+  line-height:1.5;
+  min-height:100vh;
+}
+button{font:inherit;color:inherit;cursor:pointer;background:none;border:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
 
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(5%, 10%) scale(1.1); }
-            100% { transform: translate(-5%, -5%) scale(0.9); }
-        }
+.shell{max-width:1240px;margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem)}
 
-        /* --- Header & Recherche --- */
-        header {
-            text-align: center;
-            margin-bottom: 4rem;
-            animation: slideDownPop 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
+/* ---------- Barre supérieure ---------- */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:1.1rem 0;
+  border-bottom:1px solid var(--line);
+}
+.wordmark{display:flex;align-items:center;gap:.6rem;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.05rem;letter-spacing:-.02em}
+.wordmark .dot{width:11px;height:11px;border-radius:50%;background:var(--accent)}
 
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            letter-spacing: -1px;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #1e293b, #6366f1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+.lang{display:flex;align-items:center;gap:2px;background:var(--surface);border:1px solid var(--line);border-radius:100px;padding:3px}
+.lang button{
+  display:flex;align-items:center;gap:.45rem;
+  padding:.4rem .85rem;border-radius:100px;
+  font-size:.85rem;font-weight:600;color:var(--ink-soft);
+  transition:background .18s ease,color .18s ease;
+}
+.lang button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.lang .flag{width:20px;height:14px;border-radius:2px;display:block}
 
-        header p {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            font-weight: 500;
-        }
+/* ---------- Hero ---------- */
+.hero{padding:clamp(2.5rem,7vw,4.5rem) 0 2rem}
+.hero h1{
+  font-family:'Bricolage Grotesque',sans-serif;
+  font-weight:800;
+  font-size:clamp(2.3rem,6vw,4rem);
+  line-height:1.02;
+  letter-spacing:-.035em;
+  max-width:17ch;
+}
+.hero .lede{margin-top:1rem;color:var(--ink-soft);font-size:1.05rem;max-width:54ch}
+.hero .lede strong{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
 
-        .search-wrapper {
-            max-width: 650px;
-            margin: 0 auto 3rem auto;
-            position: relative;
-            animation: slideUpPop 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
-            opacity: 0;
-            transform: translateY(20px);
-        }
+.searchbar{
+  margin-top:2rem;
+  display:flex;align-items:center;gap:.75rem;
+  background:var(--surface);
+  border:1px solid var(--line-strong);
+  border-radius:var(--r-lg);
+  padding:.85rem 1.1rem;
+  max-width:640px;
+  transition:border-color .2s ease,box-shadow .2s ease;
+}
+.searchbar:focus-within{border-color:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.searchbar > svg{width:20px;height:20px;color:var(--ink-soft);flex:none}
+.searchbar input{flex:1;border:none;outline:none;background:none;font:inherit;font-size:1.05rem;color:var(--ink);min-width:0}
+.searchbar input::placeholder{color:#94a29b}
+.clear-btn{color:var(--ink-soft);font-size:.85rem;font-weight:600;padding:.2rem .5rem;border-radius:8px}
+.clear-btn:hover{color:var(--ink);background:var(--paper)}
 
-        .search-icon {
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 24px;
-            height: 24px;
-            color: var(--text-muted);
-            transition: color 0.3s;
-        }
+/* ---------- Filtres ---------- */
+.toolbar{
+  position:sticky;top:0;z-index:20;
+  background:rgba(238,241,234,.9);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+  margin-top:1.5rem;
+}
+.filters{display:flex;gap:.45rem;overflow-x:auto;padding:.75rem 0;scrollbar-width:none}
+.filters::-webkit-scrollbar{display:none}
+.chip{
+  flex:none;display:inline-flex;align-items:center;gap:.5rem;
+  border:1px solid var(--line-strong);border-radius:100px;
+  padding:.45rem .9rem;font-size:.85rem;font-weight:600;color:var(--ink-soft);
+  background:var(--surface);white-space:nowrap;
+  transition:border-color .18s,color .18s,background .18s;
+}
+.chip svg{width:16px;height:16px}
+.chip .n{font-variant-numeric:tabular-nums;font-weight:500;opacity:.55}
+.chip:hover{color:var(--ink);border-color:var(--ink-soft)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
 
-        .search-container input {
-            width: 100%;
-            padding: 1.2rem 1.5rem 1.2rem 3.5rem;
-            font-size: 1.15rem;
-            font-family: inherit;
-            border: 2px solid var(--border);
-            border-radius: 100px;
-            outline: none;
-            background: var(--surface);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: var(--shadow-md);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            color: var(--text-main);
-        }
+.countline{padding:1.5rem 0 .75rem;font-size:.9rem;color:var(--ink-soft)}
+.countline b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
 
-        .search-container input::placeholder { color: #94a3b8; }
+/* ---------- Grille ---------- */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(310px,1fr));
+  gap:1rem;
+  padding-bottom:4rem;
+}
 
-        .search-container input:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 6px var(--primary-glow), var(--shadow-md);
-            background: var(--surface-solid);
-        }
+.card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:var(--r-md);
+  padding:1.25rem;
+  display:flex;flex-direction:column;gap:1.1rem;
+  transition:border-color .18s ease, box-shadow .18s ease;
+}
+.card:hover{border-color:var(--line-strong);box-shadow:var(--shadow)}
 
-        .search-container input:focus + .search-icon { color: var(--primary); }
+.card-top{display:flex;gap:.9rem;align-items:flex-start}
+.icon-tile{
+  flex:none;width:46px;height:46px;border-radius:13px;
+  background:var(--accent-soft);color:var(--accent);
+  display:grid;place-items:center;
+}
+.icon-tile svg{width:26px;height:26px}
+.card h2{font-size:1.02rem;font-weight:600;line-height:1.3;letter-spacing:-.01em}
+.card .alt{font-size:.82rem;color:var(--ink-soft);margin-top:2px}
+.tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.5rem}
+.tag{
+  font-size:.72rem;font-weight:600;
+  padding:.15rem .5rem;border-radius:6px;
+  background:var(--paper);color:var(--ink-soft);border:1px solid var(--line);
+}
+.tag.warn{background:#fdf3ef;color:var(--e-high);border-color:#f3d9d1}
 
-        .results-info {
-            text-align: center;
-            margin-top: -1.5rem;
-            margin-bottom: 2rem;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            font-weight: 600;
-            opacity: 0;
-            animation: fadeIn 0.5s ease forwards 0.5s;
-        }
+.energy{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem}
+.kcal{display:flex;align-items:baseline;gap:.35rem}
+.kcal .v{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:2.1rem;line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.kcal .u{font-size:.85rem;color:var(--ink-soft);font-weight:600}
+.per{font-size:.8rem;color:var(--ink-soft);text-align:right;line-height:1.35}
 
-        /* --- Grille de résultats --- */
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2rem;
-            max-width: 1300px;
-            margin: 0 auto;
-        }
+.meter{display:flex;gap:3px;height:7px;margin-top:.6rem}
+.meter i{flex:1;border-radius:2px;background:var(--line)}
+.meter i.on{background:var(--m)}
 
-        /* --- Design des Cartes --- */
-        .card {
-            background: var(--surface-solid);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1.8rem;
-            box-shadow: var(--shadow-sm);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            position: relative;
-            overflow: hidden;
-            
-            /* État initial pour l'animation */
-            opacity: 0;
-            transform: translateY(30px) scale(0.95);
-        }
+.macros{display:flex;flex-direction:column;gap:.55rem}
+.stack{display:flex;height:8px;border-radius:4px;overflow:hidden;background:var(--paper)}
+.stack span{display:block;height:100%}
+.legend{display:flex;flex-wrap:wrap;gap:.25rem .9rem;font-size:.8rem;color:var(--ink-soft)}
+.legend b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.legend i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:.35rem}
 
-        .card.animate-in {
-            animation: cardEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
+.micro{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:.35rem .9rem;
+  font-size:.8rem;color:var(--ink-soft);
+  border-top:1px solid var(--line);padding-top:.8rem;
+}
+.micro div{display:flex;justify-content:space-between;gap:.5rem}
+.micro b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
 
-        .card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: var(--shadow-hover);
-            border-color: rgba(99, 102, 241, 0.3);
-        }
+/* ---------- Bannière de partage ---------- */
+.promo{
+  grid-column:1/-1;
+  display:flex;flex-wrap:wrap;align-items:center;gap:1.25rem;
+  background:var(--ink);color:#f3f6f1;
+  border-radius:var(--r-md);
+  padding:1.6rem 1.75rem;
+}
+.promo .txt{flex:1 1 320px}
+.promo h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.25rem;letter-spacing:-.02em}
+.promo p{margin-top:.35rem;font-size:.92rem;color:#b9c6bf;max-width:58ch}
+.promo .acts{display:flex;gap:.6rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:100px;padding:.6rem 1.1rem;font-size:.9rem;font-weight:600;transition:transform .15s ease,border-color .18s ease}
+.btn svg{width:17px;height:17px}
+.btn-primary{background:#f3f6f1;color:var(--ink)}
+.btn-primary:hover{transform:translateY(-1px)}
+.btn-ghost{border:1px solid rgba(243,246,241,.3);color:#f3f6f1}
+.btn-ghost:hover{border-color:#f3f6f1}
 
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
+/* ---------- États ---------- */
+.empty{grid-column:1/-1;text-align:center;padding:4rem 1rem;color:var(--ink-soft)}
+.empty svg{width:34px;height:34px;color:var(--line-strong);margin-bottom:1rem}
+.empty h3{font-family:'Bricolage Grotesque',sans-serif;font-size:1.3rem;color:var(--ink);letter-spacing:-.02em}
+.empty p{margin-top:.4rem}
 
-        .emoji-wrapper {
-            position: relative;
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            background: var(--bg-color);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bounce effect */
-        }
+.skeleton{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1rem}
+.sk{height:230px;border-radius:var(--r-md);background:linear-gradient(90deg,#fff,#f5f7f3,#fff);background-size:200% 100%;animation:sweep 1.4s linear infinite;border:1px solid var(--line)}
+@keyframes sweep{to{background-position:-200% 0}}
 
-        .card:hover .emoji-wrapper {
-            transform: scale(1.15) rotate(10deg);
-            background: #eef2ff;
-        }
+.more{grid-column:1/-1;display:flex;justify-content:center;padding:1rem 0 0}
+.more button{
+  border:1px solid var(--line-strong);background:var(--surface);
+  border-radius:100px;padding:.75rem 1.6rem;font-weight:600;font-size:.92rem;
+  transition:border-color .18s ease;
+}
+.more button:hover{border-color:var(--ink)}
 
-        .titles { flex: 1; }
+footer{border-top:1px solid var(--line);padding:2rem 0 3rem;font-size:.85rem;color:var(--ink-soft);display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between}
 
-        .titles h2 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 2px;
-        }
+.toast{
+  position:fixed;left:50%;bottom:1.5rem;transform:translate(-50%,160%);
+  background:var(--ink);color:#f3f6f1;padding:.7rem 1.1rem;border-radius:100px;
+  font-size:.88rem;z-index:60;
+  transition:transform .3s cubic-bezier(.2,.8,.3,1);
+}
+.toast.show{transform:translate(-50%,0)}
 
-        .titles p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 600;
-        }
-
-        .card-data {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-
-        .kcal-display {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .kcal-number {
-            font-size: 2rem;
-            font-weight: 800;
-            line-height: 1;
-            letter-spacing: -1px;
-            color: var(--text-main);
-        }
-
-        .kcal-unit {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            font-weight: 600;
-            margin-top: 4px;
-        }
-
-        .meta-info {
-            text-align: right;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            background: var(--bg-color);
-            padding: 8px 12px;
-            border-radius: 12px;
-            font-weight: 600;
-        }
-
-        /* --- Visualisation : Barre de densité calorique --- */
-        .cal-viz {
-            width: 100%;
-            height: 6px;
-            background: var(--bg-color);
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-            margin-top: 5px;
-        }
-
-        .cal-bar {
-            height: 100%;
-            border-radius: 10px;
-            transition: width 1s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.5s;
-            width: 0%; /* S'animera en JS */
-        }
-
-        /* --- États divers --- */
-        .loading-spinner {
-            grid-column: 1 / -1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 200px;
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid var(--border);
-            border-top-color: var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        .no-results {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 4rem;
-            animation: fadeIn 0.5s forwards;
-        }
-
-        .no-results .big-emoji {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            animation: float 3s ease-in-out infinite alternate;
-        }
-
-        .no-results h3 { font-size: 1.5rem; color: var(--text-main); margin-bottom: 0.5rem; }
-        .no-results p { color: var(--text-muted); }
-
-
-        /* --- Ajouts : badges, macros, filtres --- */
-        .filters {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.6rem;
-            max-width: 900px;
-            margin: 0 auto 2.5rem auto;
-        }
-
-        .chip {
-            font-family: inherit;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            transition: all 0.25s ease;
-        }
-        .chip:hover { color: var(--primary); border-color: rgba(99,102,241,0.4); }
-        .chip.active {
-            background: var(--primary);
-            border-color: var(--primary);
-            color: #fff;
-            box-shadow: 0 6px 14px var(--primary-glow);
-        }
-
-        .badges {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: 6px;
-        }
-        .badge {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.4px;
-            padding: 3px 8px;
-            border-radius: 8px;
-            background: #eef2ff;
-            color: #4f46e5;
-        }
-        .badge.state { background: #ecfdf5; color: #047857; }
-        .badge.low { background: #fef2f2; color: #b91c1c; }
-
-        .macros {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0.6rem;
-        }
-        .macro {
-            background: var(--bg-color);
-            border-radius: 12px;
-            padding: 0.6rem;
-            text-align: center;
-        }
-        .macro .val {
-            display: block;
-            font-size: 1.05rem;
-            font-weight: 800;
-            color: var(--text-main);
-            line-height: 1.2;
-        }
-        .macro .lbl {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-muted);
-        }
-
-        .extra {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            font-weight: 500;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.4rem 1rem;
-        }
-
-        .load-more {
-            grid-column: 1 / -1;
-            justify-self: center;
-            font-family: inherit;
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--primary);
-            background: var(--surface-solid);
-            border: 2px solid var(--border);
-            border-radius: 100px;
-            padding: 0.9rem 2rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .load-more:hover {
-            border-color: var(--primary);
-            box-shadow: var(--shadow-hover);
-            transform: translateY(-2px);
-        }
-
-        @media (max-width: 768px) {
-            .macros { grid-template-columns: repeat(3, 1fr); }
-        }
-
-        /* --- Animations --- */
-        @keyframes slideDownPop {
-            0% { opacity: 0; transform: translateY(-40px) scale(0.9); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        @keyframes slideUpPop {
-            0% { opacity: 0; transform: translateY(40px) scale(0.9); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        @keyframes cardEnter {
-            0% { opacity: 0; transform: translateY(30px) scale(0.95); }
-            100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            body { padding: 2rem 1rem; }
-            .results-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-        }
-    </style>
+@media (max-width:640px){
+  .grid,.skeleton{grid-template-columns:1fr}
+  .micro{grid-template-columns:1fr}
+  .promo{padding:1.4rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}
+</style>
 </head>
 <body>
 
-    <!-- Fond ambiant animé -->
-    <div class="ambient-bg">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
+<!-- ============ Bibliothèque d'icônes (aucun emoji rendu) ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<symbol id="i-apple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8.5c-1.2-1.6-3-2.2-4.6-1.5C5.3 7.9 4.3 10.4 5 13c.8 3 3 6.5 4.8 6.5.9 0 1.5-.5 2.2-.5s1.3.5 2.2.5c1.8 0 4-3.5 4.8-6.5.7-2.6-.3-5.1-2.4-6-1.6-.7-3.4-.1-4.6 1.5Z"/><path d="M12 8.5V5.6c0-1.2 1-2.1 2.2-2.1"/></symbol>
+<symbol id="i-citrus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17M3.5 12h17M6 6l12 12M18 6 6 18"/></symbol>
+<symbol id="i-berry" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="14" r="4"/><circle cx="15.5" cy="15" r="3.5"/><circle cx="12.5" cy="8.5" r="3.2"/><path d="M12.5 5.3V3.5"/></symbol>
+<symbol id="i-grape" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="12" r="2.4"/><circle cx="15.5" cy="12" r="2.4"/><circle cx="12" cy="16" r="2.4"/><circle cx="12" cy="8.5" r="2.4"/><path d="M12 6V3.8c1.6 0 2.6-.8 3.2-1.8"/></symbol>
+<symbol id="i-banana" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 5.5c0 7.5 4.8 13 11.5 13 2.3 0 3.5-1 3.5-2.3 0-2.6-4.8-1.8-7.8-4.9C8.7 8.2 9.4 4.5 7 4.5c-1.6 0-2.5.4-2.5 1Z"/></symbol>
+<symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4C9.5 4 4.5 8.6 4.5 15.3c0 1.8.7 3.6 1.4 4.2C11.4 19.5 20 14 20 4Z"/><path d="M5.9 19.5C9 15 13 11.8 17.5 9.8"/></symbol>
+<symbol id="i-carrot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 9.5-9 9c-.6.6-.4 1.6.4 1.9l2.4.8c.4.1.9 0 1.2-.3l8.4-8.4"/><path d="m14.5 9.5 3.4 2.9"/><path d="M14 9.8c1-2 .6-4.2-.8-5.6 1.9-.6 4 0 5.3 1.4 1.3 1.3 1.9 3.3 1.4 5.2-1.5-1.4-3.8-1.8-5.9-1Z"/></symbol>
+<symbol id="i-pepper" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 8.2c1.5 3.4.3 8-3 10.4-3 2.2-7 1.8-9-.6 3.2-.2 5-1.6 6.2-3.6 1.3-2.2 1.6-5 3-6.4 1-1 2.2-.7 2.8.2Z"/><path d="M15.8 7.8c.4-1.6 1.6-2.7 3.4-3"/></symbol>
+<symbol id="i-mushroom" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.8 11.5C3.8 7.2 7.5 4 12 4s8.2 3.2 8.2 7.5c0 .8-.7 1.5-1.6 1.5H5.4c-.9 0-1.6-.7-1.6-1.5Z"/><path d="M10 13v5.5c0 .8.9 1.5 2 1.5s2-.7 2-1.5V13"/></symbol>
+<symbol id="i-tomato" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13.8" r="7.2"/><path d="M12 6.6V4.4M12 6.6c-1.4-1.6-3-2-4.6-1.6.6 1.4 1.6 2.3 3 2.6M12 6.6c1.4-1.6 3-2 4.6-1.6-.6 1.4-1.6 2.3-3 2.6"/></symbol>
+<symbol id="i-grain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V8"/><path d="M12 8c0-2.2 1-4 2.6-5.2C15.8 4.2 15.6 6.6 14 8c-.6.6-1.3.9-2 .9s-1.4-.3-2-.9C8.4 6.6 8.2 4.2 9.4 2.8 11 4 12 5.8 12 8Z"/><path d="M12 13.5c-1.4-1.6-3.3-2.2-5.2-1.8.5 1.9 2 3.3 3.9 3.6M12 13.5c1.4-1.6 3.3-2.2 5.2-1.8-.5 1.9-2 3.3-3.9 3.6"/></symbol>
+<symbol id="i-bread" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11.5C4 8.5 7.6 6 12 6s8 2.5 8 5.5c0 1-.9 1.8-2 1.8v3.9c0 .9-.8 1.8-1.8 1.8H7.8c-1 0-1.8-.9-1.8-1.8v-3.9c-1.1 0-2-.8-2-1.8Z"/><path d="M9 9.8 7.8 12M13 9.8 11.8 12M17 9.8 15.8 12"/></symbol>
+<symbol id="i-pasta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 13.5h17c0 3.6-3.8 6.5-8.5 6.5s-8.5-2.9-8.5-6.5Z"/><path d="M7 13c0-3.4 1.2-5.5 2.6-6.6M11 13c0-4.3 1-6.8 2.4-8M15 13c0-3.2.8-5.3 2-6.4"/></symbol>
+<symbol id="i-rice" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12.5h17c0 4-3.8 7-8.5 7s-8.5-3-8.5-7Z"/><path d="M8 12c0-2.2 1.8-4 4-4s4 1.8 4 4"/><path d="M10.5 6.5 12 5l1.5 1.5"/></symbol>
+<symbol id="i-meat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.4 6.2c3.4-3 8.9-2.7 11.4.6 2.4 3.2 1.4 8-2.2 10.6-3.4 2.5-8 2-10-.8C3.6 13.8 3.7 8.6 6.4 6.2Z"/><path d="M9.5 9.4c1.8-1.5 4.3-1.3 5.6.5 1.2 1.7.7 4.1-1.1 5.4"/></symbol>
+<symbol id="i-poultry" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19 5.4c1.7 1.7 1.6 4.7-.3 6.6-1.7 1.7-4 2-5.7 1l-3 3c.6 1.2.4 2.6-.6 3.5-1.2 1.2-3.1 1.2-4.2 0s-1.1-3 0-4.2c.9-1 2.3-1.2 3.5-.6l3-3c-1-1.7-.7-4 1-5.7 1.9-1.9 4.8-2 6.3-.3"/></symbol>
+<symbol id="i-fish" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16.8 8.2C14.8 6.6 12 6 9.4 7 6 8.2 3.5 11 3 12.4c1 1.8 3.7 4 7 4.6 2.5.4 5-.4 6.8-2"/><path d="m16.8 8.2 4.2-2.2-.8 6.4.8 6-4.2-3.4"/><circle cx="9" cy="11.4" r=".9" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-shrimp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6.5c-6 0-10 3-10 7 0 2.3 1.8 4 4 4 1.8 0 3.2-1.2 3.2-2.8 0-1.4-1-2.4-2.3-2.4"/><path d="M10 13.5c-2.6 0-4.6-1.3-5.6-3.2M6.5 17.5C5 16.6 4 15.2 3.6 13.6M20 6.5c-1.6-1.5-3.4-2.3-5.2-2.4"/></symbol>
+<symbol id="i-shell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4c4.8 0 8.5 4.8 8.5 9.3 0 3.2-2.3 5.7-5 5.7-1.2 0-2.4-.6-3.5-1.8-1.1 1.2-2.3 1.8-3.5 1.8-2.7 0-5-2.5-5-5.7C3.5 8.8 7.2 4 12 4Z"/><path d="M12 4v13M8.2 5.8 6.6 16M15.8 5.8 17.4 16"/></symbol>
+<symbol id="i-egg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2c3.6 0 6.4 5.6 6.4 10.2 0 4-2.8 7.4-6.4 7.4s-6.4-3.4-6.4-7.4C5.6 8.8 8.4 3.2 12 3.2Z"/></symbol>
+<symbol id="i-cheese" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12.6 13.6 5c.4-.3 1-.3 1.4 0l5.3 3.8c.7.5.5 1.7-.4 1.9L3 15.4Z"/><path d="M3 15.4v2.4c0 .6.5 1.1 1.1 1.1h15.8c.6 0 1.1-.5 1.1-1.1v-7.2"/><circle cx="8.5" cy="13.6" r="1" fill="currentColor" stroke="none"/><circle cx="14.5" cy="12.3" r="1" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-milk" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3h8v2.6l2.4 3.2c.4.5.6 1.1.6 1.7v8.3c0 1.2-1 2.2-2.2 2.2H7.2C6 21 5 20 5 18.8v-8.3c0-.6.2-1.2.6-1.7L8 5.6Z"/><path d="M5.4 9.5h13.2"/><path d="M9.5 13.5h5v3.5h-5z"/></symbol>
+<symbol id="i-yogurt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8.5h14l-1.3 10.2c-.1.9-.9 1.6-1.8 1.6H8.1c-.9 0-1.7-.7-1.8-1.6Z"/><path d="M4 5.5h16v3H4z"/><path d="M9 12.5h6"/></symbol>
+<symbol id="i-nut" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5c3.6 0 6-3.2 6-7 0-3.4-2.2-6.4-6-6.4S6 10.1 6 13.5c0 3.8 2.4 7 6 7Z"/><path d="M5.5 7.1h13c0-2-2.9-3.6-6.5-3.6S5.5 5.1 5.5 7.1Z"/><path d="M12 10.5v7"/></symbol>
+<symbol id="i-bean" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.4 4.6c2.6 0 4.7 2.4 4.7 5.3s-2.1 5.3-4.7 5.3S5.7 12.8 5.7 9.9s2.1-5.3 4.7-5.3Z"/><path d="M14.6 9.4c2.5.5 4.1 2.9 3.6 5.5-.5 2.6-3 4.3-5.5 3.8-1.6-.3-2.9-1.4-3.5-2.8"/></symbol>
+<symbol id="i-oil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3h4v3.2l2.8 3.4c.5.6.7 1.3.7 2v7.2c0 1.2-1 2.2-2.2 2.2H8.7c-1.2 0-2.2-1-2.2-2.2v-7.2c0-.7.2-1.4.7-2L10 6.2Z"/><path d="M12 12.2c1.3 1.5 2 2.6 2 3.4 0 1.1-.9 2-2 2s-2-.9-2-2c0-.8.7-1.9 2-3.4Z"/></symbol>
+<symbol id="i-butter" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 13.2 8 8.7c.3-.3.7-.5 1.1-.5h10.3c.9 0 1.4 1.1.8 1.8l-4.4 4.8c-.3.4-.8.6-1.3.6H4.3c-.9 0-1.4-1.1-.8-1.8Z"/><path d="M4 15.4v2.4c0 .6.5 1.1 1.1 1.1h9.6c.4 0 .8-.2 1.1-.5l4-4.3"/></symbol>
+<symbol id="i-candy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><path d="M8.4 9.8 4.2 7.2v9.6l4.2-2.6M15.6 9.8l4.2-2.6v9.6l-4.2-2.6"/></symbol>
+<symbol id="i-cake" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h16v-6.2c0-1.2-1-2.2-2.2-2.2H6.2C5 11.6 4 12.6 4 13.8Z"/><path d="M4 15.8c1.3 0 1.3 1.4 2.7 1.4s1.3-1.4 2.6-1.4 1.3 1.4 2.7 1.4 1.3-1.4 2.7-1.4 1.3 1.4 2.6 1.4 1.4-1.4 2.7-1.4"/><path d="M9 11.6V8.4M12 11.6V7.4M15 11.6V8.4"/></symbol>
+<symbol id="i-cookie" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="9.5" cy="10" r="1.1" fill="currentColor" stroke="none"/><circle cx="14" cy="9.5" r="1.1" fill="currentColor" stroke="none"/><circle cx="12.6" cy="14.4" r="1.1" fill="currentColor" stroke="none"/><circle cx="8.6" cy="14.6" r="1.1" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-chocolate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="4.5" width="15" height="15" rx="2"/><path d="M9.5 4.5v15M14.5 4.5v15M4.5 9.5h15M4.5 14.5h15"/></symbol>
+<symbol id="i-coffee" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 9.5h12v6.2c0 2.1-1.7 3.8-3.8 3.8H8.3c-2.1 0-3.8-1.7-3.8-3.8Z"/><path d="M16.5 11.5h1.8c1.5 0 2.7 1.2 2.7 2.7s-1.2 2.7-2.7 2.7h-1.8"/><path d="M8 6.5c0-1 .8-1.4.8-2.3M12.5 6.5c0-1 .8-1.4.8-2.3"/></symbol>
+<symbol id="i-tea" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10.5h11v4.8c0 2.3-1.9 4.2-4.2 4.2H9.2C6.9 19.5 5 17.6 5 15.3Z"/><path d="M16 12h1.6c1.3 0 2.4 1.1 2.4 2.4s-1.1 2.4-2.4 2.4H16"/><path d="M13.5 4.5c-2.6 0-4 1.6-4 3.6 2.6 0 4-1.6 4-3.6Z"/></symbol>
+<symbol id="i-juice" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 7.5h11l-1.2 11.2c-.1 1-1 1.8-2 1.8H9.7c-1 0-1.9-.8-2-1.8Z"/><path d="M7 12h10"/><path d="m14 7.5 3.5-4.2 1.7 1.2-2.4 3"/></symbol>
+<symbol id="i-water" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c3.4 3.9 6 7 6 10.1 0 3.4-2.7 6.1-6 6.1s-6-2.7-6-6.1c0-3.1 2.6-6.2 6-10.1Z"/><path d="M9.2 14.5c0 1.6 1.2 2.9 2.8 3.1"/></symbol>
+<symbol id="i-wine" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h11l-.7 5.6c-.3 2.4-2.4 4.2-4.8 4.2s-4.5-1.8-4.8-4.2Z"/><path d="M12 13.3v6.2M8.5 20.5h7"/><path d="M6.9 7h10.2"/></symbol>
+<symbol id="i-beer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 9h9v9.3c0 1.2-1 2.2-2.2 2.2H7.7c-1.2 0-2.2-1-2.2-2.2Z"/><path d="M14.5 11h2.8c1.2 0 2.2 1 2.2 2.2v2.1c0 1.2-1 2.2-2.2 2.2h-2.8"/><path d="M5.6 9c-1.1-.4-1.6-1.4-1.3-2.4.3-1 1.3-1.5 2.3-1.3.2-1.2 1.3-2 2.6-1.8.6-.9 1.8-1.2 2.8-.7.8-.7 2-.6 2.8.2.9-.2 1.9.3 2.2 1.2.4 1-.1 2.1-1.1 2.6"/></symbol>
+<symbol id="i-cocktail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.8 5.5h16.4L12 14Z"/><path d="M12 14v6M8.5 20.5h7"/><path d="m16.5 8.5 3-3.5"/></symbol>
+<symbol id="i-soda" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4.5h10l-.8 14.3c-.1 1-.9 1.7-1.9 1.7H9.7c-1 0-1.8-.7-1.9-1.7Z"/><path d="M7.2 9h9.6"/><path d="M11 12.5h2.5"/></symbol>
+<symbol id="i-herb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V8.5"/><path d="M12 12c-2.8 0-4.8-1.8-5.2-4.6 2.8-.5 5.2 1.4 5.2 4.6Zm0 0c2.8 0 4.8-1.8 5.2-4.6-2.8-.5-5.2 1.4-5.2 4.6Z"/><path d="M12 8.5c0-2.4 1.2-4.2 3-5-.4 2.6-1.2 4.2-3 5Z"/></symbol>
+<symbol id="i-salt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 9.5h9v9.2c0 1-.8 1.8-1.8 1.8H9.3c-1 0-1.8-.8-1.8-1.8Z"/><path d="M7.5 9.5c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5"/><path d="M10.5 7.2h.01M13.5 7.2h.01M12 5.6h.01"/></symbol>
+<symbol id="i-ice" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9"/><path d="M12 6.5 9.6 4.4M12 6.5l2.4-2.1M12 17.5l-2.4 2.1M12 17.5l2.4 2.1"/></symbol>
+<symbol id="i-soup" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12.5h17c0 4-3.8 7-8.5 7s-8.5-3-8.5-7Z"/><path d="M9 9c0-1.2.9-1.7.9-2.8M12.5 9c0-1.2.9-1.7.9-2.8M16 9c0-1.2.9-1.7.9-2.8"/></symbol>
+<symbol id="i-sandwich" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.2 11.4 4c.4-.2.8-.2 1.2 0L20 8.2v1.4H4Z"/><path d="M4 12.5h16M4 9.6c0 1.6 1 2.9 2.4 2.9M20 9.6c0 1.6-1 2.9-2.4 2.9"/><path d="M4.5 15.5h15c0 2.2-1.8 4-4 4h-7c-2.2 0-4-1.8-4-4Z"/></symbol>
+<symbol id="i-pizza" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.2 20.8 19c.5.9-.3 1.9-1.3 1.7l-7.5-1.5-7.5 1.5c-1 .2-1.8-.8-1.3-1.7Z"/><path d="M6.6 11.8c3.4-1.7 7.4-1.7 10.8 0"/><circle cx="10" cy="14.5" r="1" fill="currentColor" stroke="none"/><circle cx="14" cy="16.5" r="1" fill="currentColor" stroke="none"/></symbol>
+<symbol id="i-potato" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.7 5.6c3.6-1.7 8.1-.5 10.3 2.8 2.2 3.3 1.2 7.6-2.2 9.6-3.5 2-8.3 1-10.4-2.3C3.3 12.4 4.2 7.3 7.7 5.6Z"/><path d="M9.3 9.5h.01M13.6 12h.01M10.6 14.5h.01"/></symbol>
+<symbol id="i-corn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c2.8 0 5 2.6 5 6.6S14.8 20 12 20s-5-5.9-5-9.9 2.2-6.6 5-6.6Z"/><path d="M9.6 7.2c1.6 1 3.2 1 4.8 0M9.3 11c1.8 1.1 3.6 1.1 5.4 0M9.8 14.8c1.5.9 2.9.9 4.4 0"/></symbol>
+<symbol id="i-avocado" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c3.3 0 5.6 3.2 5.6 6.4 0 1.9-.6 3-.6 4.6 0 3-2.2 5.5-5 5.5s-5-2.5-5-5.5c0-1.6-.6-2.7-.6-4.6 0-3.2 2.3-6.4 5.6-6.4Z"/><circle cx="12" cy="14.2" r="2.6"/></symbol>
+<symbol id="i-honey" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9.5h12v9.2c0 1-.8 1.8-1.8 1.8H7.8c-1 0-1.8-.8-1.8-1.8Z"/><path d="M5 6.5h14v3H5z"/><path d="M12 13v3.5"/></symbol>
+<symbol id="i-plate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.6"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></symbol>
+<symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13.5a4 4 0 0 0 5.7 0l2.8-2.8a4 4 0 0 0-5.7-5.7l-1.4 1.4"/><path d="M14 10.5a4 4 0 0 0-5.7 0l-2.8 2.8a4 4 0 1 0 5.7 5.7l1.4-1.4"/></symbol>
+<symbol id="i-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="17.5" cy="5.5" r="2.5"/><circle cx="6.5" cy="12" r="2.5"/><circle cx="17.5" cy="18.5" r="2.5"/><path d="m8.7 10.8 6.6-3.9M8.7 13.2l6.6 3.9"/></symbol>
+</svg>
+
+<div class="shell">
+  <div class="topbar">
+    <div class="wordmark"><span class="dot"></span>Open Food Calories</div>
+    <div class="lang" role="group" id="langSwitch">
+      <button data-lang="fr" aria-pressed="true">
+        <svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0d2d8f"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#d8232a"/></svg>
+        Français
+      </button>
+      <button data-lang="en" aria-pressed="false">
+        <svg class="flag" viewBox="0 0 60 36" aria-hidden="true"><rect width="60" height="36" fill="#00247d"/><path d="M0 0l60 36M60 0L0 36" stroke="#fff" stroke-width="7"/><path d="M0 0l60 36M60 0L0 36" stroke="#cf142b" stroke-width="4"/><path d="M30 0v36M0 18h60" stroke="#fff" stroke-width="12"/><path d="M30 0v36M0 18h60" stroke="#cf142b" stroke-width="7"/></svg>
+        English
+      </button>
     </div>
+  </div>
+</div>
 
-    <header>
-        <h1>FoodCal.</h1>
-        <p>Explorez la valeur nutritionnelle de vos aliments</p>
-    </header>
+<header class="shell hero">
+  <h1 id="heroTitle">Ce que contient vraiment votre assiette.</h1>
+  <p class="lede" id="heroLede"></p>
 
-    <main>
-        <div class="search-wrapper">
-            <div class="search-container">
-                <!-- SVG Icon Recherche -->
-                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="11" cy="11" r="8"></circle>
-                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                </svg>
-                <input type="text" id="searchInput" placeholder="Rechercher (ex: Avocat, Saumon, Riz...)" autocomplete="off">
-            </div>
-        </div>
+  <div class="searchbar">
+    <svg aria-hidden="true"><use href="#i-search"/></svg>
+    <input type="search" id="searchInput" autocomplete="off" spellcheck="false" aria-label="Recherche">
+    <button class="clear-btn" id="clearBtn" hidden></button>
+  </div>
+</header>
 
-        <div class="filters" id="filters"></div>
+<div class="toolbar">
+  <div class="shell"><div class="filters" id="filters" role="group"></div></div>
+</div>
 
-        <div class="results-info" id="resultsCount"></div>
+<main class="shell">
+  <div class="countline" id="countline"></div>
+  <div class="grid" id="grid">
+    <div class="skeleton"><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+  </div>
+</main>
 
-        <div class="results-grid" id="resultsGrid">
-            <div class="loading-spinner"><div class="spinner"></div></div>
-        </div>
-    </main>
+<footer class="shell" id="footer"></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-    <script>
-        // ---------------------------------------------------------------
-        // Nouveau format Open-food-calories.json :
-        // { id, name: {fr, en}, category, state, type, kcal_per_100g,
-        //   protein_g, fat_g, carbs_g, fiber_g, sugars_g, saturated_fat_g,
-        //   salt_g, alcohol_g, weight_per_unit, emoji, source, confidence }
-        // ---------------------------------------------------------------
+<script>
+/* =========================================================
+   Open Food Calories — interface
+   Format attendu : { id, name:{fr,en}, category, state, type,
+   kcal_per_100g, protein_g, fat_g, carbs_g, fiber_g, sugars_g,
+   saturated_fat_g, salt_g, alcohol_g, weight_per_unit, emoji,
+   source, confidence }
+   ========================================================= */
 
-        let foodDatabase = [];   // données normalisées
-        let currentData = [];    // résultat courant (filtré)
-        let visibleCount = 0;    // pagination progressive
-        const PAGE_SIZE = 60;
+const DATA_URLS = ['data/Open-food-calories.json', 'Open-food-calories.json'];
+const PAGE_SIZE = 48;      // = intervalle des bannières de partage
+const PROMO_EVERY = 48;
+const MAX_KCAL_REF = 900;
+const SHARE_URL = location.origin + location.pathname;
 
-        let activeCategory = 'all';
-        let searchTerm = '';
+/* ---------- Textes d'interface ---------- */
+const I18N = {
+  fr:{
+    title:"Ce que contient vraiment votre assiette.",
+    lede:n=>`Énergie, protéines, glucides, lipides et micronutriments pour <strong>${n}</strong> aliments, pour 100 g ou 100 ml.`,
+    placeholder:"Rechercher un aliment — pain, saumon, lentilles…",
+    clear:"Effacer",
+    showing:(a,b)=>`<b>${a}</b> sur <b>${b}</b> aliments`,
+    all:"Tout",
+    per100g:"pour 100 g", per100ml:"pour 100 ml",
+    perUnit:g=>`≈ ${g} g par unité`,
+    kcal:"kcal",
+    protein:"Protéines", carbs:"Glucides", fat:"Lipides",
+    fiber:"Fibres", sugars:"Sucres", satfat:"AG saturés", salt:"Sel", alcohol:"Alcool",
+    estimate:"Valeur estimée",
+    noneTitle:"Aucun aliment ne correspond",
+    noneText:"Vérifiez l'orthographe ou changez de catégorie.",
+    errTitle:"Base de données introuvable",
+    errText:"Placez Open-food-calories.json dans le dossier data/ à côté de cette page.",
+    more:n=>`Afficher ${n} aliments de plus`,
+    promoTitle:"Faites tourner Open Food Calories",
+    promoText:"Un ami qui compte ses calories, un coach, un prof de SVT : un lien suffit pour leur ouvrir la base entière, gratuitement et sans compte.",
+    copy:"Copier le lien", share:"Partager", copied:"Lien copié",
+    footL:"Données CIQUAL et Open Food Facts. Valeurs indicatives, pas un avis médical.",
+    footR:"Un projet WikiMind",
+    states:{raw:"Cru",cooked:"Cuit",dried:"Séché",frozen:"Surgelé",canned:"Conserve",fresh:"Frais"},
+    types:{solid:"Solide",liquid:"Liquide",unit:"À l'unité"},
+    cats:{fruits:"Fruits",vegetables:"Légumes",grains:"Céréales",meat:"Viandes",seafood:"Poissons et fruits de mer",dairy_eggs:"Laitiers et œufs",legumes:"Légumineuses",nuts_seeds:"Noix et graines",fats_oils:"Matières grasses",sweets:"Sucré",beverages:"Boissons",condiments:"Condiments",prepared:"Plats préparés",uncategorized:"Divers"}
+  },
+  en:{
+    title:"What's actually on your plate.",
+    lede:n=>`Energy, protein, carbs, fat and micronutrients for <strong>${n}</strong> foods, per 100 g or 100 ml.`,
+    placeholder:"Search a food — bread, salmon, lentils…",
+    clear:"Clear",
+    showing:(a,b)=>`<b>${a}</b> of <b>${b}</b> foods`,
+    all:"All",
+    per100g:"per 100 g", per100ml:"per 100 ml",
+    perUnit:g=>`≈ ${g} g per unit`,
+    kcal:"kcal",
+    protein:"Protein", carbs:"Carbs", fat:"Fat",
+    fiber:"Fibre", sugars:"Sugars", satfat:"Saturates", salt:"Salt", alcohol:"Alcohol",
+    estimate:"Estimated value",
+    noneTitle:"No food matches",
+    noneText:"Check the spelling or pick another category.",
+    errTitle:"Database not found",
+    errText:"Put Open-food-calories.json in the data/ folder next to this page.",
+    more:n=>`Show ${n} more foods`,
+    promoTitle:"Pass Open Food Calories on",
+    promoText:"A friend counting calories, a coach, a biology teacher: one link opens the whole database to them, free and without an account.",
+    copy:"Copy link", share:"Share", copied:"Link copied",
+    footL:"Data from CIQUAL and Open Food Facts. Indicative values, not medical advice.",
+    footR:"A WikiMind project",
+    states:{raw:"Raw",cooked:"Cooked",dried:"Dried",frozen:"Frozen",canned:"Canned",fresh:"Fresh"},
+    types:{solid:"Solid",liquid:"Liquid",unit:"Per unit"},
+    cats:{fruits:"Fruits",vegetables:"Vegetables",grains:"Grains",meat:"Meat",seafood:"Fish and seafood",dairy_eggs:"Dairy and eggs",legumes:"Legumes",nuts_seeds:"Nuts and seeds",fats_oils:"Fats and oils",sweets:"Sweets",beverages:"Drinks",condiments:"Condiments",prepared:"Prepared dishes",uncategorized:"Other"}
+  }
+};
 
-        const searchInput = document.getElementById('searchInput');
-        const resultsGrid = document.getElementById('resultsGrid');
-        const resultsCount = document.getElementById('resultsCount');
-        const filtersBox = document.getElementById('filters');
+/* ---------- Emoji → icône vectorielle ----------
+   Aucun emoji n'est affiché : le champ `emoji` sert de clé
+   vers un symbole SVG, avec repli sur la catégorie.       */
+const EMOJI_ICON = {
+  "🍎":"apple","🍏":"apple","🍐":"apple","🍑":"apple","🍒":"berry","🍓":"berry","🫐":"berry","🍇":"grape",
+  "🍊":"citrus","🍋":"citrus","🍈":"citrus","🍉":"citrus","🥭":"citrus","🍍":"citrus","🥝":"citrus","🥥":"nut",
+  "🍌":"banana","🍅":"tomato","🥑":"avocado","🍆":"potato","🥔":"potato","🍠":"potato","🥕":"carrot",
+  "🌽":"corn","🥦":"leaf","🥬":"leaf","🌿":"herb","🌱":"herb","🍃":"leaf","🍀":"herb","☘️":"herb","🍁":"leaf","🍂":"leaf",
+  "🌳":"leaf","🌲":"leaf","🎄":"leaf","🌴":"leaf","🎋":"herb","🎍":"herb","🪶":"herb","🫚":"carrot",
+  "🌶️":"pepper","🫑":"pepper","🧅":"potato","🧄":"potato","🍄":"mushroom","🥒":"carrot","🫛":"bean","🫘":"bean",
+  "🥗":"leaf","🥓":"meat","🧆":"bean","🌵":"leaf",
+  "🌾":"grain","🍚":"rice","🍙":"rice","🍘":"rice","🍞":"bread","🥖":"bread","🥐":"bread","🫓":"bread","🥯":"bread","🥨":"bread",
+  "🍝":"pasta","🍜":"pasta","🍲":"soup","🥣":"soup","🥘":"soup","🍛":"soup","🍢":"soup","🥟":"sandwich","🌯":"sandwich",
+  "🌮":"sandwich","🫔":"sandwich","🥙":"sandwich","🥪":"sandwich","🍔":"sandwich","🌭":"meat","🍕":"pizza","🍟":"potato",
+  "🥩":"meat","🍖":"meat","🍗":"poultry","🦃":"poultry","🦆":"poultry","🐷":"meat","🐖":"meat","🐄":"meat","🐃":"meat",
+  "🐗":"meat","🐴":"meat","🦌":"meat","🐰":"meat","🐇":"meat","🦁":"meat","🐻":"meat","🐍":"meat","🦔":"meat","🐉":"meat",
+  "🐟":"fish","🐡":"fish","🍣":"fish","🍤":"shrimp","🦐":"shrimp","🦞":"shrimp","🦀":"shrimp","🦑":"shell","🐙":"shell",
+  "🦪":"shell","🐚":"shell","🐌":"shell","🥚":"egg","🍳":"egg","🐣":"egg","🧀":"cheese","🥛":"milk","🧈":"butter",
+  "🍦":"cake","🍨":"cake","🍰":"cake","🎂":"cake","🧁":"cake","🥧":"cake","🍮":"cake","🥮":"cake","🥞":"cake","🧇":"cake",
+  "🍪":"cookie","🍩":"cookie","🍫":"chocolate","🍬":"candy","🍭":"candy","🍯":"honey","🍡":"candy","🍥":"candy","🍿":"corn",
+  "🥜":"nut","🌰":"nut","🌻":"nut","🫒":"oil","🥫":"yogurt","🫙":"yogurt","🥄":"yogurt","🥢":"pasta","🧂":"salt",
+  "☕":"coffee","🍵":"tea","🫖":"tea","🧋":"juice","🧃":"juice","🥤":"soda","💧":"water","🚰":"water","🌊":"water",
+  "🫧":"water","🧊":"ice","❄️":"ice","🍷":"wine","🥂":"wine","🍾":"wine","🍶":"wine","🍺":"beer","🍻":"beer",
+  "🥃":"cocktail","🍸":"cocktail","🍹":"cocktail","🧪":"cocktail","🎃":"potato","🌸":"herb","🌺":"herb","🌹":"herb",
+  "🌼":"herb","🏵️":"herb","🌈":"candy","⭐":"candy","🌟":"candy","✨":"candy","💎":"ice","🔥":"pepper","🌋":"pepper",
+  "🧱":"chocolate","🔋":"chocolate","🏮":"soup","🎺":"pasta","🎵":"candy","🚴":"plate","✋":"plate","😇":"plate",
+  "🎅":"candy","🎁":"candy","🎆":"candy","👑":"candy","🦜":"poultry","🦢":"poultry","🦤":"poultry","🌀":"pasta",
+  "🌙":"cookie","🌕":"cookie","☁️":"cake","⬜":"cheese","⚪":"cheese","🤍":"milk","🟢":"leaf","🟡":"cheese",
+  "🔴":"tomato","🟤":"chocolate","⚫":"berry","🟣":"grape","🟠":"citrus","🔵":"berry","🔷":"ice","🟨":"cheese",
+  "🟫":"chocolate","💚":"leaf","💜":"grape","💙":"water","💛":"cheese","🩷":"berry","🧡":"citrus"
+};
+const CATEGORY_ICON = {
+  fruits:"apple", vegetables:"leaf", grains:"grain", meat:"meat", seafood:"fish",
+  dairy_eggs:"cheese", legumes:"bean", nuts_seeds:"nut", fats_oils:"oil",
+  sweets:"cake", beverages:"juice", condiments:"salt", prepared:"soup", uncategorized:"plate"
+};
+const CAT_ORDER = ["fruits","vegetables","grains","legumes","nuts_seeds","meat","seafood","dairy_eggs","fats_oils","prepared","sweets","beverages","condiments","uncategorized"];
 
-        const MAX_KCAL_REF = 900;
+const iconFor = f =>
+  EMOJI_ICON[f.emoji] || EMOJI_ICON[(f.emoji||'').replace(/\uFE0F/g,'')] || CATEGORY_ICON[f.category] || "plate";
 
-        const CATEGORY_LABELS = {
-            all: '🍽️ Tout',
-            fruits: '🍎 Fruits',
-            vegetables: '🥦 Légumes',
-            grains: '🌾 Céréales',
-            meat: '🥩 Viandes',
-            seafood: '🐟 Poissons',
-            dairy_eggs: '🥚 Produits laitiers & œufs',
-            legumes: '🫘 Légumineuses',
-            nuts_seeds: '🥜 Fruits à coque',
-            fats_oils: '🫒 Matières grasses',
-            sweets: '🍫 Sucreries',
-            beverages: '🥤 Boissons',
-            condiments: '🧂 Condiments',
-            prepared: '🍱 Plats préparés',
-            uncategorized: '❓ Autres'
-        };
+/* ---------- État ---------- */
+let lang = localStorage.getItem('ofc-lang') || (navigator.language||'fr').slice(0,2).toLowerCase();
+if(!I18N[lang]) lang = 'fr';
+let all = [], current = [], shown = 0, category = 'all', query = '';
 
-        const STATE_LABELS = { raw: 'Cru', cooked: 'Cuit', dried: 'Séché', frozen: 'Surgelé', canned: 'Conserve' };
-        const TYPE_LABELS  = { solid: 'Aliment solide', liquid: 'Liquide', unit: 'À l\'unité' };
+const $ = id => document.getElementById(id);
+const grid = $('grid'), countline = $('countline'), filtersBox = $('filters'),
+      input = $('searchInput'), clearBtn = $('clearBtn'), toastEl = $('toast');
+const t = () => I18N[lang];
 
-        // Normalisation : accepte le nouveau format ET l'ancien (name / english_name)
-        function normalize(item) {
-            const nameFr = (item.name && typeof item.name === 'object')
-                ? (item.name.fr || item.name.en || item.id || '')
-                : (item.name || '');
-            const nameEn = (item.name && typeof item.name === 'object')
-                ? (item.name.en || '')
-                : (item.english_name || '');
+const strip = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+const num = v => (v===null||v===undefined||v===''||isNaN(v)) ? null : Number(v);
+const round = (v,d=1) => Math.round(v*Math.pow(10,d))/Math.pow(10,d);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
-            const num = v => (v === null || v === undefined || v === '' || isNaN(v)) ? null : Number(v);
+/* ---------- Chargement ---------- */
+function normalize(it){
+  const nm = (it.name && typeof it.name === 'object') ? it.name : {fr:it.name, en:it.english_name};
+  const fr = nm.fr || nm.en || it.id || '';
+  const en = nm.en || nm.fr || '';
+  return {
+    id:it.id||fr, fr, en,
+    category:it.category||'uncategorized',
+    state:it.state||null,
+    type:it.type||'solid',
+    kcal:num(it.kcal_per_100g) === null ? 0 : num(it.kcal_per_100g),
+    protein:num(it.protein_g), fat:num(it.fat_g), carbs:num(it.carbs_g),
+    fiber:num(it.fiber_g), sugars:num(it.sugars_g), satfat:num(it.saturated_fat_g),
+    salt:num(it.salt_g), alcohol:num(it.alcohol_g),
+    unitWeight:num(it.weight_per_unit),
+    emoji:it.emoji||'', confidence:it.confidence||null,
+    key: strip((fr+' '+en+' '+(it.id||'')).toLowerCase())
+  };
+}
 
-            return {
-                id: item.id || nameFr,
-                nameFr,
-                nameEn,
-                category: item.category || 'uncategorized',
-                state: item.state || null,
-                type: item.type || 'solid',
-                kcal: num(item.kcal_per_100g) ?? 0,
-                protein: num(item.protein_g),
-                fat: num(item.fat_g),
-                carbs: num(item.carbs_g),
-                fiber: num(item.fiber_g),
-                sugars: num(item.sugars_g),
-                satFat: num(item.saturated_fat_g),
-                salt: num(item.salt_g),
-                alcohol: num(item.alcohol_g),
-                weightPerUnit: num(item.weight_per_unit),
-                emoji: item.emoji || '🍽️',
-                source: item.source || null,
-                confidence: item.confidence || null,
-                search: stripAccents((nameFr + ' ' + nameEn + ' ' + (item.id || '')).toLowerCase())
-            };
-        }
+async function load(){
+  let raw = null;
+  for(const url of DATA_URLS){
+    try{ const r = await fetch(url); if(r.ok){ raw = await r.json(); break; } }catch(e){}
+  }
+  if(!raw) return renderError();
+  const list = Array.isArray(raw) ? raw : (raw.foods||raw.data||raw.items||[]);
+  all = list.map(normalize);
+  applyLang(); buildFilters(); apply();
+}
 
-        function stripAccents(str) {
-            return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
-        }
+function renderError(){
+  grid.innerHTML = `<div class="empty"><svg><use href="#i-plate"/></svg>
+    <h3>${t().errTitle}</h3><p>${t().errText}</p></div>`;
+  countline.innerHTML = '';
+}
 
-        function fmt(v, unit) {
-            if (v === null) return null;
-            const rounded = Math.round(v * 10) / 10;
-            return rounded + (unit || '');
-        }
+/* ---------- Langue ---------- */
+function applyLang(){
+  const L = t();
+  document.documentElement.lang = lang;
+  $('heroTitle').textContent = L.title;
+  $('heroLede').innerHTML = L.lede(all.length.toLocaleString(lang==='fr'?'fr-FR':'en-GB'));
+  input.placeholder = L.placeholder;
+  clearBtn.textContent = L.clear;
+  $('footer').innerHTML = `<span>${L.footL}</span><span>${L.footR}</span>`;
+  document.querySelectorAll('#langSwitch button').forEach(b=>
+    b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+}
 
-        async function loadData() {
-            try {
-                const response = await fetch('data/Open-food-calories.json');
-                if (!response.ok) throw new Error("Fichier introuvable");
-                const raw = await response.json();
-                // Tolère soit un tableau, soit { foods: [...] } / { data: [...] }
-                const list = Array.isArray(raw) ? raw : (raw.foods || raw.data || raw.items || []);
-                foodDatabase = list.map(normalize);
-                buildFilters();
-                applyFilters();
-            } catch (error) {
-                console.error(error);
-                resultsGrid.innerHTML = `
-                    <div class="no-results">
-                        <div class="big-emoji">🔌</div>
-                        <h3>Erreur de chargement</h3>
-                        <p>Impossible de charger la base (data/Open-food-calories.json).</p>
-                    </div>`;
-                resultsCount.innerText = "";
-            }
-        }
+$('langSwitch').addEventListener('click', e=>{
+  const btn = e.target.closest('button'); if(!btn || btn.dataset.lang === lang) return;
+  lang = btn.dataset.lang;
+  localStorage.setItem('ofc-lang', lang);
+  applyLang(); buildFilters(); apply();
+});
 
-        // Construit les puces de catégories présentes dans le fichier
-        function buildFilters() {
-            const counts = {};
-            foodDatabase.forEach(f => { counts[f.category] = (counts[f.category] || 0) + 1; });
+/* ---------- Filtres ---------- */
+function buildFilters(){
+  const counts = {};
+  all.forEach(f => counts[f.category] = (counts[f.category]||0)+1);
+  const cats = ['all',
+    ...CAT_ORDER.filter(c=>counts[c]),
+    ...Object.keys(counts).filter(c=>!CAT_ORDER.includes(c))];
 
-            const order = Object.keys(CATEGORY_LABELS).filter(c => c === 'all' || counts[c]);
-            Object.keys(counts).forEach(c => { if (!order.includes(c)) order.push(c); });
+  filtersBox.innerHTML = cats.map(c=>{
+    const label = c==='all' ? t().all : (t().cats[c] || c);
+    const n = c==='all' ? all.length : counts[c];
+    const icon = c==='all' ? 'plate' : (CATEGORY_ICON[c]||'plate');
+    return `<button class="chip" data-cat="${c}" aria-pressed="${c===category}">
+      <svg aria-hidden="true"><use href="#i-${icon}"/></svg>${esc(label)}<span class="n">${n}</span></button>`;
+  }).join('');
+}
 
-            filtersBox.innerHTML = order.map(cat => {
-                const label = CATEGORY_LABELS[cat] || cat;
-                const n = cat === 'all' ? foodDatabase.length : counts[cat];
-                return `<button class="chip ${cat === activeCategory ? 'active' : ''}" data-cat="${cat}">${label} <span style="opacity:.6">${n}</span></button>`;
-            }).join('');
+filtersBox.addEventListener('click', e=>{
+  const chip = e.target.closest('.chip'); if(!chip) return;
+  category = chip.dataset.cat;
+  filtersBox.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed', String(c===chip)));
+  apply();
+});
 
-            filtersBox.querySelectorAll('.chip').forEach(chip => {
-                chip.addEventListener('click', () => {
-                    activeCategory = chip.dataset.cat;
-                    filtersBox.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c === chip));
-                    applyFilters();
-                });
-            });
-        }
+/* ---------- Recherche ---------- */
+let timer;
+input.addEventListener('input', ()=>{
+  query = input.value;
+  clearBtn.hidden = query.length === 0;
+  clearTimeout(timer); timer = setTimeout(apply, 110);
+});
+clearBtn.addEventListener('click', ()=>{
+  input.value=''; query=''; clearBtn.hidden=true; input.focus(); apply();
+});
 
-        function getCalColor(kcal) {
-            if (kcal < 100) return 'var(--cal-low)';
-            if (kcal < 300) return 'var(--cal-med)';
-            return 'var(--cal-high)';
-        }
+function apply(){
+  const q = strip(query.toLowerCase().trim());
+  current = all.filter(f => (category==='all'||f.category===category) && (!q || f.key.includes(q)));
+  if(q) current.sort((a,b)=>
+    ((a.key.startsWith(q)?0:1) - (b.key.startsWith(q)?0:1)) || a.fr.length - b.fr.length);
+  shown = 0; grid.innerHTML = '';
+  render();
+}
 
-        function createCardHTML(food, index) {
-            const percentage = Math.min((food.kcal / MAX_KCAL_REF) * 100, 100);
-            const color = getCalColor(food.kcal);
-            const delay = Math.min(index * 0.03, 0.6).toFixed(2);
+/* ---------- Rendu ---------- */
+const energyColor = k => k < 100 ? 'var(--e-low)' : k < 300 ? 'var(--e-mid)' : 'var(--e-high)';
 
-            const metaHTML = (food.weightPerUnit && food.weightPerUnit > 0)
-                ? `~ ${food.weightPerUnit} g / unité`
-                : (TYPE_LABELS[food.type] || food.type);
+function meter(kcal){
+  const seg = 8, on = Math.max(1, Math.round(Math.min(kcal/MAX_KCAL_REF,1)*seg));
+  let html = `<div class="meter" style="--m:${energyColor(kcal)}">`;
+  for(let i=0;i<seg;i++) html += `<i class="${i<on?'on':''}"></i>`;
+  return html+'</div>';
+}
 
-            const badges = [];
-            badges.push(`<span class="badge">${(CATEGORY_LABELS[food.category] || food.category).replace(/^\S+\s/, '')}</span>`);
-            if (food.state) badges.push(`<span class="badge state">${STATE_LABELS[food.state] || food.state}</span>`);
-            if (food.confidence === 'low') badges.push(`<span class="badge low">Estimation</span>`);
+function macroBlock(f){
+  const L = t();
+  const p = f.protein||0, c = f.carbs||0, g = f.fat||0;
+  const tot = p*4 + c*4 + g*9;
+  const pct = v => tot ? (v/tot*100) : 0;
+  const bar = tot ? `<div class="stack">
+      <span style="width:${pct(p*4)}%;background:var(--p-prot)"></span>
+      <span style="width:${pct(c*4)}%;background:var(--p-carb)"></span>
+      <span style="width:${pct(g*9)}%;background:var(--p-fat)"></span>
+    </div>` : '';
+  const item = (color,label,v) =>
+    `<span><i style="background:${color}"></i>${label} <b>${v===null?'–':round(v)+' g'}</b></span>`;
+  return `<div class="macros">${bar}<div class="legend">
+      ${item('var(--p-prot)',L.protein,f.protein)}
+      ${item('var(--p-carb)',L.carbs,f.carbs)}
+      ${item('var(--p-fat)',L.fat,f.fat)}
+    </div></div>`;
+}
 
-            const macro = (val, lbl) => `
-                <div class="macro">
-                    <span class="val">${val === null ? '–' : fmt(val, '')}<span style="font-size:.75rem;font-weight:600">${val === null ? '' : ' g'}</span></span>
-                    <span class="lbl">${lbl}</span>
-                </div>`;
+function microBlock(f){
+  const L = t();
+  const rows = [[L.fiber,f.fiber],[L.sugars,f.sugars],[L.satfat,f.satfat],[L.salt,f.salt],
+                [L.alcohol, f.alcohol ? f.alcohol : null]]
+    .filter(r => r[1] !== null && r[1] !== undefined);
+  if(!rows.length) return '';
+  return `<div class="micro">${rows.map(([k,v])=>`<div><span>${k}</span><b>${round(v)} g</b></div>`).join('')}</div>`;
+}
 
-            const extras = [
-                food.fiber !== null ? `Fibres ${fmt(food.fiber, ' g')}` : null,
-                food.sugars !== null ? `Sucres ${fmt(food.sugars, ' g')}` : null,
-                food.satFat !== null ? `AG saturés ${fmt(food.satFat, ' g')}` : null,
-                food.salt !== null ? `Sel ${fmt(food.salt, ' g')}` : null,
-                food.alcohol ? `Alcool ${fmt(food.alcohol, ' g')}` : null
-            ].filter(Boolean);
+function cardHTML(f){
+  const L = t();
+  const name = lang==='fr' ? f.fr : (f.en || f.fr);
+  const alt  = lang==='fr' ? f.en : f.fr;
+  const per  = f.unitWeight ? L.perUnit(f.unitWeight) : (f.type==='liquid' ? L.per100ml : L.per100g);
+  const tags = [];
+  if(f.state && L.states[f.state]) tags.push(`<span class="tag">${L.states[f.state]}</span>`);
+  tags.push(`<span class="tag">${L.types[f.type]||f.type}</span>`);
+  if(f.confidence === 'low') tags.push(`<span class="tag warn">${L.estimate}</span>`);
 
-            return `
-                <div class="card animate-in" style="animation-delay: ${delay}s">
-                    <div class="card-header">
-                        <div class="emoji-wrapper">${food.emoji}</div>
-                        <div class="titles">
-                            <h2>${food.nameFr}</h2>
-                            ${food.nameEn ? `<p>${food.nameEn}</p>` : ''}
-                            <div class="badges">${badges.join('')}</div>
-                        </div>
-                    </div>
+  return `<article class="card">
+    <div class="card-top">
+      <div class="icon-tile"><svg aria-hidden="true"><use href="#i-${iconFor(f)}"/></svg></div>
+      <div>
+        <h2>${esc(name)}</h2>
+        ${alt && alt!==name ? `<div class="alt">${esc(alt)}</div>` : ''}
+        <div class="tags">${tags.join('')}</div>
+      </div>
+    </div>
+    <div>
+      <div class="energy">
+        <div class="kcal"><span class="v" style="color:${energyColor(f.kcal)}">${round(f.kcal,0)}</span><span class="u">${L.kcal}</span></div>
+        <div class="per">${per}</div>
+      </div>
+      ${meter(f.kcal)}
+    </div>
+    ${macroBlock(f)}
+    ${microBlock(f)}
+  </article>`;
+}
 
-                    <div class="card-data">
-                        <div class="kcal-display">
-                            <span class="kcal-number" style="color: ${color}">${food.kcal}</span>
-                            <span class="kcal-unit">kcal pour 100 g</span>
-                        </div>
-                        <div class="meta-info">${metaHTML}</div>
-                    </div>
+function promoHTML(){
+  const L = t();
+  return `<aside class="promo">
+    <div class="txt"><h3>${L.promoTitle}</h3><p>${L.promoText}</p></div>
+    <div class="acts">
+      <button class="btn btn-primary" data-act="copy"><svg aria-hidden="true"><use href="#i-link"/></svg>${L.copy}</button>
+      <button class="btn btn-ghost" data-act="share"><svg aria-hidden="true"><use href="#i-share"/></svg>${L.share}</button>
+    </div>
+  </aside>`;
+}
 
-                    <div class="cal-viz">
-                        <div class="cal-bar" data-target="${percentage}" style="background-color: ${color};"></div>
-                    </div>
+function render(){
+  const L = t();
+  if(!current.length){
+    grid.innerHTML = `<div class="empty"><svg><use href="#i-search"/></svg>
+      <h3>${L.noneTitle}</h3><p>${L.noneText}</p></div>`;
+    countline.innerHTML = L.showing(0, all.length);
+    return;
+  }
+  const oldMore = grid.querySelector('.more');
+  if(oldMore) oldMore.remove();
 
-                    <div class="macros">
-                        ${macro(food.protein, 'Protéines')}
-                        ${macro(food.carbs, 'Glucides')}
-                        ${macro(food.fat, 'Lipides')}
-                    </div>
+  const slice = current.slice(shown, shown + PAGE_SIZE);
+  let html = '';
+  slice.forEach((f,i)=>{
+    const abs = shown + i;
+    if(abs > 0 && abs % PROMO_EVERY === 0) html += promoHTML();
+    html += cardHTML(f);
+  });
+  shown += slice.length;
+  grid.insertAdjacentHTML('beforeend', html);
+  countline.innerHTML = L.showing(shown, current.length);
 
-                    ${extras.length ? `<div class="extra">${extras.map(e => `<span>${e}</span>`).join('')}</div>` : ''}
-                </div>
-            `;
-        }
+  if(shown < current.length){
+    const left = Math.min(PAGE_SIZE, current.length - shown);
+    const wrap = document.createElement('div');
+    wrap.className = 'more';
+    wrap.innerHTML = `<button>${L.more(left)}</button>`;
+    wrap.querySelector('button').addEventListener('click', render);
+    grid.appendChild(wrap);
+  }
+}
 
-        function applyFilters() {
-            const q = stripAccents(searchTerm.toLowerCase().trim());
+/* ---------- Partage ---------- */
+grid.addEventListener('click', async e=>{
+  const btn = e.target.closest('[data-act]'); if(!btn) return;
+  const L = t();
+  if(btn.dataset.act === 'share' && navigator.share){
+    try{ await navigator.share({title:'Open Food Calories', text:L.promoTitle, url:SHARE_URL}); }catch(err){}
+    return;
+  }
+  try{ await navigator.clipboard.writeText(SHARE_URL); toast(L.copied); }
+  catch(err){ prompt(L.copy, SHARE_URL); }
+});
 
-            currentData = foodDatabase.filter(f => {
-                if (activeCategory !== 'all' && f.category !== activeCategory) return false;
-                return q === '' || f.search.includes(q);
-            });
+let toastTimer;
+function toast(msg){
+  toastEl.textContent = msg;
+  toastEl.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>toastEl.classList.remove('show'), 2200);
+}
 
-            if (q) {
-                currentData.sort((a, b) => {
-                    const aStarts = a.search.startsWith(q) ? 0 : 1;
-                    const bStarts = b.search.startsWith(q) ? 0 : 1;
-                    if (aStarts !== bStarts) return aStarts - bStarts;
-                    return a.nameFr.length - b.nameFr.length;
-                });
-            }
-
-            visibleCount = 0;
-            resultsGrid.innerHTML = '';
-            renderMore(true);
-        }
-
-        function renderMore(reset) {
-            if (currentData.length === 0) {
-                resultsGrid.innerHTML = `
-                    <div class="no-results">
-                        <div class="big-emoji">👻</div>
-                        <h3>Aucun résultat</h3>
-                        <p>Essayez avec un autre terme ou une autre catégorie.</p>
-                    </div>`;
-                resultsCount.innerText = "0 aliment trouvé";
-                return;
-            }
-
-            const oldBtn = resultsGrid.querySelector('.load-more');
-            if (oldBtn) oldBtn.remove();
-
-            const slice = currentData.slice(visibleCount, visibleCount + PAGE_SIZE);
-            const startIndex = reset ? 0 : 0;
-            resultsGrid.insertAdjacentHTML('beforeend', slice.map((f, i) => createCardHTML(f, startIndex + i)).join(''));
-            visibleCount += slice.length;
-
-            resultsCount.innerText = `${visibleCount} / ${currentData.length} aliment${currentData.length > 1 ? 's' : ''}`;
-
-            if (visibleCount < currentData.length) {
-                const btn = document.createElement('button');
-                btn.className = 'load-more';
-                btn.textContent = `Afficher ${Math.min(PAGE_SIZE, currentData.length - visibleCount)} de plus`;
-                btn.addEventListener('click', () => renderMore(false));
-                resultsGrid.appendChild(btn);
-            }
-
-            // Animation des barres après insertion dans le DOM
-            requestAnimationFrame(() => {
-                resultsGrid.querySelectorAll('.cal-bar').forEach(bar => {
-                    bar.style.width = bar.dataset.target + '%';
-                });
-            });
-        }
-
-        let debounce;
-        searchInput.addEventListener('input', (e) => {
-            searchTerm = e.target.value;
-            clearTimeout(debounce);
-            debounce = setTimeout(applyFilters, 120);
-        });
-
-        loadData();
-    </script>
+load();
+</script>
 </body>
 </html>

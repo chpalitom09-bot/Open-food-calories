@@ -1,278 +1,267 @@
-🥗 Open-Food-Calories
-Open-Food-Calories is a high-performance JSON database of 5,000+ foods, dishes, and ingredients.
+# Open-Food-Calories
 
-Try it on : https://chpalitom09-bot.github.io/Open-food-calories/
+A structured JSON database of 5,000+ foods, dishes, and ingredients, with calories and macronutrients, in French and English.
 
-Accuracy Rate: 96.9% (validated via cross-referencing).
+Live demo: https://chpalitom09-bot.github.io/Open-food-calories/
 
-| Food (Name) | Calories OPEN FOOD CALORIES JSON (kcal/100g) | Real Calories (CIQUAL/USDA) | Écart estimé (%) |
+## Table of contents
+
+- [Overview](#overview)
+- [Repository structure](#repository-structure)
+- [Data format (schema v2)](#data-format-schema-v2)
+- [Data quality report](#data-quality-report)
+- [Using the raw JSON](#using-the-raw-json)
+- [Command-line tool](#command-line-tool)
+- [Local REST API](#local-rest-api)
+- [Contributing](#contributing)
+- [License](#license)
+
+## Overview
+
+- Coverage: 5,037 entries
+- Structure: 100% schema-validated, bilingual (French / English)
+- Accuracy: cross-referenced against CIQUAL and USDA reference values
+
+| Food | Open-Food-Calories (kcal/100g) | Reference (CIQUAL/USDA) | Estimated gap |
 | :--- | :--- | :--- | :--- |
-| Riz blanc (cru) | 350 | 350 | 0 % |
-| Riz blanc (cuit) | 130 | 130 | 0 % |
-| Pâtes (crues) | 350 | 353 | ~ 1 % |
-| Pâtes (cuites) | 150 | 158 | ~ 5 % |
-| Blanc de poulet | 110 | 110 - 120 | ~ 4 % |
-| Bœuf haché 5% | 125 | 125 - 129 | ~ 2 % |
-| Huile de noisette | 884 | 900 | ~ 1,7 % |
-| Magnum (bâtonnet) | 300 | 310 | ~ 3 % |
-| Pain au lait | 300 | 320 - 340 | ~ 9 % |
-| Sauté de porc aux légumes | 165 | 150 - 170 | ~ 3 % |
+| Riz blanc (cru) | 350 | 350 | 0% |
+| Riz blanc (cuit) | 130 | 130 | 0% |
+| Pates (crues) | 350 | 353 | ~1% |
+| Pates (cuites) | 150 | 158 | ~5% |
+| Blanc de poulet | 110 | 110-120 | ~4% |
+| Boeuf hache 5% | 125 | 125-129 | ~2% |
+| Huile de noisette | 884 | 900 | ~1.7% |
+| Magnum (batonnet) | 300 | 310 | ~3% |
+| Pain au lait | 300 | 320-340 | ~9% |
+| Saute de porc aux legumes | 165 | 150-170 | ~3% |
 
-Coverage: 5000 + global entries.
+## Repository structure
 
-Data Integrity: 100% structured (Bilingual FR/EN).
+```
+.
+├── data/
+│   ├── Open-food-calories.json          # current dataset (schema v2)
+│   └── Open-food-calories-10_03_26.json # legacy snapshot (schema v1)
+├── data-schema.json                     # JSON Schema for the v2 format
+├── CLI/
+│   ├── ofc_cli.py                       # command-line search tool
+│   └── ofc_server.py                    # local REST API server
+├── examples/
+│   ├── app.py                           # Streamlit demo app
+│   └── chek_data.py                     # duplicate-check script
+├── index.html                           # static web app (GitHub Pages)
+├── API.md                               # API reference
+├── CONTRIBUTING.md                      # contribution guidelines
+└── LICENSE
+```
 
-Reliability: 98% confidence level on macronutrient estimates.
+The dataset that is actively maintained and used by `index.html` and every tool in this repository is `data/Open-food-calories.json`. The `-10_03_26` file is kept only as a historical snapshot of the older, flat schema and should not be used for new integrations.
 
-📂 Database Structure
-Every entry in food.json follows a strict schema to ensure compatibility with your applications:
+## Data format (schema v2)
 
-JSON
+Every entry in `data/Open-food-calories.json` follows the schema defined in `data-schema.json`.
 
+```json
+{
+  "id": "riz-blanc-cuit",
+  "name": {
+    "fr": "Riz blanc (cuit)",
+    "en": "White rice (cooked)"
+  },
+  "category": "grains",
+  "state": "cooked",
+  "type": "solid",
+  "kcal_per_100g": 130,
+  "protein_g": 2.7,
+  "fat_g": 0.3,
+  "carbs_g": 28.0,
+  "fiber_g": null,
+  "sugars_g": null,
+  "saturated_fat_g": null,
+  "salt_g": null,
+  "alcohol_g": null,
+  "weight_per_unit": null,
+  "emoji": "rice",
+  "source": "CIQUAL",
+  "confidence": "high"
+}
+```
 
+| Field | Type | Description |
+| :--- | :--- | :--- |
+| `id` | string | Stable identifier, slug form. Never changes once published. |
+| `name.fr` | string | Name in French. |
+| `name.en` | string | Name in English. |
+| `category` | string | One of: `beverages`, `dairy_eggs`, `meat`, `seafood`, `fruits`, `vegetables`, `grains`, `legumes`, `nuts_seeds`, `fats_oils`, `sweets`, `condiments`, `prepared`, `uncategorized`. |
+| `state` | string or null | One of: `raw`, `cooked`, `fried`, `dried`, `canned`, or null. |
+| `type` | string | One of: `solid`, `liquid`, `unit`. |
+| `kcal_per_100g` | number | Calories per 100g or 100ml. |
+| `protein_g` | number or null | Grams of protein per 100g/ml. |
+| `fat_g` | number or null | Grams of fat per 100g/ml. |
+| `carbs_g` | number or null | Grams of carbohydrates per 100g/ml. |
+| `fiber_g` | number or null | Grams of fiber per 100g/ml. |
+| `sugars_g` | number or null | Grams of sugar per 100g/ml. |
+| `saturated_fat_g` | number or null | Grams of saturated fat per 100g/ml. |
+| `salt_g` | number or null | Grams of salt per 100g/ml. |
+| `alcohol_g` | number or null | Grams of alcohol per 100g/ml. |
+| `weight_per_unit` | number or null | Average weight in grams of one piece, when the food is typically counted rather than weighed (an egg, an apple). Null if the food is measured by weight. |
+| `emoji` | string | Representative icon. |
+| `source` | string or null | Origin of the values: `CIQUAL`, `USDA`, `OFF:<barcode>`, `estimated`, or `legacy`. |
+| `confidence` | string | One of: `high`, `medium`, `low`, `unknown`. |
 
-    "name": "Riz blanc (cuit)",           // Nom de l'aliment (Français)
-    "english_name": "White rice (cooked)", // Name of the food (English)
-    "kcal_per_100g": 130,                 // Calories for 100g / 100ml
-    "emoji": "🍚",                        // Visual representation
-    "type": "solid",                      // 'solid' or 'liquid'
-    "weight_per_unit": 0                  // Average weight of 1 piece (if applicable)
+This schema is a breaking change from the original flat format (`name` as a plain string, `english_name`, no `id`, no macronutrients). Any integration built against the old shape needs to be updated to read `name.fr` / `name.en` and, where relevant, the new macronutrient fields.
 
-🛠 How to use the data?
+## Data quality report
 
+Total entries: 5,037
 
-1. In JavaScript (Web App)
-If you want to create a search bar or a calorie calculator:
+Macronutrient coverage:
 
-JavaScript
-<pre>
-// Load the database
-const response = await fetch('./data/food.json');
+- Inherited from the original file: 1,010
+- Added from CIQUAL/USDA: 121
+- Still missing (null): 3,906
+
+By confidence level:
+
+- `unknown`: 3,906
+- `medium`: 1,010
+- `high`: 121
+
+By category:
+
+| Category | Entries |
+| :--- | :--- |
+| uncategorized | 779 |
+| beverages | 679 |
+| fruits | 542 |
+| vegetables | 534 |
+| meat | 425 |
+| dairy_eggs | 406 |
+| grains | 367 |
+| sweets | 338 |
+| condiments | 271 |
+| seafood | 255 |
+| nuts_seeds | 148 |
+| legumes | 137 |
+| prepared | 133 |
+| fats_oils | 23 |
+
+Known issues:
+
+- Near-duplicate French names: 776 entries share a name or a close variant (for example multiple cheddar, mozzarella, or oil entries with numeric suffixes). These are distinct products, not errors, but deduplication tooling should account for this.
+- Atwater-inconsistent entries: 119 entries where the declared calorie value diverges noticeably from the value calculated from protein/fat/carb grams (for example carotte: declared 41, calculated 31).
+- Alcohol not accounted for: 69 alcoholic beverages where the calculated calories do not include the contribution of `alcohol_g`, producing a large gap between declared and calculated values (for example vodka: declared 231, calculated 0).
+- Out-of-range value: 1 entry (`epice-mastic-larme-de-mastic`) at exactly 1000 kcal/100g, at the edge of the schema's allowed range.
+
+These are tracked for cleanup; contributions that correct any of the above are welcome, see [Contributing](#contributing).
+
+## Using the raw JSON
+
+### JavaScript
+
+```javascript
+const response = await fetch('./data/Open-food-calories.json');
 const foods = await response.json();
 
-// Example: Find calories for "Chicken breast"
-const item = foods.find(f => f.english_name === "Chicken breast");
+const item = foods.find(f => f.name.en === 'White rice (cooked)');
 
 if (item) {
-    console.log(`The ${item.emoji} ${item.name} has ${item.kcal_per_100g} kcal per 100g.`);
-    
+  console.log(`${item.name.fr} has ${item.kcal_per_100g} kcal per 100g.`);
 }
 
-// Example: Calculate calories for a specific weight (e.g., 250g)
 const weight = 250;
 const totalKcal = (item.kcal_per_100g * weight) / 100;
 console.log(`Total: ${totalKcal} kcal for ${weight}g`);
-    </pre>
+```
 
+### Python
 
-
-2. In Python (Data Analysis)
-Perfect for calculating a meal's total or building a nutrition bot:
-
-Python
-<pre>
+```python
 import json
 
-# Open the file
-with open('data/food.json', 'r', encoding='utf-8') as f:
+with open('data/Open-food-calories.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
-# Search for an item
-search_term = "Oeuf"
-results = [food for food in data if search_term.lower() in food['name'].lower()]
+search_term = 'oeuf'
+results = [food for food in data if search_term.lower() in food['name']['fr'].lower()]
 
 for r in results:
-    # Use weight_per_unit if it's an item you eat by unit (like an egg)
-    if r['weight_per_unit'] > 0:
+    if r['weight_per_unit']:
         kcal_unit = (r['kcal_per_100g'] * r['weight_per_unit']) / 100
-        print(f"{r['emoji']} {r['name']}: {kcal_unit} kcal per unit")
-Understanding weight_per_unit
-</pre>
+        print(f"{r['name']['fr']}: {kcal_unit} kcal per unit")
+    else:
+        print(f"{r['name']['fr']}: {r['kcal_per_100g']} kcal per 100g")
+```
 
-This field is key for user experience.
+`weight_per_unit` is null when the food is normally measured by weight (rice, flour), and set to the average weight in grams when the food is normally counted by piece (an egg, an apple). An apple with `kcal_per_100g: 52` and `weight_per_unit: 150` amounts to 78 kcal per apple.
 
-If <pre> weight_per_unit is 0: </pre>  The food is usually measured in grams (like rice or flour).
+## Command-line tool
 
-If <pre> weight_per_unit is > 0: </pre>  You can calculate calories per piece.
+`CLI/ofc_cli.py` is a dependency-free command-line client for the dataset. It resolves `data/Open-food-calories.json` relative to its own location, so it works whether it is run from the repository root or from inside `CLI/`.
 
-Example: If an Apple (Pomme) has <pre> kcal_per_100g: 52 </pre> and <pre> weight_per_unit: 150 </pre>, then one apple = 78 kcal.
+```
+python3 CLI/ofc_cli.py search pizza
+python3 CLI/ofc_cli.py search poulet --lang fr --category meat
+python3 CLI/ofc_cli.py get riz-blanc-cuit
+python3 CLI/ofc_cli.py get riz-blanc-cuit --json
+python3 CLI/ofc_cli.py categories
+python3 CLI/ofc_cli.py stats
+```
 
-Contributing
-Want to add new foods?
+Options for `search`:
 
-Fork the project.
+| Option | Description |
+| :--- | :--- |
+| `query` | Search term, matched against the name. Leave empty to list without filtering by name. |
+| `--lang` | `fr`, `en`, or `any` (default). Restricts which name field is matched. |
+| `--category` | Filter by one of the categories listed above. |
+| `--type` | Filter by `solid`, `liquid`, or `unit`. |
+| `--limit` | Maximum number of results (default 15). |
+| `--json` | Output raw JSON instead of formatted text. |
+| `--verbose`, `-v` | Print full nutritional detail for each result. |
+| `--file` | Override the dataset path. |
 
-Add your entries in food.json following the alphabetical order (optional but preferred).
+## Local REST API
 
+`CLI/ofc_server.py` starts a local HTTP server exposing the dataset, using only the Python standard library, no installation required.
 
-# Rapport qualite - Open-Food-Calories
+```
+python3 CLI/ofc_server.py --port 8000
+```
 
-Total : **5037** entrees
+| Route | Description |
+| :--- | :--- |
+| `GET /all` | Returns the full dataset. |
+| `GET /search?q=&lang=&category=&type=&limit=` | Same filters as the CLI search command. |
+| `GET /food/<id>` | Returns a single entry by its `id`. |
+| `GET /categories` | Returns entry counts per category. |
 
-## Couverture des macronutriments
+Examples:
 
-- Heritees du fichier d'origine : 1010
-- Ajoutees depuis CIQUAL/USDA : 121
-- **Toujours manquantes (null) : 3906**
+```
+curl "http://localhost:8000/search?q=pizza&category=prepared"
+curl "http://localhost:8000/food/riz-blanc-cuit"
+curl "http://localhost:8000/categories"
+```
 
-## Categories
+Responses are JSON, served with `Access-Control-Allow-Origin: *`, so the server can be queried directly from a browser-based prototype during development.
 
-- `uncategorized` : 779
-- `beverages` : 679
-- `fruits` : 542
-- `vegetables` : 534
-- `meat` : 425
-- `dairy_eggs` : 406
-- `grains` : 367
-- `sweets` : 338
-- `condiments` : 271
-- `seafood` : 255
-- `nuts_seeds` : 148
-- `legumes` : 137
-- `prepared` : 133
-- `fats_oils` : 23
+## Contributing
 
-## Problemes detectes
+The goal is to grow this dataset well beyond 5,000 entries while keeping it clean. Contributions of new entries, corrections to the issues listed in [Data quality report](#data-quality-report), and improvements to the tooling are all welcome.
 
+All data changes are made in `data/Open-food-calories.json`, following the schema described above and validated by `data-schema.json`. Before opening a pull request:
 
-### doublons_nom_fr (776)
+- Check for an existing entry with the same or a very similar name before adding a new one.
+- Provide both `name.fr` and `name.en`.
+- Set `state` and `type` accurately; use `liquid` for drinks and oils, `unit` for foods normally counted by piece, `solid` otherwise.
+- Set `weight_per_unit` when the food is normally counted by piece, leave it null otherwise.
+- Set `source` and `confidence` honestly; use `estimated` and `low`/`medium` rather than guessing a `high`-confidence value.
+- Validate the JSON syntax before committing.
+- Run `python3 CLI/ofc_cli.py stats` against the updated file to sanity-check totals and confidence levels before opening the pull request.
 
-- maquereau
-- homard
-- beurre-doux
-- cheddar
-- mozzarella
-- parmesan
-- brie
-- camembert
-- roquefort
-- feta
-- skyr
-- lait-entier
-- lait-ecreme
-- riz-complet-cru
-- quinoa-cuit
-- noix
-- noix-de-cajou
-- pistaches
-- noix-de-pecan
-- noisettes
-- noix-de-macadamia
-- graines-de-tournesol
-- graines-de-chia
-- graines-de-lin
-- graines-de-courge
-- sauce-soja
-- vinaigre-balsamique
-- vinaigre-de-cidre
-- huile-de-tournesol
-- huile-de-coco
-- huile-de-sesame
-- houmous
-- guacamole
-- chocolat-au-lait
-- chocolat-blanc
-- bonbons-gelifies
-- glace-a-la-vanille
-- brownie
-- eau-gazeuse
-- limonade
-- ... et 736 autres
+See `CONTRIBUTING.md` for the full process.
 
-### atwater_incoherent (119)
+## License
 
-- carotte (declare 41, calcule 31)
-- concombre (declare 15, calcule 11)
-- framboise (declare 52, calcule 31)
-- citron (declare 29, calcule 19)
-- aubergine (declare 25, calcule 18)
-- poireau (declare 61, calcule 27)
-- champignon-de-paris (declare 22, calcule 17)
-- radis (declare 16, calcule 12)
-- celeri (declare 16, calcule 13)
-- cote-de-porc (declare 231, calcule 169)
-- bacon (declare 541, calcule 274)
-- entrecote (declare 291, calcule 212)
-- maquereau (declare 305, calcule 202)
-- moule (declare 86, calcule 106)
-- yaourt-grec (declare 97, calcule 117)
-- moutarde (declare 66, calcule 121)
-- vinaigre-balsamique (declare 88, calcule 70)
-- seitan (declare 370, calcule 134)
-- figue (declare 74, calcule 56)
-- saumon-fume (declare 117, calcule 189)
-- margarine (declare 717, calcule 543)
-- yaourt-nature (declare 61, calcule 46)
-- poire-2 (declare 40, calcule 50)
-- haricots-blancs-cuits (declare 139, calcule 104)
-- cafe-instantane-sans-sucre (declare 4, calcule 3)
-- cafe-decafeine-2 (declare 3, calcule 2)
-- the-blanc (declare 1, calcule 0)
-- tisane-verveine (declare 1, calcule 0)
-- tisane-gingembre-citron (declare 3, calcule 2)
-- tisane-echinacea (declare 2, calcule 1)
-- rooibos-infuse (declare 2, calcule 1)
-- jus-de-citron-presse (declare 22, calcule 30)
-- jus-de-citron-vert-presse (declare 25, calcule 34)
-- red-bull-sans-sucre (declare 6, calcule 3)
-- monster-zero-sucre (declare 5, calcule 2)
-- celsius-energy (declare 4, calcule 2)
-- prosecco (declare 72, calcule 15)
-- brandy (declare 231, calcule 0)
-- bourbon (declare 234, calcule 0)
-- prosecco-rose (declare 75, calcule 17)
-- ... et 79 autres
-
-### alcool_non_comptabilise (69)
-
-- vin-blanc-sec (declare 77, calcule 11)
-- vin-blanc-doux (declare 100, calcule 40)
-- vin-rose-2 (declare 83, calcule 24)
-- champagne-2 (declare 76, calcule 16)
-- cava-mousseux-espagnol (declare 76, calcule 17)
-- biere-blonde (declare 43, calcule 16)
-- biere-brune-2 (declare 50, calcule 25)
-- biere-blanche-2 (declare 45, calcule 20)
-- biere-ipa (declare 52, calcule 24)
-- biere-stout-guinness-type (declare 45, calcule 16)
-- cidre-brut-2 (declare 36, calcule 10)
-- cidre-doux-2 (declare 50, calcule 28)
-- vodka-2 (declare 231, calcule 0)
-- whisky-2 (declare 250, calcule 0)
-- rhum-blanc (declare 230, calcule 0)
-- rhum-ambre-2 (declare 239, calcule 0)
-- gin-2 (declare 263, calcule 0)
-- tequila-2 (declare 231, calcule 0)
-- cognac-2 (declare 239, calcule 0)
-- scotch-whisky (declare 250, calcule 0)
-- whisky-irlandais (declare 240, calcule 0)
-- kahlua-liqueur-cafe (declare 308, calcule 214)
-- amaretto-2 (declare 320, calcule 128)
-- porto-rouge (declare 158, calcule 49)
-- porto-blanc (declare 140, calcule 40)
-- whisky-sour (declare 90, calcule 32)
-- gin-tonic (declare 68, calcule 20)
-- kir (declare 80, calcule 24)
-- mulled-wine-vin-chaud (declare 95, calcule 40)
-- mirin-vin-de-riz-sucre-2 (declare 235, calcule 169)
-- vinaigre-de-cidre-dilue (declare 5, calcule 4)
-- biere-artisanale-ipa (declare 55, calcule 26)
-- biere-artisanale-blonde (declare 44, calcule 17)
-- biere-artisanale-ambree (declare 48, calcule 20)
-- sour-beer-biere-acide (declare 43, calcule 16)
-- porter-beer (declare 48, calcule 18)
-- lambic-biere-belge (declare 40, calcule 14)
-- trappiste-biere-belge-forte (declare 65, calcule 29)
-- biere-de-ble-allemande (declare 42, calcule 17)
-- biere-de-cerise-kriek (declare 50, calcule 27)
-- ... et 29 autres
-
-### kcal_hors_bornes (1)
-
-- epice-mastic-larme-de-mastic (1000)
-
-- 
-Open a Pull Request!
-
-📜 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License, see [LICENSE](LICENSE) for details.

@@ -7,16 +7,15 @@ Live demo: https://chpalitom09-bot.github.io/Open-food-calories/
 ## Table of contents
 
 - [Overview](#overview)
-- [Installation](#Installation) 
+- [Installation (pip package)](#installation-pip-package)
 - [Repository structure](#repository-structure)
 - [Data format (schema v2)](#data-format-schema-v2)
 - [Data quality report](#data-quality-report)
 - [Using the raw JSON](#using-the-raw-json)
-- [Command-line tool](#command-line-tool)
+- [Command-line tool (repository scripts)](#command-line-tool-repository-scripts)
 - [Local REST API](#local-rest-api)
 - [Contributing](#contributing)
 - [License](#license)
-  
 
 ## Overview
 
@@ -37,11 +36,133 @@ Live demo: https://chpalitom09-bot.github.io/Open-food-calories/
 | Pain au lait | 300 | 320-340 | ~9% |
 | Saute de porc aux legumes | 165 | 150-170 | ~3% |
 
+## Installation (pip package)
 
-## Installation
+The database is also published as a standalone Python package. This is the recommended way to use it: no need to clone the repository, the package fetches the dataset itself and caches it locally.
 
-    pip install open-food-calories
-    open-food-calories search pizza
+```
+pip install open-food-calories
+```
+
+Two equivalent commands are installed: `open-food-calories` and the shorter alias `ofc`.
+
+```
+open-food-calories search pizza
+```
+
+On first use, the package downloads `data/Open-food-calories.json` from this repository and caches it in `~/.cache/open-food-calories/` for 24 hours. If the network is unavailable, it falls back to the last cached copy, or to a snapshot bundled inside the package.
+
+### Commands
+
+| Command | Description |
+| :--- | :--- |
+| `search` | Search foods by name, with filters and sorting. |
+| `get` | Get a single food by its `id`. |
+| `calc` | Compute calories and macros for a given quantity of a food. |
+| `compare` | Compare two or more foods side by side. |
+| `random` | Get a random food, optionally filtered. |
+| `categories` | List categories and how many entries each has. |
+| `stats` | Show database-wide statistics. |
+| `cache` | Inspect or clear the local data cache. |
+
+#### search
+
+```
+open-food-calories search pizza
+open-food-calories search poulet --lang fr --category meat
+open-food-calories search "" --category fruits --sort kcal --desc --limit 20
+```
+
+| Option | Description |
+| :--- | :--- |
+| `query` | Search term, matched against the name. Leave empty to list without filtering by name. |
+| `--lang` | `fr`, `en`, or `any` (default). Restricts which name field is matched and displayed. |
+| `--category` | Filter by category (see the list in [Data format](#data-format-schema-v2)). |
+| `--type` | Filter by `solid`, `liquid`, or `unit`. |
+| `--sort` | Sort by `name`, `kcal`, `protein`, `fat`, or `carbs`. |
+| `--desc` | Sort in descending order (used together with `--sort`). |
+| `--limit` | Maximum number of results (default 15). |
+| `--json` | Output raw JSON instead of formatted text. |
+| `--verbose`, `-v` | Print full nutritional detail for each result. |
+
+#### get
+
+```
+open-food-calories get riz-blanc-cuit
+open-food-calories get riz-blanc-cuit --json
+```
+
+Looks up a single entry by its exact `id`.
+
+#### calc
+
+```
+open-food-calories calc riz-blanc-cuit --grams 250
+open-food-calories calc pizza-part-moyenne --units 2
+open-food-calories calc poulet --lang fr --grams 150 --json
+```
+
+Computes calories and macronutrients for a given quantity of a food, identified by `id` or by a name search (the first match is used).
+
+| Option | Description |
+| :--- | :--- |
+| `food` | Food `id`, or a name to search for. |
+| `--grams` | Quantity in grams or milliliters (default 100). |
+| `--units` | Quantity in pieces, for foods that have `weight_per_unit` set (mutually exclusive with `--grams` in practice: pass whichever matches how the food is normally counted). |
+| `--lang` | Language used for the search and the displayed name. |
+| `--json` | Output raw JSON. |
+
+#### compare
+
+```
+open-food-calories compare riz-blanc-cru riz-blanc-cuit
+open-food-calories compare "blanc de poulet" "cuisse de poulet" --lang fr
+```
+
+Displays calories and macronutrients for two or more foods side by side, as a table (or as JSON with `--json`). Each argument can be an `id` or a name search.
+
+#### random
+
+```
+open-food-calories random
+open-food-calories random --category fruits
+open-food-calories random --type liquid --lang en
+```
+
+Returns one random entry, optionally restricted by `--category` and `--type`.
+
+#### categories
+
+```
+open-food-calories categories
+```
+
+Lists every category with its entry count, sorted from the largest to the smallest.
+
+#### stats
+
+```
+open-food-calories stats
+```
+
+Prints the total entry count, macronutrient coverage, and the breakdown by confidence level.
+
+#### cache
+
+```
+open-food-calories cache info
+open-food-calories cache clear
+```
+
+`cache info` shows where the local cache lives, its size, its age, and whether it is still considered fresh. `cache clear` deletes it, forcing a fresh download on the next command.
+
+### Global options
+
+| Option | Description |
+| :--- | :--- |
+| `--refresh` | Force re-downloading the dataset instead of using the cache, on any command. |
+| `--offline` | Never touch the network; use the cache or the bundled snapshot only. |
+| `--version` | Print the installed package version and exit. |
 
 ## Repository structure
 
@@ -203,9 +324,9 @@ for r in results:
 
 `weight_per_unit` is null when the food is normally measured by weight (rice, flour), and set to the average weight in grams when the food is normally counted by piece (an egg, an apple). An apple with `kcal_per_100g: 52` and `weight_per_unit: 150` amounts to 78 kcal per apple.
 
-## Command-line tool
+## Command-line tool (repository scripts)
 
-`CLI/ofc_cli.py` is a dependency-free command-line client for the dataset. It resolves `data/Open-food-calories.json` relative to its own location, so it works whether it is run from the repository root or from inside `CLI/`.
+For working directly against a local checkout of this repository (for example while contributing data), `CLI/ofc_cli.py` is a dependency-free, standalone version of the search command that does not require installing the pip package. It resolves `data/Open-food-calories.json` relative to its own location, so it works whether it is run from the repository root or from inside `CLI/`.
 
 ```
 python3 CLI/ofc_cli.py search pizza

@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Open Food Calories</title>
 <meta name="description" content="Recherchez la valeur nutritionnelle de plus de 5 000 aliments.">
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -58,12 +60,15 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:none}
 .wordmark{
   display:flex;align-items:center;gap:.6rem;
   font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:1.05rem;letter-spacing:-.02em;
-  opacity:0;transform:translateY(-6px);
-  transition:opacity .3s ease,transform .3s ease;
-  pointer-events:none;
+  transition:transform .3s ease;
 }
-.wordmark.is-visible{opacity:1;transform:translateY(0);pointer-events:auto}
+.wordmark.is-visible{transform:translateY(0)}
 .wordmark .dot{width:11px;height:11px;border-radius:50%;background:var(--accent)}
+.wordmark .logo-img{
+  width:28px;height:28px;border-radius:8px;object-fit:cover;
+  box-shadow:0 1px 2px rgba(21,29,26,.12);
+  flex:none;
+}
 
 .lang{display:flex;align-items:center;gap:2px;background:var(--surface);border:1px solid var(--line);border-radius:100px;padding:3px}
 .lang button{
@@ -112,6 +117,13 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:none}
   max-width:1240px;
   margin:0 auto;
   padding:0 clamp(1rem,4vw,2.5rem);
+}
+.hero-logo{
+  width:56px;height:56px;border-radius:16px;object-fit:cover;
+  margin-bottom:1.1rem;
+  box-shadow:0 4px 16px -6px rgba(21,29,26,.25);
+  opacity:calc(1 - var(--p, 0) * 3.2);
+  transform:translateY(calc(var(--p, 0) * 14px));
 }
 .intro-title{
   font-family:'Bricolage Grotesque',sans-serif;
@@ -219,18 +231,25 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:none}
 }
 
 .card{
+  position:relative;
   background:var(--surface);
   border:1px solid var(--line);
   border-radius:var(--r-md);
-  padding:1.25rem;
+  padding:1.4rem 1.25rem 1.25rem;
   display:flex;flex-direction:column;gap:1.1rem;
+  overflow:hidden;
   opacity:0;
   transform:translateY(22px) scale(.98);
   transition:border-color .18s ease, box-shadow .28s ease, transform .55s cubic-bezier(.16,.8,.24,1), opacity .55s ease;
   transition-delay:var(--rd, 0s);
 }
 .card.in-view{opacity:1;transform:translateY(0) scale(1)}
-.card:hover{border-color:var(--line-strong);box-shadow:var(--shadow);transform:translateY(-3px) scale(1)}
+.card:hover{border-color:var(--line-strong);box-shadow:var(--shadow);transform:translateY(-4px) scale(1)}
+.card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:4px;
+  background:var(--m, var(--accent));
+  opacity:.85;
+}
 
 .card-top{display:flex;gap:.9rem;align-items:flex-start}
 .icon-tile{
@@ -409,7 +428,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0 3rem;font-size:.85rem;col
 
 <div class="topbar">
   <div class="shell topbar-inner">
-    <div class="wordmark" id="miniMark"><span class="dot"></span><span id="miniMarkText">Open Food Calories</span></div>
+    <div class="wordmark" id="miniMark"><img class="logo-img" src="logo.png" alt="" onerror="this.style.display='none'"><span id="miniMarkText">Open Food Calories</span></div>
     <div class="lang" role="group" id="langSwitch">
       <button data-lang="fr" aria-pressed="true">
         <svg class="flag" viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#0d2d8f"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#d8232a"/></svg>
@@ -428,6 +447,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0 3rem;font-size:.85rem;col
     <div class="intro-bg intro-bg-wide"></div>
     <div class="intro-bg intro-bg-focus"></div>
     <div class="intro-content">
+      <img class="hero-logo" src="logo.png" alt="Open Food Calories" onerror="this.style.display='none'">
       <h1 class="intro-title" id="heroTitle">Ce que contient vraiment votre assiette.</h1>
       <p class="lede intro-lede" id="heroLede"></p>
       <div class="searchbar intro-search">
@@ -722,7 +742,7 @@ function cardHTML(f){
   tags.push(`<span class="tag">${L.types[f.type]||f.type}</span>`);
   if(f.confidence === 'low') tags.push(`<span class="tag warn">${L.estimate}</span>`);
 
-  return `<article class="card">
+  return `<article class="card" style="--m:${energyColor(f.kcal)}">
     <div class="card-top">
       <div class="icon-tile"><svg aria-hidden="true"><use href="#i-${iconFor(f)}"/></svg></div>
       <div>

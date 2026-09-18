@@ -19,25 +19,31 @@
 <style>
 :root{
   --ink:#151d1a;
-  --ink-soft:#5b6a64;
+  --ink-soft:#556660;
+  --ink-muted:#83948e;
   --paper:#eef1ea;
   --surface:#ffffff;
+  --surface-alt:#f8faf6;
   --line:#dde3da;
   --line-strong:#c3ccc0;
   --accent:#0e5c55;
-  --accent-soft:#e2f0ec;
+  --accent-soft:#e3f2ee;
+  --accent-light:#edf7f4;
 
-  --e-low:#2f8f5b;
-  --e-mid:#c98a12;
-  --e-high:#c2452f;
+  --e-low:#1e8e5a;
+  --e-mid:#cf8813;
+  --e-high:#c8422d;
 
-  --p-prot:#2f6fae;
-  --p-carb:#c98a12;
-  --p-fat:#a8558f;
+  --p-prot:#2b6cb0;
+  --p-carb:#d97706;
+  --p-fat:#9d4edd;
 
-  --r-md:16px;
-  --r-lg:24px;
-  --shadow:0 1px 2px rgba(21,29,26,.04), 0 8px 24px -12px rgba(21,29,26,.18);
+  --r-sm:10px;
+  --r-md:18px;
+  --r-lg:26px;
+  --shadow-sm:0 2px 6px rgba(21,29,26,.04);
+  --shadow-card:0 4px 20px -6px rgba(21,29,26,.07), 0 1px 3px rgba(21,29,26,.03);
+  --shadow-hover:0 14px 34px -10px rgba(21,29,26,.15), 0 2px 6px rgba(21,29,26,.04);
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -55,7 +61,6 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:none}
 
 .shell{max-width:1240px;margin:0 auto;padding:0 clamp(1rem,4vw,2.5rem)}
 
-/* Topbar transparente au repos, floutée au scroll */
 .topbar{
   position:sticky;top:0;z-index:40;
   background:rgba(238,241,234,0);
@@ -83,7 +88,6 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:none}
   flex:none;
 }
 
-/* Recherche intégrée dans la Topbar */
 .topbar-search{
   flex:1;
   max-width:480px;
@@ -118,7 +122,7 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:none}
 .intro{
   position:relative;
   height:200vh;
-  margin-top:-64px; /* fusion fluide sous la topbar */
+  margin-top:-64px;
 }
 .intro-stage{
   position:sticky;
@@ -242,90 +246,127 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:none}
 .chip:active{transform:scale(.94)}
 .chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
 
-.countline{padding:1.5rem 0 .75rem;font-size:.9rem;color:var(--ink-soft);display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1.4rem}
+.countline{padding:1.5rem 0 .75rem;font-size:.9rem;color:var(--ink-soft);display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.4rem}
 .countline b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
 .stat-pills{display:flex;flex-wrap:wrap;gap:.5rem}
 .stat-pill{
-  display:inline-flex;align-items:baseline;gap:.35rem;
+  display:inline-flex;align-items:center;gap:.4rem;
   background:var(--surface);border:1px solid var(--line);border-radius:100px;
-  padding:.3rem .75rem;font-size:.78rem;color:var(--ink-soft);
+  padding:.35rem .85rem;font-size:.8rem;color:var(--ink-soft);
+  box-shadow:var(--shadow-sm);
   opacity:0;transform:translateY(4px);
   animation:pillIn .4s ease forwards;
 }
+.stat-pill .lbl{font-weight:500;color:var(--ink-muted)}
 .stat-pill b{color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums}
 @keyframes pillIn{to{opacity:1;transform:translateY(0)}}
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(310px,1fr));
-  gap:1rem;
+  grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+  gap:1.25rem;
   padding-bottom:4rem;
 }
 
 .card{
   position:relative;
   background:var(--surface);
-  border:1px solid var(--line);
+  border:1px solid rgba(221, 227, 218, 0.85);
   border-radius:var(--r-md);
-  padding:1.4rem 1.25rem 1.25rem;
-  display:flex;flex-direction:column;gap:1.1rem;
+  padding:1.35rem 1.35rem 1.25rem;
+  display:flex;flex-direction:column;gap:1.15rem;
+  box-shadow:var(--shadow-card);
   overflow:hidden;
   opacity:0;
   transform:translateY(22px) scale(.98);
-  transition:border-color .18s ease, box-shadow .28s ease, transform .55s cubic-bezier(.16,.8,.24,1), opacity .55s ease;
+  transition:border-color .22s ease, box-shadow .25s ease, transform .45s cubic-bezier(.16,1,.3,1), opacity .45s ease;
   transition-delay:var(--rd, 0s);
 }
 .card.in-view{opacity:1;transform:translateY(0) scale(1)}
-.card:hover{border-color:var(--line-strong);box-shadow:var(--shadow);transform:translateY(-4px) scale(1)}
+.card:hover{
+  border-color:var(--line-strong);
+  box-shadow:var(--shadow-hover);
+  transform:translateY(-5px) scale(1.008);
+}
 .card::before{
   content:"";position:absolute;top:0;left:0;right:0;height:4px;
-  background:var(--m, var(--accent));
-  opacity:.85;
+  background:linear-gradient(90deg, var(--m, var(--accent)), transparent);
+  opacity:.9;
 }
 
-.card-top{display:flex;gap:.9rem;align-items:flex-start}
+.card-top{display:flex;gap:1rem;align-items:flex-start}
 .icon-tile{
-  flex:none;width:46px;height:46px;border-radius:13px;
-  background:var(--accent-soft);color:var(--accent);
+  flex:none;width:48px;height:48px;border-radius:14px;
+  background:linear-gradient(135deg, var(--surface-alt), var(--accent-light));
+  border:1px solid var(--line);
+  color:var(--accent);
   display:grid;place-items:center;
-  transition:transform .35s cubic-bezier(.34,1.56,.64,1),background .2s ease,color .2s ease;
+  box-shadow:0 2px 6px rgba(0,0,0,.03);
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1),background .2s ease,color .2s ease,box-shadow .2s ease;
 }
 .icon-tile svg{width:26px;height:26px}
-.card:hover .icon-tile{transform:rotate(-8deg) scale(1.1);background:var(--accent);color:#fff}
-.card h2{font-size:1.02rem;font-weight:600;line-height:1.3;letter-spacing:-.01em}
-.card .alt{font-size:.82rem;color:var(--ink-soft);margin-top:2px}
-.tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.5rem}
+.card:hover .icon-tile{
+  transform:rotate(-6deg) scale(1.08);
+  background:var(--accent);
+  color:#fff;
+  box-shadow:0 6px 14px -3px rgba(14,92,85,.35);
+}
+.card-header-txt{flex:1;min-width:0}
+.card h2{font-size:1.05rem;font-weight:700;line-height:1.3;letter-spacing:-.015em;color:var(--ink)}
+.card .alt{font-size:.82rem;color:var(--ink-muted);margin-top:2px;font-style:italic}
+.tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:.45rem}
 .tag{
   font-size:.72rem;font-weight:600;
-  padding:.15rem .5rem;border-radius:6px;
-  background:var(--paper);color:var(--ink-soft);border:1px solid var(--line);
+  padding:.18rem .55rem;border-radius:100px;
+  background:var(--surface-alt);color:var(--ink-soft);border:1px solid var(--line);
+  letter-spacing:.01em;
 }
-.tag.warn{background:#fdf3ef;color:var(--e-high);border-color:#f3d9d1}
+.tag.warn{background:#fff3ef;color:var(--e-high);border-color:#fed7cb}
 
+.energy-box{
+  background:var(--surface-alt);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:.8rem .95rem;
+}
 .energy{display:flex;align-items:flex-end;justify-content:space-between;gap:1rem}
-.kcal{display:flex;align-items:baseline;gap:.35rem}
-.kcal .v{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:2.1rem;line-height:1;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
-.kcal .u{font-size:.85rem;color:var(--ink-soft);font-weight:600}
-.per{font-size:.8rem;color:var(--ink-soft);text-align:right;line-height:1.35}
+.kcal{display:flex;align-items:baseline;gap:.3rem}
+.kcal .v{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:2.2rem;line-height:.95;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.kcal .u{font-size:.85rem;color:var(--ink-soft);font-weight:700}
+.per{font-size:.8rem;color:var(--ink-muted);text-align:right;font-weight:500;line-height:1.3}
 
-.meter{display:flex;gap:3px;height:7px;margin-top:.6rem}
-.meter i{flex:1;border-radius:2px;background:var(--line);transition:background-color .45s ease;transition-delay:calc(var(--i, 0) * 35ms)}
+.meter{display:flex;gap:3px;height:6px;margin-top:.7rem}
+.meter i{flex:1;border-radius:3px;background:var(--line);transition:background-color .45s ease;transition-delay:calc(var(--i, 0) * 35ms)}
 .meter i.on{background:var(--m)}
 
-.macros{display:flex;flex-direction:column;gap:.55rem}
-.stack{display:flex;height:8px;border-radius:4px;overflow:hidden;background:var(--paper)}
-.stack span{display:block;height:100%;width:0;transition:width .7s cubic-bezier(.16,.8,.24,1);transition-delay:.1s}
-.legend{display:flex;flex-wrap:wrap;gap:.25rem .9rem;font-size:.8rem;color:var(--ink-soft)}
-.legend b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
-.legend i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:.35rem}
-
-.micro{
-  display:grid;grid-template-columns:repeat(2,1fr);gap:.35rem .9rem;
-  font-size:.8rem;color:var(--ink-soft);
-  border-top:1px solid var(--line);padding-top:.8rem;
+.macros{display:flex;flex-direction:column;gap:.6rem}
+.stack{display:flex;height:8px;border-radius:6px;overflow:hidden;background:var(--paper)}
+.stack span{display:block;height:100%;width:0;transition:width .7s cubic-bezier(.16,1,.3,1);transition-delay:.1s}
+.legend-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem}
+.macro-badge{
+  background:var(--surface-alt);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:.45rem .5rem;
+  text-align:center;
+  display:flex;flex-direction:column;gap:2px;
 }
-.micro div{display:flex;justify-content:space-between;gap:.5rem}
-.micro b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.macro-badge .title{
+  font-size:.7rem;font-weight:600;color:var(--ink-muted);
+  display:flex;align-items:center;justify-content:center;gap:.3rem;
+  text-transform:uppercase;letter-spacing:.03em;
+}
+.macro-badge .title i{width:6px;height:6px;border-radius:50%;display:inline-block}
+.macro-badge .val{font-size:.88rem;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+
+.micro-table{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:.35rem .75rem;
+  font-size:.78rem;color:var(--ink-soft);
+  border-top:1px solid var(--line);padding-top:.75rem;
+}
+.micro-table div{display:flex;justify-content:space-between;gap:.4rem;padding:.15rem 0}
+.micro-table span{color:var(--ink-muted)}
+.micro-table b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
 
 .promo{
   grid-column:1/-1;
@@ -362,8 +403,8 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:none}
 .empty h3{font-family:'Bricolage Grotesque',sans-serif;font-size:1.3rem;color:var(--ink);letter-spacing:-.02em}
 .empty p{margin-top:.4rem}
 
-.skeleton{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1rem}
-.sk{height:230px;border-radius:var(--r-md);background:linear-gradient(90deg,#fff,#f5f7f3,#fff);background-size:200% 100%;animation:sweep 1.4s linear infinite;border:1px solid var(--line)}
+.skeleton{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.25rem}
+.sk{height:260px;border-radius:var(--r-md);background:linear-gradient(90deg,#fff,#f5f7f3,#fff);background-size:200% 100%;animation:sweep 1.4s linear infinite;border:1px solid var(--line)}
 @keyframes sweep{to{background-position:-200% 0}}
 
 .more{grid-column:1/-1;display:flex;justify-content:center;padding:1rem 0 0}
@@ -372,7 +413,7 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:none}
   border-radius:100px;padding:.75rem 1.6rem;font-weight:600;font-size:.92rem;
   transition:border-color .18s ease,transform .18s cubic-bezier(.34,1.56,.64,1),box-shadow .18s ease;
 }
-.more button:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:var(--shadow)}
+.more button:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:var(--shadow-hover)}
 .more button:active{transform:translateY(0) scale(.97)}
 
 footer{border-top:1px solid var(--line);padding:2rem 0 3rem;font-size:.85rem;color:var(--ink-soft);display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between}
@@ -418,13 +459,48 @@ footer{border-top:1px solid var(--line);padding:2rem 0 3rem;font-size:.85rem;col
 .install-banner .btn-dismiss:hover{color:#fff;background:rgba(255,255,255,.08)}
 .install-banner .btn-dismiss svg{width:16px;height:16px}
 
+.cookie-modal{
+  position:fixed;bottom:1.5rem;left:1.5rem;right:1.5rem;max-width:440px;margin:0 auto 0 0;
+  background:rgba(255, 255, 255, 0.96);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--line-strong);
+  border-radius:var(--r-md);
+  padding:1.25rem 1.35rem;
+  box-shadow:0 16px 36px -10px rgba(21, 29, 26, 0.22);
+  z-index:90;
+  display:flex;flex-direction:column;gap:.9rem;
+  transform:translateY(130%);
+  opacity:0;
+  transition:transform .4s cubic-bezier(.16,1,.3,1), opacity .3s ease;
+}
+.cookie-modal.show{
+  transform:translateY(0);
+  opacity:1;
+}
+.cookie-head{display:flex;align-items:center;gap:.6rem}
+.cookie-head svg{width:22px;height:22px;color:var(--accent);flex:none}
+.cookie-head b{font-family:'Bricolage Grotesque',sans-serif;font-size:1.05rem;color:var(--ink)}
+.cookie-body{font-size:.85rem;color:var(--ink-soft);line-height:1.45}
+.cookie-acts{display:flex;gap:.5rem;justify-content:flex-end;margin-top:.2rem}
+.cookie-btn-accept{
+  background:var(--accent);color:#fff;padding:.45rem 1rem;border-radius:100px;
+  font-size:.82rem;font-weight:700;transition:transform .18s ease, background .18s ease;
+}
+.cookie-btn-accept:hover{background:#0a4540;transform:translateY(-1px)}
+.cookie-btn-refuse{
+  background:var(--surface-alt);border:1px solid var(--line);color:var(--ink-soft);
+  padding:.45rem .9rem;border-radius:100px;font-size:.82rem;font-weight:600;
+  transition:color .18s ease, border-color .18s ease;
+}
+.cookie-btn-refuse:hover{color:var(--ink);border-color:var(--ink-soft)}
+
 @media (max-width:640px){
   .grid,.skeleton{grid-template-columns:1fr}
-  .micro{grid-template-columns:1fr}
   .promo{padding:1.4rem}
   .intro{height:170vh}
   .intro-title{transform:translate(calc(var(--p, 0) * -2vw), calc(var(--p, 0) * -20vh)) scale(calc(1 - var(--p, 0) * .7))}
-  #miniMarkText{display:none} /* préserve de la place pour la searchbar sur mobile */
+  #miniMarkText{display:none}
+  .cookie-modal{left:1rem;right:1rem;bottom:1rem;max-width:none}
 }
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms !important;transition-duration:.01ms !important}
@@ -437,7 +513,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0 3rem;font-size:.85rem;col
 <symbol id="i-apple" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8.5c-1.2-1.6-3-2.2-4.6-1.5C5.3 7.9 4.3 10.4 5 13c.8 3 3 6.5 4.8 6.5.9 0 1.5-.5 2.2-.5s1.3.5 2.2.5c1.8 0 4-3.5 4.8-6.5.7-2.6-.3-5.1-2.4-6-1.6-.7-3.4-.1-4.6 1.5Z"/><path d="M12 8.5V5.6c0-1.2 1-2.1 2.2-2.1"/></symbol>
 <symbol id="i-citrus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17M3.5 12h17M6 6l12 12M18 6 6 18"/></symbol>
 <symbol id="i-berry" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="14" r="4"/><circle cx="15.5" cy="15" r="3.5"/><circle cx="12.5" cy="8.5" r="3.2"/><path d="M12.5 5.3V3.5"/></symbol>
-<symbol id="i-grape" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="12" r="2.4"/><circle cx="15.5" cy="12" r="2.4"/><circle cx="12" cy="16" r="2.4"/><circle cx="12" cy="8.5" r="2.4"/><path d="M12 6V3.8c1.6 0 2.6-.8 3.2-1.8"/></symbol>
+<symbol id="i-grape" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8.5" cy="12" r="2.4"/><circle cx="15.5" cy="12" r="2.4"/><circle cx="12" cy="8.5" r="2.4"/><path d="M12 6V3.8c1.6 0 2.6-.8 3.2-1.8"/></symbol>
 <symbol id="i-banana" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 5.5c0 7.5 4.8 13 11.5 13 2.3 0 3.5-1 3.5-2.3 0-2.6-4.8-1.8-7.8-4.9C8.7 8.2 9.4 4.5 7 4.5c-1.6 0-2.5.4-2.5 1Z"/></symbol>
 <symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 4C9.5 4 4.5 8.6 4.5 15.3c0 1.8.7 3.6 1.4 4.2C11.4 19.5 20 14 20 4Z"/><path d="M5.9 19.5C9 15 13 11.8 17.5 9.8"/></symbol>
 <symbol id="i-carrot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m14.5 9.5-9 9c-.6.6-.4 1.6.4 1.9l2.4.8c.4.1.9 0 1.2-.3l8.4-8.4"/><path d="m14.5 9.5 3.4 2.9"/><path d="M14 9.8c1-2 .6-4.2-.8-5.6 1.9-.6 4 0 5.3 1.4 1.3 1.3 1.9 3.3 1.4 5.2-1.5-1.4-3.8-1.8-5.9-1Z"/></symbol>
@@ -488,6 +564,7 @@ footer{border-top:1px solid var(--line);padding:2rem 0 3rem;font-size:.85rem;col
 <symbol id="i-link" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13.5a4 4 0 0 0 5.7 0l2.8-2.8a4 4 0 0 0-5.7-5.7l-1.4 1.4"/><path d="M14 10.5a4 4 0 0 0-5.7 0l-2.8 2.8a4 4 0 1 0 5.7 5.7l1.4-1.4"/></symbol>
 <symbol id="i-share" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="17.5" cy="5.5" r="2.5"/><circle cx="6.5" cy="12" r="2.5"/><circle cx="17.5" cy="18.5" r="2.5"/><path d="m8.7 10.8 6.6-3.9M8.7 13.2l6.6 3.9"/></symbol>
 <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 9.5 17 19 6.5"/></symbol>
+<symbol id="i-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/><path d="M19 3v4M17 5h4M5 17v4M3 19h4"/></symbol>
 </svg>
 
 <div class="topbar" id="topbar">
@@ -497,7 +574,6 @@ footer{border-top:1px solid var(--line);padding:2rem 0 3rem;font-size:.85rem;col
       <span id="miniMarkText">Open Food Calories</span>
     </div>
     
-    <!-- Barre de recherche Topbar (apparait au scroll) -->
     <div class="topbar-search" id="topbarSearch">
       <div class="searchbar">
         <svg aria-hidden="true"><use href="#i-search"/></svg>
@@ -528,7 +604,6 @@ footer{border-top:1px solid var(--line);padding:2rem 0 3rem;font-size:.85rem;col
       <h1 class="intro-title" id="heroTitle">Ce que contient vraiment votre assiette.</h1>
       <p class="lede intro-lede" id="heroLede"></p>
       
-      <!-- Barre de recherche Principale Hero -->
       <div class="searchbar intro-search" id="heroSearchWrap">
         <svg aria-hidden="true"><use href="#i-search"/></svg>
         <input type="search" id="searchInput" autocomplete="off" spellcheck="false" aria-label="Recherche">
@@ -569,24 +644,32 @@ footer{border-top:1px solid var(--line);padding:2rem 0 3rem;font-size:.85rem;col
   </div>
 </div>
 
+<div class="cookie-modal" id="cookieModal" role="dialog" aria-label="Gestion des recommandations">
+  <div class="cookie-head">
+    <svg aria-hidden="true"><use href="#i-sparkles"/></svg>
+    <b id="cookieTitle">Recommandations personnalisées</b>
+  </div>
+  <div class="cookie-body" id="cookieText">
+    Acceptez-vous l'enregistrement local de vos préférences pour vous proposer de futures recommandations nutritionnelles adaptées ?
+  </div>
+  <div class="cookie-acts">
+    <button class="cookie-btn-refuse" id="cookieRefuse">Refuser</button>
+    <button class="cookie-btn-accept" id="cookieAccept">Accepter</button>
+  </div>
+</div>
+
 <script>
-/* ----------------------------------------------------
-   1. GÉNÉRATEUR ALÉATOIRE DE FOND (SEED / PALETTES)
----------------------------------------------------- */
 (function generateDynamicBackground(){
   const PALETTES = [
-    { c1: '#f5cda1', c2: '#9ed3a5', c3: '#e9a194', c4: '#8fc5db' }, // Pêche & Menthe (Défaut doux)
-    { c1: '#ffbe8a', c2: '#ffd166', c3: '#f49097', c4: '#a3d8c8' }, // Agrumes & Fruits d'été
-    { c1: '#c2e9fb', c2: '#a1c4fd', c3: '#ffd1df', c4: '#d4fc79' }, // Baies fraîches & Pomme verte
-    { c1: '#fbc2eb', c2: '#a6c1ee', c3: '#fed6e3', c4: '#a8edea' }, // Douceur pastèque & Myrtille
-    { c1: '#f8d380', c2: '#aad8a2', c3: '#f09877', c4: '#89c4c7' }, // Saveurs Méditerranée
-    { c1: '#d7eed1', c2: '#ffdca8', c3: '#f7b2ad', c4: '#bfe3ec' }  // Thé matcha & Mangue
+    { c1: '#f5cda1', c2: '#9ed3a5', c3: '#e9a194', c4: '#8fc5db' },
+    { c1: '#ffbe8a', c2: '#ffd166', c3: '#f49097', c4: '#a3d8c8' },
+    { c1: '#c2e9fb', c2: '#a1c4fd', c3: '#ffd1df', c4: '#d4fc79' },
+    { c1: '#fbc2eb', c2: '#a6c1ee', c3: '#fed6e3', c4: '#a8edea' },
+    { c1: '#f8d380', c2: '#aad8a2', c3: '#f09877', c4: '#89c4c7' },
+    { c1: '#d7eed1', c2: '#ffdca8', c3: '#f7b2ad', c4: '#bfe3ec' }
   ];
 
-  // Sélection aléatoire d'une palette
   const p = PALETTES[Math.floor(Math.random() * PALETTES.length)];
-  
-  // Génération aléatoire de positions pour le maillage fluide
   const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
   
   const bgStyle = `
@@ -601,9 +684,6 @@ footer{border-top:1px solid var(--line);padding:2rem 0 3rem;font-size:.85rem;col
   if(bgEl) bgEl.style.background = bgStyle;
 })();
 
-/* ----------------------------------------------------
-   2. DONNÉES & LOGIQUE DE L'APPLICATION
----------------------------------------------------- */
 const DATA_URLS = ['data/Open-food-calories.json', 'Open-food-calories.json'];
 const PAGE_SIZE = 48;
 const PROMO_EVERY = 48;
@@ -614,13 +694,13 @@ const I18N = {
   fr:{
     title:"Ce que contient vraiment votre assiette.",
     lede:n=>`Énergie, protéines, glucides, lipides et micronutriments pour <strong>${n}</strong> aliments, pour 100 g ou 100 ml. Made by Tom09s`,
-    placeholder:"Rechercher un aliment — pain, saumon, lentilles…",
+    placeholder:"Rechercher un aliment (pain, saumon, lentilles...)",
     clear:"Effacer",
     showing:(a,b)=>`<b>${a}</b> sur <b>${b}</b> aliments`,
-    statMin:"Le plus léger", statAvg:"Moyenne", statMax:"Le plus riche",
+    statMin:"Plus léger", statAvg:"Moyenne", statMax:"Plus riche",
     all:"Tout",
     per100g:"pour 100 g", per100ml:"pour 100 ml",
-    perUnit:g=>`≈ ${g} g par unité`,
+    perUnit:g=>`environ ${g} g par unité`,
     kcal:"kcal",
     protein:"Protéines", carbs:"Glucides", fat:"Lipides",
     fiber:"Fibres", sugars:"Sucres", satfat:"AG saturés", salt:"Sel", alcohol:"Alcool",
@@ -635,6 +715,10 @@ const I18N = {
     copy:"Copier le lien", share:"Partager", copied:"Lien copié",
     footL:"Données CIQUAL et Open Food Facts. Valeurs indicatives, pas un avis médical.",
     footR:"Un projet WikiMind",
+    cookieTitle:"Recommandations personnalisées",
+    cookieText:"Acceptez-vous l'enregistrement local de vos préférences pour vous proposer de futures recommandations nutritionnelles adaptées ?",
+    cookieAccept:"Accepter",
+    cookieRefuse:"Refuser",
     states:{raw:"Cru",cooked:"Cuit",dried:"Séché",frozen:"Surgelé",canned:"Conserve",fresh:"Frais"},
     types:{solid:"Solide",liquid:"Liquide",unit:"À l'unité"},
     cats:{fruits:"Fruits",vegetables:"Légumes",grains:"Céréales",meat:"Viandes",seafood:"Poissons et fruits de mer",dairy_eggs:"Laitiers et œufs",legumes:"Légumineuses",nuts_seeds:"Noix et graines",fats_oils:"Matières grasses",sweets:"Sucré",beverages:"Boissons",condiments:"Condiments",prepared:"Plats préparés",uncategorized:"Divers"}
@@ -642,13 +726,13 @@ const I18N = {
   en:{
     title:"What's actually on your plate.",
     lede:n=>`Energy, protein, carbs, fat and micronutrients for <strong>${n}</strong> foods, per 100 g or 100 ml. Made by Tom09s`,
-    placeholder:"Search a food — bread, salmon, lentils…",
+    placeholder:"Search a food (bread, salmon, lentils...)",
     clear:"Clear",
     showing:(a,b)=>`<b>${a}</b> of <b>${b}</b> foods`,
     statMin:"Lightest", statAvg:"Average", statMax:"Richest",
     all:"All",
     per100g:"per 100 g", per100ml:"per 100 ml",
-    perUnit:g=>`≈ ${g} g per unit`,
+    perUnit:g=>`about ${g} g per unit`,
     kcal:"kcal",
     protein:"Protein", carbs:"Carbs", fat:"Fat",
     fiber:"Fibre", sugars:"Sugars", satfat:"Saturates", salt:"Salt", alcohol:"Alcohol",
@@ -663,6 +747,10 @@ const I18N = {
     copy:"Copy link", share:"Share", copied:"Link copied",
     footL:"Data from CIQUAL and Open Food Facts. Indicative values, not medical advice.",
     footR:"A WikiMind project",
+    cookieTitle:"Personalized recommendations",
+    cookieText:"Do you agree to local storage of your preferences to receive future tailored nutritional recommendations?",
+    cookieAccept:"Accept",
+    cookieRefuse:"Refuse",
     states:{raw:"Raw",cooked:"Cooked",dried:"Dried",frozen:"Frozen",canned:"Canned",fresh:"Fresh"},
     types:{solid:"Solid",liquid:"Liquid",unit:"Per unit"},
     cats:{fruits:"Fruits",vegetables:"Vegetables",grains:"Grains",meat:"Meat",seafood:"Fish and seafood",dairy_eggs:"Dairy and eggs",legumes:"Legumes",nuts_seeds:"Nuts and seeds",fats_oils:"Fats and oils",sweets:"Sweets",beverages:"Drinks",condiments:"Condiments",prepared:"Prepared dishes",uncategorized:"Other"}
@@ -769,6 +857,12 @@ function applyLang(){
   clearBtn.textContent = L.clear;
   topbarClearBtn.textContent = L.clear;
   $('footer').innerHTML = `<span>${L.footL}</span><span>${L.footR}</span>`;
+  
+  $('cookieTitle').textContent = L.cookieTitle;
+  $('cookieText').textContent = L.cookieText;
+  $('cookieAccept').textContent = L.cookieAccept;
+  $('cookieRefuse').textContent = L.cookieRefuse;
+
   document.querySelectorAll('#langSwitch button').forEach(b=>
     b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
 }
@@ -807,7 +901,6 @@ filtersBox.addEventListener('click', e=>{
   apply();
 });
 
-/* Synchronisation des 2 champs de recherche (Hero & Topbar) */
 let timer;
 function handleSearchSync(value){
   query = value;
@@ -853,8 +946,11 @@ function macroBlock(f){
       <span data-w="${pct(g*9)}" style="background:var(--p-fat)"></span>
     </div>` : '';
   const item = (color,label,v) =>
-    `<span><i style="background:${color}"></i>${label} <b>${v===null?'–':round(v)+' g'}</b></span>`;
-  return `<div class="macros">${bar}<div class="legend">
+    `<div class="macro-badge">
+      <span class="title"><i style="background:${color}"></i>${label}</span>
+      <span class="val">${v===null?'0':round(v)} g</span>
+    </div>`;
+  return `<div class="macros">${bar}<div class="legend-grid">
       ${item('var(--p-prot)',L.protein,f.protein)}
       ${item('var(--p-carb)',L.carbs,f.carbs)}
       ${item('var(--p-fat)',L.fat,f.fat)}
@@ -867,7 +963,7 @@ function microBlock(f){
                 [L.alcohol, f.alcohol ? f.alcohol : null]]
     .filter(r => r[1] !== null && r[1] !== undefined);
   if(!rows.length) return '';
-  return `<div class="micro">${rows.map(([k,v])=>`<div><span>${k}</span><b>${round(v)} g</b></div>`).join('')}</div>`;
+  return `<div class="micro-table">${rows.map(([k,v])=>`<div><span>${k}</span><b>${round(v)} g</b></div>`).join('')}</div>`;
 }
 
 function cardHTML(f){
@@ -883,13 +979,13 @@ function cardHTML(f){
   return `<article class="card" style="--m:${energyColor(f.kcal)}">
     <div class="card-top">
       <div class="icon-tile"><svg aria-hidden="true"><use href="#i-${iconFor(f)}"/></svg></div>
-      <div>
+      <div class="card-header-txt">
         <h2>${esc(name)}</h2>
         ${alt && alt!==name ? `<div class="alt">${esc(alt)}</div>` : ''}
         <div class="tags">${tags.join('')}</div>
       </div>
     </div>
-    <div>
+    <div class="energy-box">
       <div class="energy">
         <div class="kcal"><span class="v" data-target="${round(f.kcal,0)}" style="color:${energyColor(f.kcal)}">0</span><span class="u">${L.kcal}</span></div>
         <div class="per">${per}</div>
@@ -924,9 +1020,9 @@ function statPills(){
   const avg = Math.round(sum / current.length);
   const nm = f => lang==='fr' ? f.fr : (f.en || f.fr);
   return `<div class="stat-pills">
-    <span class="stat-pill">${L.statMin} <b>${esc(nm(min))}</b> · ${round(min.kcal,0)} ${L.kcal}</span>
-    <span class="stat-pill">${L.statAvg} <b>${avg}</b> ${L.kcal}</span>
-    <span class="stat-pill">${L.statMax} <b>${esc(nm(max))}</b> · ${round(max.kcal,0)} ${L.kcal}</span>
+    <span class="stat-pill"><span class="lbl">${L.statMin} :</span> <b>${esc(nm(min))}</b> (${round(min.kcal,0)} ${L.kcal})</span>
+    <span class="stat-pill"><span class="lbl">${L.statAvg} :</span> <b>${avg}</b> ${L.kcal}</span>
+    <span class="stat-pill"><span class="lbl">${L.statMax} :</span> <b>${esc(nm(max))}</b> (${round(max.kcal,0)} ${L.kcal})</span>
   </div>`;
 }
 
@@ -1019,9 +1115,6 @@ function toast(msg){
   toastTimer = setTimeout(()=>toastEl.classList.remove('show'), 2200);
 }
 
-/* ----------------------------------------------------
-   3. GESTION DU SCROLL, TOPBAR & DOCKING DE RECHERCHE
----------------------------------------------------- */
 const introEl = document.getElementById('intro');
 const introStage = introEl.querySelector('.intro-stage');
 const scrollProgress = document.getElementById('scrollProgress');
@@ -1044,14 +1137,12 @@ function updateIntro(){
   
   introStage.style.setProperty('--p', p.toFixed(4));
   
-  // Transition douce de la topbar et apparition du champ de recherche
   const isScrolled = window.scrollY > 40;
   topbarEl.classList.toggle('scrolled', isScrolled);
   
   const showTopbarSearch = p > 0.45;
   topbarSearch.classList.toggle('is-visible', showTopbarSearch);
 
-  // Barre de progression globale
   const doc = document.documentElement;
   const pageTotal = doc.scrollHeight - window.innerHeight;
   const pagePct = pageTotal > 0 ? Math.min(1, Math.max(0, window.scrollY / pageTotal)) : 0;
@@ -1068,7 +1159,27 @@ updateIntro();
 
 load();
 
-/* ---------- PWA : service worker + bannière d'installation ---------- */
+(function initCookies(){
+  const CONSENT_KEY = 'ofc-cookie-consent';
+  const modal = document.getElementById('cookieModal');
+  const btnAccept = document.getElementById('cookieAccept');
+  const btnRefuse = document.getElementById('cookieRefuse');
+
+  if(!localStorage.getItem(CONSENT_KEY)){
+    setTimeout(() => modal.classList.add('show'), 1600);
+  }
+
+  btnAccept.addEventListener('click', () => {
+    localStorage.setItem(CONSENT_KEY, 'accepted');
+    modal.classList.remove('show');
+  });
+
+  btnRefuse.addEventListener('click', () => {
+    localStorage.setItem(CONSENT_KEY, 'refused');
+    modal.classList.remove('show');
+  });
+})();
+
 (function initPWA(){
   const DISMISS_KEY = 'ofc-install-dismissed';
   const DISMISS_DAYS = 7;
@@ -1127,7 +1238,7 @@ load();
       return;
     }
     installTitle.textContent = "Ajoutez l'app à l'écran d'accueil";
-    installText.textContent = 'Bouton Partager puis « Sur l\'écran d\'accueil ».';
+    installText.textContent = "Bouton Partager puis Sur l'écran d'accueil.";
     btnInstall.style.display = 'none';
   });
 

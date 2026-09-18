@@ -5,8 +5,17 @@ A structured JSON database of 5,000+ foods, dishes, and ingredients, with calori
 Choose the language / Choisissez votre langue :
 
 ## Langue / Language
-
-
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
+\
 
 - [English / Anglais](#English-Anglais)
 

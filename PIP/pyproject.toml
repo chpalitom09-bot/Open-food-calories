@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "open-food-calories"
+version = "1.1.1"
+description = "Command-line search over the Open-Food-Calories database"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+authors = [{ name = "Open-Food-Calories contributors" }]
+dependencies = ["requests>=2.25"]
+
+[project.urls]
+Homepage = "https://github.com/chpalitom09-bot/Open-food-calories"
+Repository = "https://github.com/chpalitom09-bot/Open-food-calories"
+
+[project.scripts]
+open-food-calories = "open_food_calories.cli:main"
+ofc = "open_food_calories.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+open_food_calories = ["assets/snapshot.json"]

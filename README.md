@@ -437,18 +437,6 @@
   This project is licensed under the MIT License, see [LICENSE](LICENSE) for details.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
   # Francais-French
 
 
@@ -469,7 +457,8 @@
   - [Licence](#licence)
 
 
+# Licence
 
-
+Ce projet est sous la licence MIT, voir [LICENSE](LICENSE) pour des détails.
 
 

@@ -2,6 +2,35 @@
 
 A structured JSON database of 5,000+ foods, dishes, and ingredients, with calories and macronutrients, in French and English.
 
+Choose the language / Choisissez votre langue :
+
+## Langue / Language
+
+
+
+- [English / Anglais](#English-Anglais)
+
+
+- [Francais / Frecnch](#Francais-French)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# English-Anglais
+
+
+
 Live demo: https://chpalitom09-bot.github.io/Open-food-calories/
 
 ## Table of contents
@@ -394,3 +423,41 @@ See `CONTRIBUTING.md` for the full process.
 ## License
 
 This project is licensed under the MIT License, see [LICENSE](LICENSE) for details.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Francais-French
+
+
+
+Démo en direct : https://chpalitom09-bot.github.io/Open-food-calories/
+
+## Table des matières
+
+- [Aperçu](#aperçu)
+- [Installation (paquet pip)](#installation-paquet-pip)
+- [Structure du dépôt](#structure-du-dépôt)
+- [Format des données (schéma v2)](#format-des-données-schéma-v2)
+- [Rapport sur la qualité des données](#rapport-sur-la-qualité-des-données)
+- [Utilisation du JSON brut](#utilisation-du-json-brut)
+- [Outil en ligne de commande (scripts du dépôt)](#outil-en-ligne-de-commande-scripts-du-dépôt)
+- [API REST locale](#api-rest-locale)
+- [Contribution](#contribution)
+- [Licence](#licence)
+
+
+
+
+
+

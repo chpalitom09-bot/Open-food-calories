@@ -1,44 +1,24 @@
 #!/usr/bin/env python3
-"""
-ofc_cli.py — CLI pour Open-Food-Calories (format V2)
-
-Corrige les problèmes du repo actuel :
-- README/API.md pointent vers "data/food.json" (V1, n'existe plus) -> ici on lit
-  data/Open-food-calories.json (V2, le seul à jour), avec fallback auto sur
-  l'ancien nom si jamais tu renommes le fichier.
-- Le format V2 a "name": {"fr":..., "en":...} au lieu de "name"/"english_name"
-  à plat -> ce script gère nativement le format imbriqué.
-
-Usage (depuis la racine du repo, ou avec --file) :
-
-    python3 ofc_cli.py search pizza
-    python3 ofc_cli.py search poulet --lang fr --category meat
-    python3 ofc_cli.py get riz-blanc-cuit
-    python3 ofc_cli.py categories
-    python3 ofc_cli.py stats
-    python3 ofc_cli.py search "" --category fruits --limit 20 --json
-
-Aucune dépendance externe (stdlib uniquement) : marche direct avec `python3`.
-"""
-
 import argparse
 import json
 import sys
 from pathlib import Path
 
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parent
+
 DEFAULT_CANDIDATES = [
-    "data/Open-food-calories.json",   # V2, à jour
-    "Open-food-calories.json",
-    "data/food.json",                  # ancien nom référencé (à éviter)
+    REPO_ROOT / "data" / "Open-food-calories.json",
+    REPO_ROOT / "Open-food-calories.json",
+    SCRIPT_DIR / "data" / "Open-food-calories.json",
+    Path("data/Open-food-calories.json"),
+    Path("Open-food-calories.json"),
 ]
 
 
 def load_data(file_arg: str | None) -> list[dict]:
-    paths = [file_arg] if file_arg else DEFAULT_CANDIDATES
-    for p in paths:
-        if not p:
-            continue
-        fp = Path(p)
+    paths = [Path(file_arg)] if file_arg else DEFAULT_CANDIDATES
+    for fp in paths:
         if fp.exists():
             with open(fp, "r", encoding="utf-8") as f:
                 data = json.load(f)
@@ -48,7 +28,7 @@ def load_data(file_arg: str | None) -> list[dict]:
             return data
     print(
         "❌ Fichier de données introuvable. Essayé : "
-        + ", ".join(p for p in paths if p)
+        + ", ".join(str(p) for p in paths)
         + "\nPrécise le chemin avec --file /chemin/vers/Open-food-calories.json",
         file=sys.stderr,
     )
@@ -79,7 +59,7 @@ def matches(item: dict, query: str, lang: str, category: str | None,
             return q in fr
         if lang == "en":
             return q in en
-        return q in fr or q in en  # lang == "any"
+        return q in fr or q in en
     return q in str(n).lower()
 
 

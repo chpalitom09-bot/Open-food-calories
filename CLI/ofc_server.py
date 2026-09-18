@@ -1,24 +1,4 @@
 #!/usr/bin/env python3
-"""
-ofc_server.py — Mini API REST locale pour Open-Food-Calories (V2)
-Aucune dépendance externe (stdlib uniquement -> pas besoin de pip install,
-contrairement à API.md qui suppose FastAPI).
-
-Lancement :
-    python3 ofc_server.py                 # port 8000, cherche data/Open-food-calories.json
-    python3 ofc_server.py --port 9000 --file /chemin/Open-food-calories.json
-
-Endpoints :
-    GET /all
-    GET /search?q=pizza&lang=fr&category=prepared&type=solid&limit=20
-    GET /food/<id>
-    GET /categories
-
-Test en cmd :
-    curl "http://localhost:8000/search?q=pizza"
-    curl "http://localhost:8000/food/riz-blanc-cuit"
-"""
-
 import argparse
 import json
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -27,23 +7,26 @@ from urllib.parse import urlparse, parse_qs
 
 DATA: list[dict] = []
 
+SCRIPT_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_DIR.parent
+
 CANDIDATES = [
-    "data/Open-food-calories.json",
-    "Open-food-calories.json",
+    REPO_ROOT / "data" / "Open-food-calories.json",
+    REPO_ROOT / "Open-food-calories.json",
+    SCRIPT_DIR / "data" / "Open-food-calories.json",
+    Path("data/Open-food-calories.json"),
+    Path("Open-food-calories.json"),
 ]
 
 
 def load_data(file_arg: str | None) -> list[dict]:
-    paths = [file_arg] if file_arg else CANDIDATES
-    for p in paths:
-        if not p:
-            continue
-        fp = Path(p)
+    paths = [Path(file_arg)] if file_arg else CANDIDATES
+    for fp in paths:
         if fp.exists():
             with open(fp, "r", encoding="utf-8") as f:
                 return json.load(f)
     raise FileNotFoundError(
-        "Fichier introuvable. Essayé : " + ", ".join(p for p in paths if p)
+        "Fichier introuvable. Essayé : " + ", ".join(str(p) for p in paths)
     )
 
 
@@ -77,7 +60,7 @@ class Handler(BaseHTTPRequestHandler):
         self.wfile.write(body)
 
     def log_message(self, fmt, *args):
-        pass  # silence les logs par défaut, décommenter pour debug
+        pass
 
     def do_GET(self):
         parsed = urlparse(self.path)

@@ -7,6 +7,7 @@ Live demo: https://chpalitom09-bot.github.io/Open-food-calories/
 ## Table of contents
 
 - [Overview](#overview)
+- [Installation](#Installation) 
 - [Repository structure](#repository-structure)
 - [Data format (schema v2)](#data-format-schema-v2)
 - [Data quality report](#data-quality-report)
@@ -15,6 +16,7 @@ Live demo: https://chpalitom09-bot.github.io/Open-food-calories/
 - [Local REST API](#local-rest-api)
 - [Contributing](#contributing)
 - [License](#license)
+  
 
 ## Overview
 
@@ -34,6 +36,12 @@ Live demo: https://chpalitom09-bot.github.io/Open-food-calories/
 | Magnum (batonnet) | 300 | 310 | ~3% |
 | Pain au lait | 300 | 320-340 | ~9% |
 | Saute de porc aux legumes | 165 | 150-170 | ~3% |
+
+
+## Installation
+
+    pip install open-food-calories
+    open-food-calories search pizza
 
 ## Repository structure
 
